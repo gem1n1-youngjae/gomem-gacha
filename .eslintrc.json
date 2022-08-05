@@ -18,5 +18,73 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "rules": { "react/react-in-jsx-scope": "off" }
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+        "moduleDirectory": ["node_modules", "./src/"]
+      }
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-var": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "getter-return": "warn",
+    "no-extra-semi": "warn",
+    "no-empty": "warn",
+    "@typescript-eslint/no-empty-function": [
+      "warn",
+      { "allow": ["arrowFunctions"] }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-template-curly-in-string": "warn",
+    "array-callback-return": "warn",
+    "dot-notation": "warn",
+    "no-throw-literal": "warn",
+    "prefer-regex-literals": "warn",
+    "require-await": "warn",
+    "object-shorthand": "warn",
+    "no-unneeded-ternary": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "eqeqeq": ["warn", "smart"],
+    "prefer-const": ["warn", { "destructuring": "all" }],
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"], // ? basically meaningless. "import/order"
+        "allowSeparatedGroups": true
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc" },
+        "groups": ["builtin", "external", "parent", "sibling", "index"]
+      }
+    ],
+    "import/no-anonymous-default-export": ["warn", { "allowObject": true }],
+    "import/newline-after-import": ["warn", { "count": 1 }],
+    "import/no-unresolved": [
+      "error",
+      { "caseSensitive": true, "caseSensitiveStrict": true }
+    ],
+    "import/no-named-as-default-member": 0
+  }
 }

@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { HomePage } from "./components/pages";
+
+import { HomePage } from "components/pages";
 
 const App = (): JSX.Element => {
   return (

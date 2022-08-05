@@ -1,5 +1,4 @@
-import React from "react";
-import { HomeTemplate } from "../../templates";
+import { HomeTemplate } from "components/templates";
 
 export const HomePage = (): JSX.Element => {
   return <HomeTemplate />;
