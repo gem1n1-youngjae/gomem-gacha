@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
+
+import { app, BrowserWindow, ipcMain } from "electron";
 import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
@@ -13,7 +14,7 @@ interface MainEventsInterface {
   [key: string]: (
     event: Electron.Event,
     options: Electron.BrowserWindowConstructorOptions,
-    url: string,
+    url: string
   ) => unknown;
 }
 
@@ -31,7 +32,7 @@ const mainEvents: MainEventsInterface = {
   openWindow: (
     event: Electron.Event,
     options: Electron.BrowserWindowConstructorOptions,
-    route: string,
+    route: string
   ) => {
     const windowURL = devMode
       ? `http://localhost:3000/#/${route}`
@@ -54,14 +55,14 @@ const mainEvents: MainEventsInterface = {
   },
 };
 
-Object.keys(mainEvents).map(event => {
+Object.keys(mainEvents).map((event) => {
   const func = mainEvents[event];
   ipcMain.on(event, func);
 });
 
 const createWindow = (
   options: Electron.BrowserWindowConstructorOptions,
-  route: string,
+  route: string
 ) => {
   const browserOptions = {
     webPreferences: {
@@ -86,12 +87,18 @@ const createWindow = (
 function createMainWindow() {
   const mainURL = parseRoute();
 
-  mainWindow = createWindow({ frame: false }, mainURL);
+  const options: Electron.BrowserWindowConstructorOptions = {
+    width: 1440,
+    height: 900,
+    frame: false,
+  };
+
+  mainWindow = createWindow(options, mainURL);
   mainWindow.on("close", () => {
     app.quit();
   });
   if (devMode) {
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     // Hot Reloading on 'node_modules/.bin/electronPath'
     require("electron-reload")(__dirname, {
@@ -101,7 +108,7 @@ function createMainWindow() {
         "..",
         "node_modules",
         ".bin",
-        "electron" + (process.platform === "win32" ? ".cmd" : ""),
+        "electron" + (process.platform === "win32" ? ".cmd" : "")
       ),
       forceHardReset: true,
       hardResetMethod: "exit",
@@ -113,8 +120,8 @@ app.whenReady().then(() => {
   // DevTools
   if (devMode) {
     installExtension(REACT_DEVELOPER_TOOLS)
-      .then(name => console.log(`Added Extension:  ${name}`))
-      .catch(err => console.log("An error occurred: ", err));
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log("An error occurred: ", err));
   }
 
   createMainWindow();
