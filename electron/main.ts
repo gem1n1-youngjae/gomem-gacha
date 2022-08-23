@@ -89,7 +89,7 @@ function createMainWindow() {
 
   const options: Electron.BrowserWindowConstructorOptions = {
     width: 1440,
-    height: 900,
+    height: 932,
     frame: false,
   };
 
