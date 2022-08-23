@@ -1,5 +1,9 @@
-import { StyledHomeTemplate } from "./homeTemplate.style";
+import { StartButton, StyledHomeTemplate } from "./homeTemplate.style";
 
 export const HomeTemplate = (): JSX.Element => {
-  return <StyledHomeTemplate>homeTemplate</StyledHomeTemplate>;
+  return (
+    <StyledHomeTemplate>
+      <StartButton />
+    </StyledHomeTemplate>
+  );
 };

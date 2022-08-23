@@ -13,6 +13,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0 0px;
   -webkit-app-region: drag;
+  user-select: none;
 `;
 
 export const Title = styled.h1`

@@ -88,7 +88,7 @@ function createMainWindow() {
   const mainURL = parseRoute();
 
   const options: Electron.BrowserWindowConstructorOptions = {
-    width: 1440,
+    width: 2180,
     height: 932,
     frame: false,
   };
