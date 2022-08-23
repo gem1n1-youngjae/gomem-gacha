@@ -47,9 +47,6 @@ const mainEvents: MainEventsInterface = {
   minimizeMainWindow: () => {
     mainWindow.minimize();
   },
-  maximizeMainWindow: () => {
-    mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
-  },
   closeMainWindow: () => {
     mainWindow.close();
   },
@@ -88,9 +85,11 @@ function createMainWindow() {
   const mainURL = parseRoute();
 
   const options: Electron.BrowserWindowConstructorOptions = {
-    width: 2180,
+    width: devMode ? 2000 : 1440,
     height: 932,
     frame: false,
+    resizable: false,
+    fullscreen: false,
   };
 
   mainWindow = createWindow(options, mainURL);
