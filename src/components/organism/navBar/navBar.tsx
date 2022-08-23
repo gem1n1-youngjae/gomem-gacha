@@ -14,10 +14,6 @@ export const NavBar: React.FC = (): JSX.Element => {
           <MinimizeIcon width={12} height={2} />
         </NavIcon>
 
-        <NavIcon event="maximizeMainWindow">
-          <MaximizeIcon width={12} />
-        </NavIcon>
-
         <NavIcon event="closeMainWindow">
           <CloseIcon width={12} />
         </NavIcon>
