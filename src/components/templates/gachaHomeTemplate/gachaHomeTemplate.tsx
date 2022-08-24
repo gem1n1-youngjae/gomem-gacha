@@ -1,5 +1,6 @@
 import {
   GachaContent,
+  StyledBackButton,
   StyledGachaButton,
   StyledGachaHomeTemplate,
   StyledGomemButton,
@@ -8,6 +9,7 @@ import {
 export const GachaHomeTemplate = () => {
   return (
     <StyledGachaHomeTemplate>
+      <StyledBackButton />
       <GachaContent>
         <StyledGachaButton />
         <StyledGomemButton />
