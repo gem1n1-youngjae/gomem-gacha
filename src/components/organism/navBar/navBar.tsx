@@ -2,7 +2,7 @@ import React from "react";
 
 import { ButtonsDiv, Container, Title } from "./navBar.style";
 
-import { CloseIcon, MaximizeIcon, MinimizeIcon } from "assets/icons";
+import { CloseIcon, MinimizeIcon } from "assets/icons";
 import { NavIcon } from "components/atoms";
 
 export const NavBar: React.FC = (): JSX.Element => {
