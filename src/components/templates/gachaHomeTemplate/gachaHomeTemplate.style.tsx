@@ -1,6 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import { gachaHomeBackground } from "assets/images";
+import {
+  defaultGachaWackdo,
+  defaultGomemWackdo,
+  gachaHomeBackground,
+  pressGachaWackdo,
+  pressGomemWackdo,
+} from "assets/images";
 
 export const StyledGachaHomeTemplate = styled.div`
   width: 100%;
@@ -8,4 +14,43 @@ export const StyledGachaHomeTemplate = styled.div`
   background-image: url(${gachaHomeBackground});
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+export const GachaContent = styled.div`
+  width: 916px;
+  height: 563px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+`;
+
+const WackdoButtonStyle = css`
+  width: 416px;
+  height: 586px;
+  background-repeat: no-repeat;
+  &:active {
+    height: 567px;
+  }
+`;
+
+export const StyledGachaButton = styled.div`
+  ${WackdoButtonStyle}
+  background-image: url(${defaultGachaWackdo});
+
+  &:active {
+    background-image: url(${pressGachaWackdo});
+  }
+`;
+
+export const StyledGomemButton = styled.div`
+  ${WackdoButtonStyle}
+  background-image: url(${defaultGomemWackdo});
+  &:active {
+    background-image: url(${pressGomemWackdo});
+  }
 `;

@@ -1,5 +1,17 @@
-import { StyledGachaHomeTemplate } from "./gachaHomeTemplate.style";
+import {
+  GachaContent,
+  StyledGachaButton,
+  StyledGachaHomeTemplate,
+  StyledGomemButton,
+} from "./gachaHomeTemplate.style";
 
 export const GachaHomeTemplate = () => {
-  return <StyledGachaHomeTemplate>gachaHomeTemplate</StyledGachaHomeTemplate>;
+  return (
+    <StyledGachaHomeTemplate>
+      <GachaContent>
+        <StyledGachaButton />
+        <StyledGomemButton />
+      </GachaContent>
+    </StyledGachaHomeTemplate>
+  );
 };
