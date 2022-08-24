@@ -15,8 +15,8 @@ export const StartButton = styled.div`
   top: 746px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 436px;
-  height: 136px;
+  width: 393px;
+  height: 123px;
   background-image: url(${defaultButton});
 
   &:active {
