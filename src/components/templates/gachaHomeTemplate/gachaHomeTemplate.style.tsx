@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components";
 
 import {
-  clickBackButton,
-  defaultBackButton,
   defaultGachaWackdo,
   defaultGomemWackdo,
   gachaHomeBackground,
@@ -53,18 +51,5 @@ export const StyledGomemButton = styled.div`
   background-image: url(${defaultGomemWackdo});
   &:active {
     background-image: url(${pressGomemWackdo});
-  }
-`;
-
-export const StyledBackButton = styled.div`
-  position: absolute;
-  top: 72px;
-  left: 40px;
-  width: 80px;
-  height: 86px;
-  background-image: url(${defaultBackButton});
-
-  &:active {
-    background-image: url(${clickBackButton});
   }
 `;
