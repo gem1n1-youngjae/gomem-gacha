@@ -1,0 +1,23 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule: # 매일 한국 표준시 + 09:00 시
+      interval: "daily"
+      time: "09:00"
+      timezone: "Asia/Seoul"
+
+    target-branch: "develop" # Dependabot이 체크 할 branch
+
+    commit-message:
+      prefix: "📦 ci(bot): " # commit을 할때 앞에 명시할 단어
+
+    open-pull-requests-limit: 10 # 최대 PR 허용 수
+
+    labels:
+      - "Dependabot" # PR 요청시 생성될 라벨
