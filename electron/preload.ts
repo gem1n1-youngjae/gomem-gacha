@@ -28,4 +28,13 @@ contextBridge.exposeInMainWorld("electron", {
   },
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "F12") {
+    ipcRenderer.send("toggle-debug", "an-argument");
+  }
+  if (event.key === "F5") {
+    ipcRenderer.send("refresh", "an-argument");
+  }
+});
+
 export {};

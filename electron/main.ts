@@ -85,7 +85,7 @@ function createMainWindow() {
   const mainURL = parseRoute();
 
   const options: Electron.BrowserWindowConstructorOptions = {
-    width: devMode ? 2000 : 1440,
+    width: 1440,
     height: 932,
     frame: false,
     resizable: false,
@@ -97,8 +97,6 @@ function createMainWindow() {
     app.quit();
   });
   if (devMode) {
-    mainWindow.webContents.openDevTools();
-
     // Hot Reloading on 'node_modules/.bin/electronPath'
     require("electron-reload")(__dirname, {
       electron: path.join(
@@ -136,4 +134,12 @@ app.whenReady().then(() => {
       app.quit();
     }
   });
+});
+
+ipcMain.on("toggle-debug", () => {
+  mainWindow.webContents.toggleDevTools();
+});
+
+ipcMain.on("refresh", (event, arg) => {
+  mainWindow.reload();
 });
