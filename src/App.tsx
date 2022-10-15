@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { NavBar } from "components/organism";
-import { GachaHome, HomePage } from "components/pages";
+import { GachaHome, GachaPage, HomePage } from "components/pages";
 
 const App = (): JSX.Element => {
   return (
@@ -11,6 +11,7 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gachaHome" element={<GachaHome />} />
+          <Route path="/gachaPage" element={<GachaPage />} />
         </Routes>
       </HashRouter>
     </>
