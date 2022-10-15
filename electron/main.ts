@@ -97,6 +97,7 @@ function createMainWindow() {
     app.quit();
   });
   if (devMode) {
+    mainWindow.webContents.openDevTools();
     // Hot Reloading on 'node_modules/.bin/electronPath'
     require("electron-reload")(__dirname, {
       electron: path.join(
@@ -136,10 +137,12 @@ app.whenReady().then(() => {
   });
 });
 
-ipcMain.on("toggle-debug", () => {
-  mainWindow.webContents.toggleDevTools();
-});
+if (devMode) {
+  ipcMain.on("toggle-debug", () => {
+    mainWindow.webContents.toggleDevTools();
+  });
 
-ipcMain.on("refresh", (event, arg) => {
-  mainWindow.reload();
-});
+  ipcMain.on("refresh", (event, arg) => {
+    mainWindow.reload();
+  });
+}
