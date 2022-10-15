@@ -1,5 +1,9 @@
+import { gomemList } from "assets/images/gomem";
 import { GachaPageTemplate } from "components/templates";
+import { useRandom } from "utils/hooks/useRandom";
 
 export const GachaPage = () => {
-  return <GachaPageTemplate />;
+  const randomCharacter = useRandom(gomemList);
+
+  return <GachaPageTemplate randomCharacter={randomCharacter} />;
 };

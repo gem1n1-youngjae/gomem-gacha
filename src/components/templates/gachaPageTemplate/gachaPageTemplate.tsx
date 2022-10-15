@@ -1,5 +1,18 @@
 import React from "react";
 
-export const GachaPageTemplate = () => {
-  return <div>GachaPageTemplate</div>;
+import { StyledGachaPageTemplate } from "./gachaPageTemplate.style";
+
+import { randomCharacterType } from "utils/hooks/useRandom";
+
+export const GachaPageTemplate = ({
+  randomCharacter,
+}: {
+  randomCharacter: randomCharacterType;
+}) => {
+  return (
+    <StyledGachaPageTemplate>
+      {randomCharacter.name}
+      <img src={randomCharacter.src} alt={randomCharacter.name} />
+    </StyledGachaPageTemplate>
+  );
 };
