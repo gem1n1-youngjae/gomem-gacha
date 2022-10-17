@@ -27,11 +27,58 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scrollbar-gutter: stable;
+    overflow: hidden;
 }
 
-/* ? Tapping on svg elements in mobile safari appears dark square, just like being selected. */
-* {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
-    -webkit-touch-callout: none;
+.textBorder {
+    text-shadow: calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9921) calc(var(--stroke-width) * 0.1253) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9686) calc(var(--stroke-width) * 0.2487) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9298) calc(var(--stroke-width) * 0.3681) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.8763) calc(var(--stroke-width) * 0.4818) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.809) calc(var(--stroke-width) * 0.5878) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.729) calc(var(--stroke-width) * 0.6845) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.6374) calc(var(--stroke-width) * 0.7705) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.5358) calc(var(--stroke-width) * 0.8443) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.4258) calc(var(--stroke-width) * 0.9048) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.309) calc(var(--stroke-width) * 0.9511) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.1874) calc(var(--stroke-width) * 0.9823) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.0628) calc(var(--stroke-width) * 0.998) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.0628) calc(var(--stroke-width) * 0.998) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.1874) calc(var(--stroke-width) * 0.9823) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.309) calc(var(--stroke-width) * 0.9511) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.4258) calc(var(--stroke-width) * 0.9048) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.5358) calc(var(--stroke-width) * 0.8443) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.6374) calc(var(--stroke-width) * 0.7705) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.729) calc(var(--stroke-width) * 0.6845) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.809) calc(var(--stroke-width) * 0.5878) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.8763) calc(var(--stroke-width) * 0.4818) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9298) calc(var(--stroke-width) * 0.3681) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9686) calc(var(--stroke-width) * 0.2487) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9921) calc(var(--stroke-width) * 0.1253) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -1) calc(var(--stroke-width) * 0) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9921) calc(var(--stroke-width) * -0.1253) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9686) calc(var(--stroke-width) * -0.2487) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.9298) calc(var(--stroke-width) * -0.3681) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.8763) calc(var(--stroke-width) * -0.4818) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.809) calc(var(--stroke-width) * -0.5878) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.729) calc(var(--stroke-width) * -0.6845) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.6374) calc(var(--stroke-width) * -0.7705) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.5358) calc(var(--stroke-width) * -0.8443) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.4258) calc(var(--stroke-width) * -0.9048) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.309) calc(var(--stroke-width) * -0.9511) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.1874) calc(var(--stroke-width) * -0.9823) 0 var(--stroke-color),
+        calc(var(--stroke-width) * -0.0628) calc(var(--stroke-width) * -0.998) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.0628) calc(var(--stroke-width) * -0.998) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.1874) calc(var(--stroke-width) * -0.9823) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.309) calc(var(--stroke-width) * -0.9511) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.4258) calc(var(--stroke-width) * -0.9048) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.5358) calc(var(--stroke-width) * -0.8443) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.6374) calc(var(--stroke-width) * -0.7705) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.729) calc(var(--stroke-width) * -0.6845) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.809) calc(var(--stroke-width) * -0.5878) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.8763) calc(var(--stroke-width) * -0.4818) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9298) calc(var(--stroke-width) * -0.3681) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9686) calc(var(--stroke-width) * -0.2487) 0 var(--stroke-color),
+        calc(var(--stroke-width) * 0.9921) calc(var(--stroke-width) * -0.1253) 0 var(--stroke-color);
 }

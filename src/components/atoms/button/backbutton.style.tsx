@@ -13,4 +13,6 @@ export const StyledBackButton = styled.div`
   &:active {
     background-image: url(${clickBackButton});
   }
+
+  z-index: 99;
 `;

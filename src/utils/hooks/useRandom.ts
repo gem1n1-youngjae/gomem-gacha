@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 
 export type randomCharacterType = {
   name: string;
+  class: string;
   src: string;
 };
 
@@ -9,6 +10,7 @@ export const useRandom = (gomemList) => {
   const [randomClass, setRandomClass] = useState("");
   const [randomCharacter, setRandomCharacter] = useState<randomCharacterType>({
     name: "",
+    class: "",
     src: "",
   });
   const ramdom = useMemo(() => Math.random(), []);
@@ -25,15 +27,15 @@ export const useRandom = (gomemList) => {
 
   useEffect(() => {
     if (randomClassNumber <= 40) {
-      setRandomClass("common");
+      setRandomClass("Common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {
-      setRandomClass("rare");
+      setRandomClass("Rare");
     } else if (70 < randomClassNumber && randomClassNumber <= 90) {
-      setRandomClass("epic");
+      setRandomClass("Epic");
     } else if (90 < randomClassNumber && randomClassNumber <= 98) {
-      setRandomClass("legend");
+      setRandomClass("Legend");
     } else {
-      setRandomClass("legend");
+      setRandomClass("Legend");
     }
   }, [randomClassNumber]);
 
@@ -53,6 +55,7 @@ export const useRandom = (gomemList) => {
         ];
       setRandomCharacter({
         name: randomCharacterImageName,
+        class: randomClass,
         src: randomCharacterImageData,
       });
     }

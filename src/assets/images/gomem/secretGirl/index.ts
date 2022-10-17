@@ -4,8 +4,8 @@ import { secretGirlLegendImages } from "./legend/index";
 import { secretGirlRareImages } from "./rare/index";
 
 export const secretGirl = {
-  common: secretGirlCommonImages,
-  rare: secretGirlRareImages,
-  epic: secretGirlEpicImages,
-  legend: secretGirlLegendImages,
+  Common: secretGirlCommonImages,
+  Rare: secretGirlRareImages,
+  Epic: secretGirlEpicImages,
+  Legend: secretGirlLegendImages,
 };

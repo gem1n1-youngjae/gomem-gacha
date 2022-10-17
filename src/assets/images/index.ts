@@ -10,3 +10,5 @@ export { default as pressGomemWackdo } from "./wackdo/pressGomemWackdo.png";
 
 export { default as defaultBackButton } from "./defaultBackButton.png";
 export { default as clickBackButton } from "./clickBackButton.png";
+
+export { default as blackGomemBackgroung } from "./blackGomemBackgroung.png";
