@@ -153,3 +153,84 @@ export const EpicAndLegendClassText = styled.div<{ isEpic?: boolean }>`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
+
+export const VideoWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #161616;
+  z-index: 9;
+`;
+
+const opacityAnimation = keyframes`
+  0%{
+    opacity: 0;
+  }
+  40%{
+    opacity: 1;
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+`;
+
+export const GachaCover = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  animation: ${opacityAnimation} 2s 5s;
+  z-index: 10;
+  opacity: 0;
+`;
+
+const slideUp = keyframes`
+  0%{
+    transform: translateY(215px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+`;
+
+export const BottomGradient = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 215px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: ${slideUp} 1s 10s forwards;
+  transform: translateY(215px);
+`;
+
+const showButton = keyframes`
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
+export const SaveButton = styled.div`
+  width: 352px;
+  height: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "RixYeoljeongdo_Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  background: linear-gradient(94.78deg, #b1e6ba 0%, #62ffdb 100%);
+  opacity: 0;
+  animation: ${showButton} 1s 11s forwards;
+  border-radius: 25px;
+`;
