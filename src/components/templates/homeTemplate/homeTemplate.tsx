@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   GachaCover,
   StartButton,
+  StyledGomemGachaImage,
   StyledHomeTemplate,
   VideoWrapper,
 } from "./homeTemplate.style";
@@ -46,11 +47,14 @@ export const HomeTemplate = (): JSX.Element => {
           </video>
         </VideoWrapper>
       )}
+      <StyledGomemGachaImage />
       <StartButton
         onClick={() => {
           navigate("/gachaHome");
         }}
-      />
+      >
+        시작하기
+      </StartButton>
     </StyledHomeTemplate>
   );
 };

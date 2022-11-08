@@ -1,6 +1,4 @@
 export { default as homeBackground } from "./homeBackground.png";
-export { default as clickButton } from "./clickButton.png";
-export { default as defaultButton } from "./defaultButton.png";
 export { default as gachaHomeBackground } from "./gachaHomeBackground.png";
 
 export { default as defaultGachaWackdo } from "./wackdo/defaultGachaWackdo.png";
@@ -12,3 +10,6 @@ export { default as defaultBackButton } from "./defaultBackButton.png";
 export { default as clickBackButton } from "./clickBackButton.png";
 
 export { default as blackGomemBackgroung } from "./blackGomemBackgroung.png";
+
+export { default as button } from "./button.png";
+export { default as gomemCacha } from "./gomemCacha.png";

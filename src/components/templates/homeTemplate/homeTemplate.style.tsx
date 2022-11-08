@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
-import { clickButton, defaultButton, homeBackground } from "assets/images";
+import { gomemCacha, homeBackground } from "assets/images";
+import { PopoutButton } from "components/atoms";
 
 export const StyledHomeTemplate = styled.div`
   width: 100%;
@@ -10,18 +11,11 @@ export const StyledHomeTemplate = styled.div`
   background-repeat: no-repeat;
 `;
 
-export const StartButton = styled.div`
+export const StartButton = styled(PopoutButton)`
   position: absolute;
   top: 746px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 393px;
-  height: 123px;
-  background-image: url(${defaultButton});
-
-  &:active {
-    background-image: url(${clickButton});
-  }
 `;
 
 export const VideoWrapper = styled.div`
@@ -52,4 +46,14 @@ export const GachaCover = styled.div`
   animation: ${opacityAnimation} 2s 5s;
   z-index: 10;
   opacity: 0;
+`;
+
+export const StyledGomemGachaImage = styled.div`
+  position: absolute;
+  width: 1214px;
+  height: 639px;
+  top: 83px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url(${gomemCacha});
 `;
