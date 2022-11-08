@@ -16,6 +16,7 @@ import {
   TextArea,
 } from "./gachaPageTemplate.style";
 
+import { useStarSoundHook } from "assets/sounds/hooks";
 import { randomCharacterType } from "utils/hooks/useRandom";
 
 export const GachaPageTemplate = ({
@@ -25,6 +26,7 @@ export const GachaPageTemplate = ({
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
 }) => {
+  const { showStar } = useStarSoundHook();
   const isCommonOrRare =
     randomCharacter.class === "Common" || randomCharacter.class === "Rare";
   const isEpic = randomCharacter.class === "Epic";
@@ -40,7 +42,15 @@ export const GachaPageTemplate = ({
             <ImageInnerArea classType={randomCharacter.class}>
               <StarArea>
                 {[...Array(randomCharacter.starCount)].map((_, idx) => {
-                  return <StyledStar index={idx} key={`star-${idx}`} />;
+                  return (
+                    <StyledStar
+                      index={idx}
+                      key={`star-${idx}`}
+                      onAnimationStart={() => {
+                        showStar();
+                      }}
+                    />
+                  );
                 })}
               </StarArea>
               <CommonAndRareImage imageSrc={randomCharacter.src} />
@@ -68,7 +78,15 @@ export const GachaPageTemplate = ({
           <EpicOrLegendDotFigure>
             <StarArea isEpicOrLegend={isEpic}>
               {[...Array(randomCharacter.starCount)].map((_, idx) => {
-                return <StyledStar index={idx} key={`star-${idx}`} />;
+                return (
+                  <StyledStar
+                    index={idx}
+                    key={`star-${idx}`}
+                    onAnimationStart={() => {
+                      showStar();
+                    }}
+                  />
+                );
               })}
             </StarArea>
             <EpicAndLegendNameText className="textBorder" isEpic={isEpic}>
@@ -92,7 +110,15 @@ export const GachaPageTemplate = ({
           <EpicOrLegendDotFigure>
             <StarArea isEpicOrLegend={isLegend}>
               {[...Array(randomCharacter.starCount)].map((_, idx) => {
-                return <StyledStar index={idx} key={`star-${idx}`} />;
+                return (
+                  <StyledStar
+                    index={idx}
+                    key={`star-${idx}`}
+                    onAnimationStart={() => {
+                      showStar();
+                    }}
+                  />
+                );
               })}
             </StarArea>
             <EpicAndLegendNameText className="textBorder">
