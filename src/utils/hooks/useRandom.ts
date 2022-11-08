@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 
+import { star } from "constant/star";
+
 export type randomCharacterType = {
   name: string;
   class: string;
   src: string;
+  starCount: number;
 };
 
 export const useRandom = (gomemList) => {
@@ -12,6 +15,7 @@ export const useRandom = (gomemList) => {
     name: "",
     class: "",
     src: "",
+    starCount: 0,
   });
   const ramdom = useMemo(() => Math.random(), []);
 
@@ -57,6 +61,7 @@ export const useRandom = (gomemList) => {
         name: randomCharacterImageName,
         class: randomClass,
         src: randomCharacterImageData,
+        starCount: star[randomClass],
       });
     }
   }, [gomemList, ramdom, randomClass, randomGomemName]);

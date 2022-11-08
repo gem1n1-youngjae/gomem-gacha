@@ -10,7 +10,9 @@ import {
   ImageOuterArea,
   NameText,
   SaveButton,
+  StarArea,
   StyledGachaPageTemplate,
+  StyledStar,
   TextArea,
 } from "./gachaPageTemplate.style";
 
@@ -28,6 +30,7 @@ export const GachaPageTemplate = ({
   const isEpic = randomCharacter.class === "Epic";
   const isLegend = randomCharacter.class === "Legend";
   const characterName = randomCharacter.name.replaceAll("_", " ");
+  const saveButtonMoveUpDelay = randomCharacter.starCount * 0.5 + 1;
 
   return (
     <StyledGachaPageTemplate>
@@ -35,6 +38,11 @@ export const GachaPageTemplate = ({
         <>
           <ImageOuterArea classType={randomCharacter.class}>
             <ImageInnerArea classType={randomCharacter.class}>
+              <StarArea>
+                {[...Array(randomCharacter.starCount)].map((_, idx) => {
+                  return <StyledStar index={idx} key={`star-${idx}`} />;
+                })}
+              </StarArea>
               <CommonAndRareImage imageSrc={randomCharacter.src} />
               <TextArea>
                 <ClassText
@@ -58,6 +66,11 @@ export const GachaPageTemplate = ({
         <>
           <EpicOrLegendImage imageSrc={randomCharacter.src} />
           <EpicOrLegendDotFigure>
+            <StarArea isEpicOrLegend={isEpic}>
+              {[...Array(randomCharacter.starCount)].map((_, idx) => {
+                return <StyledStar index={idx} key={`star-${idx}`} />;
+              })}
+            </StarArea>
             <EpicAndLegendNameText className="textBorder" isEpic={isEpic}>
               {characterName}
             </EpicAndLegendNameText>
@@ -77,6 +90,11 @@ export const GachaPageTemplate = ({
         <>
           <EpicOrLegendImage imageSrc={randomCharacter.src} />
           <EpicOrLegendDotFigure>
+            <StarArea isEpicOrLegend={isLegend}>
+              {[...Array(randomCharacter.starCount)].map((_, idx) => {
+                return <StyledStar index={idx} key={`star-${idx}`} />;
+              })}
+            </StarArea>
             <EpicAndLegendNameText className="textBorder">
               {characterName}
             </EpicAndLegendNameText>
@@ -90,7 +108,7 @@ export const GachaPageTemplate = ({
           </EpicOrLegendDotFigure>
         </>
       )}
-      <BottomGradient>
+      <BottomGradient delay={saveButtonMoveUpDelay}>
         <SaveButton onClick={onClickSaveButton}>저장하기</SaveButton>
       </BottomGradient>
     </StyledGachaPageTemplate>

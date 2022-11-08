@@ -1,6 +1,7 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
-import { blackGomemBackgroung } from "assets/images";
+import { blackGomemBackgroung, starImage } from "assets/images";
+import { PopoutButton } from "components/atoms";
 
 export const StyledGachaPageTemplate = styled.div`
   --stroke-color: #ffffff;
@@ -163,20 +164,6 @@ const slideUp = keyframes`
   }
 `;
 
-export const BottomGradient = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 215px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: ${slideUp} 1s 10s forwards;
-  transform: translateY(215px);
-`;
-
 const showButton = keyframes`
   0%{
     opacity: 0;
@@ -186,18 +173,70 @@ const showButton = keyframes`
   }
 `;
 
-export const SaveButton = styled.div`
-  width: 352px;
-  height: 108px;
+export const SaveButton = styled(PopoutButton)`
+  opacity: 0;
+`;
+
+export const BottomGradient = styled.div<{ delay: number }>`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 215px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "RixYeoljeongdo_Regular";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 38px;
-  background: linear-gradient(94.78deg, #b1e6ba 0%, #62ffdb 100%);
-  opacity: 0;
-  animation: ${showButton} 1s 11s forwards;
-  border-radius: 25px;
+  animation: ${slideUp} 1s ${({ delay }) => delay}s forwards;
+  transform: translateY(215px);
+
+  ${SaveButton} {
+    animation: ${showButton} 1s ${({ delay }) => delay + 1}s forwards;
+  }
+`;
+
+export const StarArea = styled.div<{ isEpicOrLegend?: boolean }>`
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+
+  ${({ isEpicOrLegend }) =>
+    isEpicOrLegend &&
+    css`
+      left: auto;
+      bottom: auto;
+      top: -40%;
+      right: 27%;
+    `}
+`;
+
+const starAnimation = keyframes`
+  0%{
+    transform: scale(0.01);
+  }
+  33%{
+    transform: scale(1.2);
+  }
+  66%{
+    transform: scale(0.8);
+  }
+  100%{
+    transform: scale(1);
+  };
+`;
+
+export const StyledStar = styled.div<{ index: number }>`
+  &:first-child {
+    width: 100px;
+    height: 100px;
+  }
+  width: 82px;
+  height: 82px;
+  background-image: url(${starImage});
+  background-size: cover;
+  transform: scale(0.001);
+
+  animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
 `;
