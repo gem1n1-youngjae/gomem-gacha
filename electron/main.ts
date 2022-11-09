@@ -52,6 +52,7 @@ const mainEvents: MainEventsInterface = {
   },
 };
 
+// eslint-disable-next-line array-callback-return
 Object.keys(mainEvents).map((event) => {
   const func = mainEvents[event];
   ipcMain.on(event, func);
@@ -114,10 +115,10 @@ function createMainWindow() {
   }
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // DevTools
   if (devMode) {
-    installExtension(REACT_DEVELOPER_TOOLS)
+    await installExtension(REACT_DEVELOPER_TOOLS)
       .then((name) => console.log(`Added Extension:  ${name}`))
       .catch((err) => console.log("An error occurred: ", err));
   }
