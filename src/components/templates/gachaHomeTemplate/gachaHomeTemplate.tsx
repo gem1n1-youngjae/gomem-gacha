@@ -20,7 +20,11 @@ export const GachaHomeTemplate = () => {
             navigate("/gachaPage");
           }}
         />
-        <StyledGomemButton />
+        <StyledGomemButton
+          onClick={() => {
+            navigate("/myGomem");
+          }}
+        />
       </GachaContent>
     </StyledGachaHomeTemplate>
   );

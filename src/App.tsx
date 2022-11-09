@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { NavBar } from "components/organism";
-import { GachaHome, GachaPage, HomePage } from "components/pages";
+import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
 
 const App = (): JSX.Element => {
   if (process.env.NODE_ENV !== "development") {
@@ -27,6 +27,7 @@ const App = (): JSX.Element => {
           <Route path="/" element={<HomePage />} />
           <Route path="/gachaHome" element={<GachaHome />} />
           <Route path="/gachaPage" element={<GachaPage />} />
+          <Route path="/myGomem" element={<MyGomemPage />} />
         </Routes>
       </HashRouter>
     </>
