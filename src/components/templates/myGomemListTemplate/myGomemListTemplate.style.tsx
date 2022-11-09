@@ -8,19 +8,23 @@ export const StyledGachaHomeTemplate = styled.div`
   background-image: url(${gachaHomeBackground});
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 `;
 
+export const TopContent = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 72px 34px 60px 34px;
+`;
+
 export const PageTitleText = styled.div`
-  position: absolute;
-  top: 93px;
-  left: 152px;
   font-style: normal;
   font-weight: 400;
   font-size: 44px;
   color: #ffffff;
   user-select: none;
+`;
+
+export const MainContentWrapper = styled.div`
+  width: 100%;
 `;
