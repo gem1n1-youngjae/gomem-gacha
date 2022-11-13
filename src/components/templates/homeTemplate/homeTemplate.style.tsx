@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import { gomemCacha, homeBackground } from "assets/images";
+import { gomemGacha, homeBackground } from "assets/images";
 import { PopoutButton } from "components/atoms";
 
 export const StyledHomeTemplate = styled.div`
@@ -55,5 +55,5 @@ export const StyledGomemGachaImage = styled.div`
   top: 83px;
   left: 50%;
   transform: translateX(-50%);
-  background-image: url(${gomemCacha});
+  background-image: url(${gomemGacha});
 `;
