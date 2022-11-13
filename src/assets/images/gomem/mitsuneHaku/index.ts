@@ -9,3 +9,5 @@ export const mitsuneHaku = {
   Epic: mitsuneHakuEpicImages,
   Legend: mitsuneHakuLegendImages,
 };
+
+export type mitsuneHakuType = typeof mitsuneHaku;

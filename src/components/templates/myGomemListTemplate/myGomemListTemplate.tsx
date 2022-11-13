@@ -2,12 +2,21 @@ import {
   MainContentWrapper,
   PageTitleText,
   StyledGachaHomeTemplate,
-  TopContent,
+  TopContent
 } from "./myGomemListTemplate.style";
 
 import { BackButton } from "components/atoms";
 
-export const MyGomemListTemplate = () => {
+export const MyGomemListTemplate = ({
+  userHaveGomemList
+}: {
+  userHaveGomemList: {
+    name: string;
+    class: string;
+    src: string;
+    starCount: number;
+  }[];
+}) => {
   return (
     <StyledGachaHomeTemplate>
       <TopContent>
@@ -15,7 +24,17 @@ export const MyGomemListTemplate = () => {
         <div style={{ width: 32 }} />
         <PageTitleText>내가 뽑은 고멤</PageTitleText>
       </TopContent>
-      <MainContentWrapper></MainContentWrapper>
+      <MainContentWrapper>
+        {userHaveGomemList.map((gomem) => (
+          <div
+            style={{ color: "#ffffff", marginBottom: 32 }}
+            key={`${gomem.class}_${gomem.name}`}
+          >
+            <div>{gomem.class}</div>
+            <div>{gomem.name}</div>
+          </div>
+        ))}
+      </MainContentWrapper>
     </StyledGachaHomeTemplate>
   );
 };

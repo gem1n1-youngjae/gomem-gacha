@@ -9,3 +9,5 @@ export const secretGirl = {
   Epic: secretGirlEpicImages,
   Legend: secretGirlLegendImages,
 };
+
+export type secretGirlType = typeof secretGirl;

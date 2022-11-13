@@ -1,7 +1,12 @@
-import { mitsuneHaku } from "./mitsuneHaku";
-import { secretGirl } from "./secretGirl/index";
+import { mitsuneHaku, mitsuneHakuType } from "./mitsuneHaku";
+import { secretGirl, secretGirlType } from "./secretGirl";
 
-export const gomemList = {
+export type gomemListType = {
+  secretGirl: secretGirlType;
+  mitsuneHaku: mitsuneHakuType;
+};
+
+export const gomemList: gomemListType = {
   secretGirl,
   mitsuneHaku,
 };
