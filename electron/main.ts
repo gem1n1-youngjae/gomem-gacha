@@ -117,11 +117,6 @@ function createMainWindow() {
 
 app.whenReady().then(async () => {
   // DevTools
-  if (devMode) {
-    await installExtension(REACT_DEVELOPER_TOOLS)
-      .then((name) => console.log(`Added Extension:  ${name}`))
-      .catch((err) => console.log("An error occurred: ", err));
-  }
 
   createMainWindow();
 
@@ -136,6 +131,12 @@ app.whenReady().then(async () => {
       app.quit();
     }
   });
+
+  if (devMode) {
+    await installExtension(REACT_DEVELOPER_TOOLS)
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log("An error occurred: ", err));
+  }
 });
 
 if (devMode) {
