@@ -4,11 +4,20 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-enable-beta-ecosystems: true
 updates:
-  - package-ecosystem: "" # See documentation for possible values
+  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule: # 매일 한국 표준시 + 09:00 시
       interval: "daily"
       time: "09:00"
       timezone: "Asia/Seoul"
+
+    target-branch: "main" # Dependabot이 체크 할 branch
+
+    commit-message:
+      prefix: "📦 ci(bot): " # commit을 할때 앞에 명시할 단어
+
+    open-pull-requests-limit: 10 # 최대 PR 허용 수
+
+    labels:
+      - "Dependabot" # PR 요청시 생성될 라벨
