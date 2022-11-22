@@ -14,7 +14,7 @@ export const Container = styled.div`
   padding: 0 0px;
   -webkit-app-region: drag;
   user-select: none;
-  z-index: 99;
+  z-index: 999;
 `;
 
 export const Title = styled.h1`

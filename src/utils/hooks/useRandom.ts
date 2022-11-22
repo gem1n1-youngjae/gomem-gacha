@@ -15,7 +15,7 @@ export const useRandom = (gomemList) => {
     name: "",
     class: "",
     src: "",
-    starCount: 0,
+    starCount: 0
   });
   const ramdom = useMemo(() => Math.random(), []);
 
@@ -26,7 +26,7 @@ export const useRandom = (gomemList) => {
   const randomGomemName = Object.keys(gomemList)[randomGomemNumber];
   const randomClassNumber = useMemo(
     () => Math.floor(ramdom * 100) + 1,
-    [ramdom]
+    [gomemList, ramdom]
   );
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const useRandom = (gomemList) => {
         name: randomCharacterImageName,
         class: randomClass,
         src: randomCharacterImageData,
-        starCount: star[randomClass],
+        starCount: star[randomClass]
       });
     }
   }, [gomemList, ramdom, randomClass, randomGomemName]);

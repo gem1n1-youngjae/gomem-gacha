@@ -9,12 +9,26 @@ export const StyledGachaHomeTemplate = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #a9e9be 0%, #68fdd9 100%);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
 `;
 
 export const TopContent = styled.div`
   display: flex;
   align-items: center;
-  padding: 72px 34px 60px 34px;
+  padding: 72px 40px 60px 40px;
 `;
 
 export const PageTitleText = styled.div`
@@ -27,4 +41,10 @@ export const PageTitleText = styled.div`
 
 export const MainContentWrapper = styled.div`
   width: 100%;
+  display: grid;
+  padding: 0 40px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(4, 290px);
+  column-gap: 61px;
+  row-gap: 50px;
 `;

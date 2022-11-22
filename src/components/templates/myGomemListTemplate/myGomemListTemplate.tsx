@@ -6,6 +6,7 @@ import {
 } from "./myGomemListTemplate.style";
 
 import { BackButton } from "components/atoms";
+import { GomemCard } from "components/molecules";
 
 export const MyGomemListTemplate = ({
   userHaveGomemList
@@ -25,15 +26,18 @@ export const MyGomemListTemplate = ({
         <PageTitleText>내가 뽑은 고멤</PageTitleText>
       </TopContent>
       <MainContentWrapper>
-        {userHaveGomemList.map((gomem) => (
-          <div
-            style={{ color: "#ffffff", marginBottom: 32 }}
-            key={`${gomem.class}_${gomem.name}`}
-          >
-            <div>{gomem.class}</div>
-            <div>{gomem.name}</div>
-          </div>
-        ))}
+        {userHaveGomemList &&
+          userHaveGomemList
+            .sort((a, b) => a.starCount - b.starCount)
+            .map((gomem, idx) => (
+              <GomemCard
+                key={idx}
+                name={gomem.name}
+                gomemClass={gomem.class}
+                imageSrc={gomem.src}
+                starCount={gomem.starCount}
+              />
+            ))}
       </MainContentWrapper>
     </StyledGachaHomeTemplate>
   );
