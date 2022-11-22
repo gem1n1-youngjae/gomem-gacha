@@ -1,8 +1,10 @@
 import React from "react";
 import {
+  CardStarArea,
   StyledCardClass,
   StyledCardName,
   StyledGomemImage,
+  StyledStar,
   StylerCardInnerBox,
   StylerCardOuterBox
 } from "./gomemCard.style";
@@ -30,6 +32,11 @@ export const GomemCard = ({
       isEpic={isEpic}
       isLegend={isLegend}
     >
+      <CardStarArea>
+        {[...Array(starCount)].map((_, idx) => {
+          return <StyledStar index={idx} key={`star-${idx}`} />;
+        })}
+      </CardStarArea>
       <StylerCardInnerBox
         classType={gomemClass}
         isCommonOrRare={isCommonOrRare}

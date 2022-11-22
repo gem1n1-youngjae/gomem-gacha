@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 
 import { blackGomemBackgroung, starImage } from "assets/images";
-import { PopoutButton } from "components/atoms";
+import { PopoutButton, Star } from "components/atoms";
 
 export const StyledGachaPageTemplate = styled.div`
   --stroke-color: #ffffff;
@@ -227,16 +227,9 @@ const starAnimation = keyframes`
   };
 `;
 
-export const StyledStar = styled.div<{ index: number }>`
-  &:first-child {
-    width: 100px;
-    height: 100px;
-  }
-  width: 82px;
-  height: 82px;
-  background-image: url(${starImage});
-  background-size: cover;
+export const StyledStar = styled((props) => <Star {...props} />)<{
+  index: number;
+}>`
   transform: scale(0.001);
-
   animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
 `;

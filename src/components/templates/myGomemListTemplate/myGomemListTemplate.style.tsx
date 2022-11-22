@@ -47,4 +47,5 @@ export const MainContentWrapper = styled.div`
   grid-template-columns: repeat(4, 290px);
   column-gap: 61px;
   row-gap: 50px;
+  padding-bottom: 200px;
 `;

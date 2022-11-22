@@ -1,3 +1,4 @@
+import { Star } from "components/atoms";
 import styled, { css } from "styled-components";
 
 const GradientBorderCss = css`
@@ -181,4 +182,31 @@ export const StyledCardName = styled.div<{
     `}
 
   z-index: 10;
+`;
+
+export const CardStarArea = styled.div<{ isEpicOrLegend?: boolean }>`
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 10;
+
+  ${({ isEpicOrLegend }) =>
+    isEpicOrLegend &&
+    css`
+      left: auto;
+      bottom: auto;
+      top: -40%;
+      right: 27%;
+    `}
+`;
+
+export const StyledStar = styled((props) => <Star {...props} />)`
+  &:first-child {
+    width: 59px;
+    height: 59px;
+  }
+  width: 40px;
+  height: 40px;
 `;
