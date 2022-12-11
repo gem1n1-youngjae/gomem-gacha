@@ -8,6 +8,7 @@ export const secretGirl = {
   Rare: secretGirlRareImages,
   Epic: secretGirlEpicImages,
   Legend: secretGirlLegendImages,
+  realName: "비밀소녀"
 };
 
 export type secretGirlType = typeof secretGirl;

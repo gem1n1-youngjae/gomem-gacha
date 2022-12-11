@@ -8,6 +8,7 @@ export const mitsuneHaku = {
   Rare: mitsuneHakuRareImages,
   Epic: mitsuneHakuEpicImages,
   Legend: mitsuneHakuLegendImages,
+  realName: "미츠네-하쿠"
 };
 
 export type mitsuneHakuType = typeof mitsuneHaku;

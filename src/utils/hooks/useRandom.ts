@@ -34,6 +34,14 @@ export const useRandom = (gomemList) => {
 
   const rendomGomemRealName = gomemList[randomGomemName].realName;
 
+  const isGomemHaveHiddion = useMemo(
+    () =>
+      Object.keys(gomemList[randomGomemName]).filter(
+        (gomem) => gomem === "Hidden"
+      ).length !== 0,
+    [randomGomemName]
+  );
+
   useEffect(() => {
     if (randomClassNumber <= 40) {
       setRandomClass("Common");
@@ -43,8 +51,14 @@ export const useRandom = (gomemList) => {
       setRandomClass("Epic");
     } else if (90 < randomClassNumber && randomClassNumber <= 98) {
       setRandomClass("Legend");
-    } else {
+    } else if (98 < randomClassNumber && randomClassNumber <= 99) {
       setRandomClass("Legend");
+    } else {
+      if (isGomemHaveHiddion) {
+        setRandomClass("Hidden");
+      } else {
+        setRandomClass("Legend");
+      }
     }
   }, [randomClassNumber]);
 
