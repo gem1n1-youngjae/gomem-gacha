@@ -43,6 +43,10 @@ export const useRandom = (gomemList) => {
   );
 
   useEffect(() => {
+    if (rendomGomemRealName === "길햇님송이") {
+      setRandomClass("Common");
+      return;
+    }
     if (randomClassNumber <= 40) {
       setRandomClass("Common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {

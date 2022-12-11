@@ -1,3 +1,4 @@
+import { jururu, jururuType } from "./jururu";
 import { kwakChunSik, kwakChunSikType } from "./kwakChunSik";
 import { kwonmin, kwonminType } from "./kwonmin";
 import { mitsuneHaku, mitsuneHakuType } from "./mitsuneHaku";
@@ -8,11 +9,13 @@ export type gomemListType = {
   mitsuneHaku: mitsuneHakuType;
   kwakChunSik: kwakChunSikType;
   kwonmin: kwonminType;
+  jururu: jururuType;
 };
 
 export const gomemList: gomemListType = {
   secretGirl,
   mitsuneHaku,
   kwakChunSik,
-  kwonmin
+  kwonmin,
+  jururu
 };
