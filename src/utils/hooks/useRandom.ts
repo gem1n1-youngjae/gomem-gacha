@@ -47,6 +47,10 @@ export const useRandom = (gomemList) => {
       setRandomClass("Common");
       return;
     }
+    if (rendomGomemRealName === "노스페라투-호드") {
+      setRandomClass("Legend");
+      return;
+    }
     if (randomClassNumber <= 40) {
       setRandomClass("Common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {
