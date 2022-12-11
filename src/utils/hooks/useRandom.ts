@@ -7,6 +7,7 @@ export type randomCharacterType = {
   class: string;
   src: string;
   starCount: number;
+  realName: string;
 };
 
 export const useRandom = (gomemList) => {
@@ -15,7 +16,8 @@ export const useRandom = (gomemList) => {
     name: "",
     class: "",
     src: "",
-    starCount: 0
+    starCount: 0,
+    realName: ""
   });
   const ramdom = useMemo(() => Math.random(), []);
 
@@ -24,10 +26,13 @@ export const useRandom = (gomemList) => {
     [gomemList, ramdom]
   );
   const randomGomemName = Object.keys(gomemList)[randomGomemNumber];
+
   const randomClassNumber = useMemo(
     () => Math.floor(ramdom * 100) + 1,
     [gomemList, ramdom]
   );
+
+  const rendomGomemRealName = gomemList[randomGomemName].realName;
 
   useEffect(() => {
     if (randomClassNumber <= 40) {
@@ -44,7 +49,7 @@ export const useRandom = (gomemList) => {
   }, [randomClassNumber]);
 
   useEffect(() => {
-    if (randomGomemName && randomClass) {
+    if (randomGomemName && randomClass && rendomGomemRealName) {
       const randomCharacterNumber = Math.floor(
         ramdom * Object.keys(gomemList[randomGomemName][randomClass]).length
       );
@@ -61,10 +66,11 @@ export const useRandom = (gomemList) => {
         name: randomCharacterImageName,
         class: randomClass,
         src: randomCharacterImageData,
-        starCount: star[randomClass]
+        starCount: star[randomClass],
+        realName: rendomGomemRealName
       });
     }
-  }, [gomemList, ramdom, randomClass, randomGomemName]);
+  }, [gomemList, ramdom, randomClass, randomGomemName, rendomGomemRealName]);
 
   return randomCharacter;
 };

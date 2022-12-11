@@ -15,3 +15,4 @@ export { default as button } from "./button.png";
 export { default as gomemGacha } from "./gomemGacha.png";
 
 export { default as starImage } from "./star.png";
+export { default as downArrow } from "./downArrow.png";

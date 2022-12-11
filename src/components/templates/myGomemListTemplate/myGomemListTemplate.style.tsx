@@ -49,3 +49,39 @@ export const MainContentWrapper = styled.div`
   row-gap: 50px;
   padding-bottom: 200px;
 `;
+
+export const SeletButtonsWrapper = styled.div`
+  display: flex;
+  padding: 0 40px;
+  gap: 15px;
+  margin-bottom: 32px;
+`;
+
+export const SelectOptionContainer = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 12;
+  width: 160px;
+  height: 200px;
+  background: rgba(208, 208, 208, 0.8);
+  margin-top: 8px;
+  border-radius: 12px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+`;
+
+export const SeletOption = styled.div`
+  padding: 6px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+`;
