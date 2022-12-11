@@ -1,4 +1,5 @@
 import { jururu, jururuType } from "./jururu";
+import { kimchimandu, kimchimanduType } from "./kimchimandu";
 import { kwakChunSik, kwakChunSikType } from "./kwakChunSik";
 import { kwonmin, kwonminType } from "./kwonmin";
 import { mitsuneHaku, mitsuneHakuType } from "./mitsuneHaku";
@@ -10,6 +11,7 @@ export type gomemListType = {
   kwakChunSik: kwakChunSikType;
   kwonmin: kwonminType;
   jururu: jururuType;
+  kimchimandu: kimchimanduType;
 };
 
 export const gomemList: gomemListType = {
@@ -17,5 +19,6 @@ export const gomemList: gomemListType = {
   mitsuneHaku,
   kwakChunSik,
   kwonmin,
-  jururu
+  jururu,
+  kimchimandu
 };
