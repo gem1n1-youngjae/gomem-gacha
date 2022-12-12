@@ -33,8 +33,12 @@ const opacityAnimation = keyframes`
   50%{
     opacity: 1;
   }
+  99%{
+    opacity: 0;
+  }
   100%{
     opacity: 0;
+    display: none;
   }
 `;
 
@@ -43,7 +47,7 @@ export const GachaCover = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
-  animation: ${opacityAnimation} 2s 5s;
+  animation: ${opacityAnimation} 2s forwards;
   z-index: 10;
   opacity: 0;
 `;
