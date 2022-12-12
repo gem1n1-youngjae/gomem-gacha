@@ -1,19 +1,24 @@
 import styled, { css, keyframes } from "styled-components";
 
-import { blackGomemBackgroung, starImage } from "assets/images";
+import { blackGomemBackgroung, starImage, wakCard1 } from "assets/images";
 import { PopoutButton, Star } from "components/atoms";
 
-export const StyledGachaPageTemplate = styled.div`
+export const StyledGachaPageTemplate = styled.div<{ isOpenCard: boolean }>`
   --stroke-color: #ffffff;
   --stroke-width: 10px;
   width: 100%;
   height: 100%;
-  background-image: url(${blackGomemBackgroung});
+  ${({ isOpenCard }) =>
+    isOpenCard &&
+    css`
+      background-image: url(${blackGomemBackgroung});
+    `};
   padding-top: var(--header-nav-bar-height);
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
+  background-color: ${({ isOpenCard }) => (isOpenCard ? "none" : "#000000")};
 `;
 
 export const CommonAndRareImage = styled.div<{
@@ -232,4 +237,85 @@ export const StyledStar = styled((props) => <Star {...props} />)<{
 }>`
   transform: scale(0.001);
   animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
+`;
+
+const cardAnimation = keyframes`
+	0% {
+		transform: translate(-50%, 50%) scale(0.1) scaleY(0.5);
+	}
+	60%{
+		transform: translate(-50%, -57%) scaleY(1.12);
+	}
+	75%{
+		transform: translate(-50%, -47%);
+	}	
+	100% {
+		transform: translate(-50%, -50%) scale(1) scaleY(1);
+	}	
+`;
+
+export const CardWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ${cardAnimation} 0.8s ease-out;
+`;
+
+export const StyledCard = styled.div`
+  width: 373px;
+  height: 630px;
+  background-image: url(${wakCard1});
+  background-size: cover;
+  background-position: center;
+  transition: all ease 1s;
+  cursor: pointer;
+  &:hover {
+    transform: rotate(5deg);
+  }
+`;
+
+const steam = keyframes`
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  
+}`;
+
+export const StyledGlow = styled.div`
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 373px;
+  height: 630px;
+  z-index: -1;
+  &:after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(
+      35deg,
+      #70fad5,
+      #00ffd1,
+      #00ffa3,
+      #00fff0,
+      #78e7ff,
+      #2757ff
+    );
+    background-size: 400%;
+    animation: steam 20s linear infinite;
+  }
+  &:after {
+    filter: blur(50px);
+  }
 `;
