@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { gomemList } from "assets/images/gomem";
@@ -9,8 +9,10 @@ export const GachaPage = () => {
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
 
-  const userHaveGomemList =
-    window.localStorage.getItem("userHaveGomemList") || `[]`;
+  const userHaveGomemList = useMemo(
+    () => window.localStorage.getItem("userHaveGomemList") || `[]`,
+    []
+  );
 
   const onClickSaveButton = useCallback(() => {
     if (randomCharacter.name !== "") {

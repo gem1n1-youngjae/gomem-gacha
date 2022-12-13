@@ -20,9 +20,9 @@ export const GomemCard = ({
   imageSrc: string;
   starCount: number;
 }) => {
-  const isCommonOrRare = gomemClass === "Common" || gomemClass === "Rare";
-  const isEpic = gomemClass === "Epic";
-  const isLegend = gomemClass === "Legend";
+  const isCommonOrRare = gomemClass === "common" || gomemClass === "rare";
+  const isEpic = gomemClass === "epic";
+  const isLegend = gomemClass === "legend";
   const isEpicOrLegend = isEpic || isLegend;
 
   return (

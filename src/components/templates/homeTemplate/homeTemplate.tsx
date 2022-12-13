@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -10,8 +10,6 @@ import {
 } from "./homeTemplate.style";
 
 import { INTRO_HD } from "assets/videos";
-
-const INTRO_VIDEO_END_TIME = 5;
 
 export const HomeTemplate = (): JSX.Element => {
   const navigate = useNavigate();

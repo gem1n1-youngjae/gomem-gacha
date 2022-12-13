@@ -11,7 +11,7 @@ import {
 
 import { BackButton, SelectButton } from "components/atoms";
 import { GomemCard } from "components/molecules";
-import { gomemClassList, gomemNameList } from "constant/gomem";
+import { gomemClassList, gomemNameList, GomemNames } from "constant/gomem";
 
 export const MyGomemListTemplate = ({
   userHaveGomemList

@@ -33,7 +33,7 @@ export const StylerCardOuterBox = styled.div<{
   ${({ isCommonOrRare, classType }) =>
     isCommonOrRare &&
     css`
-      border: 1px solid ${classType === "Common" ? "#FFFFFF;" : "#38F238"};
+      border: 1px solid ${classType === "common" ? "#FFFFFF;" : "#38F238"};
     `}
 
   ${({ isEpic, isLegend }) =>
@@ -74,7 +74,7 @@ export const StylerCardInnerBox = styled.div<{
   ${({ isCommonOrRare, classType }) =>
     isCommonOrRare &&
     css`
-      border: 3px solid ${classType === "Common" ? "#FFFFFF;" : "#38F238"};
+      border: 3px solid ${classType === "common" ? "#FFFFFF;" : "#38F238"};
     `}
 
   ${({ isEpic, isLegend }) =>
@@ -131,7 +131,7 @@ export const StyledCardClass = styled.div<{
   ${({ isCommonOrRare, classType }) =>
     isCommonOrRare &&
     css`
-      color: ${classType === "Common" ? "#CFCFCF" : "#38F238"};
+      color: ${classType === "common" ? "#CFCFCF" : "#38F238"};
     `}
 
   ${({ isEpic, isLegend }) =>
@@ -165,7 +165,7 @@ export const StyledCardName = styled.div<{
   ${({ isCommonOrRare, classType }) =>
     isCommonOrRare &&
     css`
-      color: ${classType === "Common" ? "#9B9B9B" : "#41DD41"};
+      color: ${classType === "common" ? "#9B9B9B" : "#41DD41"};
     `}
 
   ${({ isEpic, isLegend }) =>

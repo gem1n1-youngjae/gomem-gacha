@@ -49,8 +49,8 @@ export const ImageOuterArea = styled.div<{ classType: string }>`
     rgba(255, 255, 255, 0.32) 100%
   );
   border: 4px solid
-    ${({ classType }) => (classType === "Common" ? "#ffffff" : "#00F200")};
-  box-shadow: 0px -3px 43px ${({ classType }) => (classType === "Common" ? "#ffffff" : "#B9FFB9")};
+    ${({ classType }) => (classType === "common" ? "#ffffff" : "#00F200")};
+  box-shadow: 0px -3px 43px ${({ classType }) => (classType === "common" ? "#ffffff" : "#B9FFB9")};
   backdrop-filter: blur(4.5px);
   border-radius: 23px;
   display: flex;
@@ -62,7 +62,7 @@ export const ImageInnerArea = styled.div<{ classType: string }>`
   width: 1119px;
   height: 387px;
   border: 2px solid
-    ${({ classType }) => (classType === "Common" ? "#ffffff" : "#B9FFB9")};
+    ${({ classType }) => (classType === "common" ? "#ffffff" : "#B9FFB9")};
   border-radius: 20px;
 `;
 
@@ -79,7 +79,7 @@ export const ClassText = styled.div<{ classType: string }>`
   font-size: 64.2458px;
   line-height: 158.5%;
   text-align: right;
-  color: ${({ classType }) => (classType === "Common" ? "#CFCFCF" : "#38F238")};
+  color: ${({ classType }) => (classType === "common" ? "#CFCFCF" : "#38F238")};
 `;
 
 export const NameText = styled.div<{ classType: string }>`
@@ -88,7 +88,7 @@ export const NameText = styled.div<{ classType: string }>`
   font-size: 64.2458px;
   line-height: 158.5%;
   text-align: right;
-  color: ${({ classType }) => (classType === "Common" ? "#9B9B9B" : "#41DD41")};
+  color: ${({ classType }) => (classType === "common" ? "#9B9B9B" : "#41DD41")};
 `;
 
 export const EpicOrLegendImage = styled.div<{ imageSrc: string }>`

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   BottomGradient,
   CardWrapper,
@@ -21,7 +23,6 @@ import {
 
 import { useStarSoundHook } from "assets/sounds/hooks";
 import { randomCharacterType } from "utils/hooks/useRandom";
-import { useState } from "react";
 
 export const GachaPageTemplate = ({
   randomCharacter,
@@ -38,8 +39,6 @@ export const GachaPageTemplate = ({
   const isLegend = randomCharacter.class === "legend";
   const characterName = randomCharacter.name.replaceAll("_", " ");
   const saveButtonMoveUpDelay = randomCharacter.starCount * 0.5 + 1;
-
-  console.log(saveButtonMoveUpDelay);
 
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>
