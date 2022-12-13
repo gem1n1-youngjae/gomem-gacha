@@ -364,7 +364,7 @@ export const StyledGlow = styled.div<{ isGreen: boolean; isYellow: boolean }>`
     }}
 
     background-size: 400%;
-    animation: steam 20s linear infinite;
+    animation: ${steam} 20s linear infinite;
   }
   &:after {
     filter: blur(50px);
