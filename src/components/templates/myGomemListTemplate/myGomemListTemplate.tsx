@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import {
   MainContentWrapper,
   PageTitleText,
@@ -42,9 +43,9 @@ export const MyGomemListTemplate = ({
     } else {
       if (selectGomemName !== "고멤") {
         setGomemList(
-          userHaveGomemList.filter(
-            (gomem) => gomem.realName === selectGomemName
-          )
+          userHaveGomemList.filter((gomem) => {
+            return GomemNames[gomem.realName] === selectGomemName;
+          })
         );
         return;
       }
@@ -56,7 +57,7 @@ export const MyGomemListTemplate = ({
       }
       setGomemList(userHaveGomemList);
     }
-  }, [selectGomemName, selectGomemClass]);
+  }, [selectGomemName, selectGomemClass, userHaveGomemList]);
 
   return (
     <StyledGachaHomeTemplate>
