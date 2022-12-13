@@ -19,77 +19,53 @@ export const useRandom = (gomemList) => {
     starCount: 0,
     realName: ""
   });
+
   const ramdom = useMemo(() => Math.random(), []);
 
-  const randomGomemNumber = useMemo(
-    () => Math.floor(ramdom * Object.keys(gomemList).length),
-    [gomemList, ramdom]
-  );
-
-  const randomGomemName = Object.keys(gomemList)[randomGomemNumber];
-
-  const randomClassNumber = useMemo(
-    () => Math.floor(ramdom * 100) + 1,
-    [gomemList, ramdom]
-  );
-
-  const rendomGomemRealName = gomemList[randomGomemName].realName;
-
-  const isGomemHaveHiddion = useMemo(
-    () =>
-      Object.keys(gomemList[randomGomemName]).filter(
-        (gomem) => gomem === "Hidden"
-      ).length !== 0,
-    [randomGomemName]
-  );
+  const randomClassNumber = useMemo(() => Math.floor(ramdom * 100) + 1, []);
 
   useEffect(() => {
-    if (rendomGomemRealName === "길햇님송이") {
-      setRandomClass("Common");
-      return;
-    }
-    if (randomClassNumber <= 40) {
-      setRandomClass("Common");
+    if (randomClassNumber <= 100) {
+      setRandomClass("common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {
-      setRandomClass("Rare");
+      setRandomClass("rare");
     } else if (70 < randomClassNumber && randomClassNumber <= 90) {
-      setRandomClass("Epic");
+      setRandomClass("epic");
     } else if (90 < randomClassNumber && randomClassNumber <= 98) {
-      setRandomClass("Legend");
+      setRandomClass("legend");
     } else if (98 < randomClassNumber && randomClassNumber <= 99) {
-      setRandomClass("Legend");
+      setRandomClass("legend");
     } else {
-      if (isGomemHaveHiddion) {
-        setRandomClass("Hidden");
-      } else {
-        setRandomClass("Legend");
-      }
+      setRandomClass("legend");
     }
   }, [randomClassNumber]);
 
+  const randomGomemNumber = useMemo(() => {
+    if (gomemList[randomClass]) {
+      return Math.floor(ramdom * Object.keys(gomemList[randomClass]).length);
+    }
+  }, [randomClass]);
+
   useEffect(() => {
-    if (randomGomemName && randomClass && rendomGomemRealName) {
-      const randomCharacterNumber = Math.floor(
-        ramdom * Object.keys(gomemList[randomGomemName][randomClass]).length
-      );
-      const randomCharacterImageName = Object.keys(
-        gomemList[randomGomemName][randomClass]
-      )[randomCharacterNumber];
-      const randomCharacterImageData =
-        gomemList[randomGomemName][randomClass][
-          Object.keys(gomemList[randomGomemName][randomClass])[
-            randomCharacterNumber
-          ]
+    if (!!randomGomemNumber && randomClass) {
+      const randomGomemName = Object.keys(gomemList[randomClass])[
+        randomGomemNumber
+      ];
+      const randomGomemImageData = gomemList[randomClass][randomGomemName];
+      const randomCharacterName =
+        Object.keys(randomGomemImageData)[
+          Math.floor(ramdom * Object.keys(randomGomemImageData).length)
         ];
+      const randomCharacterImageSrc = randomGomemImageData[randomCharacterName];
       setRandomCharacter({
-        name: randomCharacterImageName,
+        name: randomCharacterName,
         class: randomClass,
-        src: randomCharacterImageData,
+        src: randomCharacterImageSrc,
         starCount: star[randomClass],
-        realName: rendomGomemRealName
+        realName: randomGomemName
       });
     }
-  }, [gomemList, ramdom, randomClass, randomGomemName, rendomGomemRealName]);
+  }, [gomemList, ramdom, randomClass]);
 
   return randomCharacter;
 };

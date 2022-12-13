@@ -33,11 +33,13 @@ export const GachaPageTemplate = ({
   const [isOpenCard, setIsOpenCard] = useState(false);
   const { showStar } = useStarSoundHook();
   const isCommonOrRare =
-    randomCharacter.class === "Common" || randomCharacter.class === "Rare";
-  const isEpic = randomCharacter.class === "Epic";
-  const isLegend = randomCharacter.class === "Legend";
+    randomCharacter.class === "common" || randomCharacter.class === "rare";
+  const isEpic = randomCharacter.class === "epic";
+  const isLegend = randomCharacter.class === "legend";
   const characterName = randomCharacter.name.replaceAll("_", " ");
   const saveButtonMoveUpDelay = randomCharacter.starCount * 0.5 + 1;
+
+  console.log(saveButtonMoveUpDelay);
 
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>
