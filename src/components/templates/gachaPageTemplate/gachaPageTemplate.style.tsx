@@ -1,6 +1,11 @@
 import styled, { css, keyframes } from "styled-components";
 
-import { blackGomemBackgroung, starImage, wakCard1 } from "assets/images";
+import {
+  blackGomemBackgroung,
+  wakCard1,
+  wakCard2,
+  wakCard3
+} from "assets/images";
 import { PopoutButton, Star } from "components/atoms";
 
 export const StyledGachaPageTemplate = styled.div<{ isOpenCard: boolean }>`
@@ -262,13 +267,28 @@ export const CardWrapper = styled.div`
   animation: ${cardAnimation} 0.8s ease-out;
 `;
 
-export const StyledCard = styled.div`
+export const StyledCard = styled.div<{ isGreen: boolean; isYellow: boolean }>`
   width: 373px;
   height: 630px;
-  background-image: url(${wakCard1});
+  ${({ isGreen, isYellow }) => {
+    if (isGreen) {
+      return css`
+        background-image: url(${wakCard1});
+      `;
+    } else if (isYellow) {
+      return css`
+        background-image: url(${wakCard2});
+      `;
+    } else {
+      return css`
+        background-image: url(${wakCard3});
+      `;
+    }
+  }}
+
   background-size: cover;
   background-position: center;
-  transition: all ease 1s;
+  transition: transform ease 1s;
   cursor: pointer;
   &:hover {
     transform: rotate(5deg);
@@ -287,7 +307,7 @@ const steam = keyframes`
   
 }`;
 
-export const StyledGlow = styled.div`
+export const StyledGlow = styled.div<{ isGreen: boolean; isYellow: boolean }>`
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -303,15 +323,46 @@ export const StyledGlow = styled.div`
     z-index: -1;
     left: -2px;
     top: -2px;
-    background: linear-gradient(
-      35deg,
-      #70fad5,
-      #00ffd1,
-      #00ffa3,
-      #00fff0,
-      #78e7ff,
-      #2757ff
-    );
+    ${({ isGreen, isYellow }) => {
+      if (isGreen) {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #70fad5,
+            #00ffd1,
+            #00ffa3,
+            #00fff0,
+            #78e7ff,
+            #2757ff
+          );
+        `;
+      } else if (isYellow) {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #fff500,
+            #fffb9f,
+            #ffb800,
+            #ffffff,
+            #fff500,
+            #ffffff
+          );
+        `;
+      } else {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #ff0000,
+            #9b0000,
+            #ff5c5c,
+            #ff006b,
+            #ff0000,
+            #ffffff
+          );
+        `;
+      }
+    }}
+
     background-size: 400%;
     animation: steam 20s linear infinite;
   }

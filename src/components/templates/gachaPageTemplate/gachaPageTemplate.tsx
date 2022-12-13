@@ -44,8 +44,13 @@ export const GachaPageTemplate = ({
       {!isOpenCard ? (
         <>
           <CardWrapper>
-            <StyledGlow />
+            <StyledGlow
+              isGreen={isCommonOrRare || isEpic}
+              isYellow={isLegend}
+            />
             <StyledCard
+              isGreen={isCommonOrRare || isEpic}
+              isYellow={isLegend}
               onClick={() => {
                 setIsOpenCard(true);
               }}

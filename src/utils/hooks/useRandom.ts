@@ -25,6 +25,7 @@ export const useRandom = (gomemList) => {
     () => Math.floor(ramdom * Object.keys(gomemList).length),
     [gomemList, ramdom]
   );
+
   const randomGomemName = Object.keys(gomemList)[randomGomemNumber];
 
   const randomClassNumber = useMemo(
@@ -45,10 +46,6 @@ export const useRandom = (gomemList) => {
   useEffect(() => {
     if (rendomGomemRealName === "길햇님송이") {
       setRandomClass("Common");
-      return;
-    }
-    if (rendomGomemRealName === "노스페라투-호드") {
-      setRandomClass("Legend");
       return;
     }
     if (randomClassNumber <= 40) {
