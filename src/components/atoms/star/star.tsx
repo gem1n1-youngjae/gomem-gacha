@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { starImage } from "assets/images";
 
 const StyledStar = styled.div`

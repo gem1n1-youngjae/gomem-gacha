@@ -1,5 +1,6 @@
-import { Star } from "components/atoms";
 import styled, { css } from "styled-components";
+
+import { Star } from "components/atoms";
 
 const GradientBorderCss = css`
   content: "";

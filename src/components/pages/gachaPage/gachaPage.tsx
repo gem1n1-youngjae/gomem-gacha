@@ -39,8 +39,6 @@ export const GachaPage = () => {
     navigate(-1);
   }, [randomCharacter, userHaveGomemList, navigate]);
 
-  console.log(randomCharacter);
-
   return (
     <GachaPageTemplate
       randomCharacter={randomCharacter}

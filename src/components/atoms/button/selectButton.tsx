@@ -1,6 +1,6 @@
-import { downArrow } from "assets/images";
-import { useState } from "react";
 import styled from "styled-components";
+
+import { downArrow } from "assets/images";
 
 const Wapper = styled.div`
   position: relative;
