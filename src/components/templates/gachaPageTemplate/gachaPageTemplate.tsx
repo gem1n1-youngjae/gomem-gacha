@@ -15,6 +15,7 @@ import {
   SaveButton,
   StarArea,
   StyledCard,
+  StyledClassCover,
   StyledGachaPageTemplate,
   StyledGlow,
   StyledStar,
@@ -97,7 +98,7 @@ export const GachaPageTemplate = ({
           {isEpic && (
             <>
               <EpicOrLegendImage imageSrc={randomCharacter.src} />
-              <EpicOrLegendDotFigure>
+              <EpicOrLegendDotFigure isEpic={isEpic}>
                 <StarArea isEpicOrLegend={isEpic}>
                   {[...Array(randomCharacter.starCount)].map((_, idx) => {
                     return (
@@ -124,12 +125,14 @@ export const GachaPageTemplate = ({
                   {randomCharacter.class}
                 </EpicAndLegendClassText>
               </EpicOrLegendDotFigure>
+              <StyledClassCover isEpic={isEpic} />
             </>
           )}
           {isLegend && (
             <>
               <EpicOrLegendImage imageSrc={randomCharacter.src} />
-              <EpicOrLegendDotFigure>
+              <StyledClassCover isLegend={isLegend} />
+              <EpicOrLegendDotFigure isLegend={isLegend}>
                 <StarArea isEpicOrLegend={isLegend}>
                   {[...Array(randomCharacter.starCount)].map((_, idx) => {
                     return (

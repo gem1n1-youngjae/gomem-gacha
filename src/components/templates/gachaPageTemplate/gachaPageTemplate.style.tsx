@@ -2,6 +2,8 @@ import styled, { css, keyframes } from "styled-components";
 
 import {
   blackGomemBackgroung,
+  epicEffect,
+  legendEffect,
   wakCard1,
   wakCard2,
   wakCard3
@@ -12,7 +14,7 @@ export const StyledGachaPageTemplate = styled.div<{ isOpenCard: boolean }>`
   --stroke-color: #ffffff;
   --stroke-width: 10px;
   width: 100%;
-  height: 100%;
+  height: calc(100% - var(--header-nav-bar-height));
   ${({ isOpenCard }) =>
     isOpenCard &&
     css`
@@ -108,7 +110,10 @@ const DotSlideAnimation = keyframes`
   }
 `;
 
-export const EpicOrLegendDotFigure = styled.div`
+export const EpicOrLegendDotFigure = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+}>`
   position: absolute;
   bottom: -22%;
   width: 200vw;
@@ -117,12 +122,40 @@ export const EpicOrLegendDotFigure = styled.div`
 
   background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, transparent 0%),
     radial-gradient(#ffffff 15%, transparent 20%);
-  background-color: rgba(255, 255, 255, 0.48);
   background-position: 0 0, 50px 50px;
   background-size: 18px 18px;
-  border: #ffffff solid 4px;
-
   animation: ${DotSlideAnimation} 10s infinite linear;
+  border: #ffffff solid 4px;
+  z-index: 10;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    ${({ isEpic, isLegend }) => {
+      if (isEpic) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(123, 255, 231, 0.48) 61.76%,
+            rgba(78, 170, 255, 0.36) 97.57%
+          );
+        `;
+      }
+      if (isLegend) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(198, 106, 255, 0.48) 61.76%,
+            rgba(219, 0, 255, 0.36) 97.57%
+          );
+        `;
+      }
+    }}
+  }
 `;
 
 export const EpicAndLegendNameText = styled.div<{ isEpic?: boolean }>`
@@ -199,7 +232,7 @@ export const BottomGradient = styled.div<{ delay: number }>`
   align-items: center;
   animation: ${slideUp} 1s ${({ delay }) => delay}s forwards;
   transform: translateY(215px);
-
+  z-index: 20;
   ${SaveButton} {
     animation: ${showButton} 1s ${({ delay }) => delay + 1}s forwards;
   }
@@ -369,4 +402,32 @@ export const StyledGlow = styled.div<{ isGreen: boolean; isYellow: boolean }>`
   &:after {
     filter: blur(50px);
   }
+`;
+
+export const StyledClassCover = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+}>`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--header-nav-bar-height));
+  top: 32px;
+  left: 0;
+  ${({ isEpic, isLegend }) => {
+    if (isEpic) {
+      return css`
+        background-image: url(${epicEffect});
+      `;
+    }
+    if (isLegend) {
+      return css`
+        background-image: url(${legendEffect});
+      `;
+    }
+  }}
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
 `;
