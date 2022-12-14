@@ -1,6 +1,7 @@
 export enum star {
-  Common = 1,
-  Rare = 2,
-  Epic = 3,
-  Legend = 4,
+  hidden = 0,
+  common = 1,
+  rare = 2,
+  epic = 3,
+  legend = 4
 }

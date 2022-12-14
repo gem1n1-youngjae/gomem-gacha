@@ -15,3 +15,12 @@ export { default as button } from "./button.png";
 export { default as gomemGacha } from "./gomemGacha.png";
 
 export { default as starImage } from "./star.png";
+export { default as downArrow } from "./downArrow.png";
+
+export { default as wakCard1 } from "./cards/wakCard1.png";
+export { default as wakCard2 } from "./cards/wakCard2.png";
+export { default as wakCard3 } from "./cards/wakCard3.png";
+
+export { default as epicEffect } from "./effects/epicEffect.png";
+export { default as legendEffect } from "./effects/legendEffect.png";
+export { default as hiddenEffect } from "./effects/hiddenEffect.png";

@@ -24,8 +24,8 @@ const parseRoute = (route?: string): string => {
       ? `http://localhost:3000/${route}`
       : `http://localhost:3000/`
     : route
-    ? `file://${__dirname}/../index.html#/${route}`
-    : `file://${__dirname}/../index.html`;
+      ? `file://${__dirname}/../index.html#/${route}`
+      : `file://${__dirname}/../index.html`;
 };
 
 const mainEvents: MainEventsInterface = {
@@ -98,7 +98,6 @@ function createMainWindow() {
     app.quit();
   });
   if (devMode) {
-    mainWindow.webContents.openDevTools();
     // Hot Reloading on 'node_modules/.bin/electronPath'
     require("electron-reload")(__dirname, {
       electron: path.join(

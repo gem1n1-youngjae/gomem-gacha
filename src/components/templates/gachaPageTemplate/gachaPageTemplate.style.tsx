@@ -1,22 +1,35 @@
 import styled, { css, keyframes } from "styled-components";
 
-import { blackGomemBackgroung, starImage } from "assets/images";
-import { PopoutButton } from "components/atoms";
+import {
+  blackGomemBackgroung,
+  epicEffect,
+  hiddenEffect,
+  legendEffect,
+  wakCard1,
+  wakCard2,
+  wakCard3
+} from "assets/images";
+import { PopoutButton, Star } from "components/atoms";
 
-export const StyledGachaPageTemplate = styled.div`
+export const StyledGachaPageTemplate = styled.div<{ isOpenCard: boolean }>`
   --stroke-color: #ffffff;
   --stroke-width: 10px;
   width: 100%;
-  height: 100%;
-  background-image: url(${blackGomemBackgroung});
+  height: calc(100% - var(--header-nav-bar-height));
+  ${({ isOpenCard }) =>
+    isOpenCard &&
+    css`
+      background-image: url(${blackGomemBackgroung});
+    `};
   padding-top: var(--header-nav-bar-height);
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
+  background-color: ${({ isOpenCard }) => (isOpenCard ? "none" : "#000000")};
 `;
 
-export const CommonAndRareImage = styled.div<{
+export const StyledSmallImage = styled.div<{
   imageSrc: string;
 }>`
   position: absolute;
@@ -39,8 +52,8 @@ export const ImageOuterArea = styled.div<{ classType: string }>`
     rgba(255, 255, 255, 0.32) 100%
   );
   border: 4px solid
-    ${({ classType }) => (classType === "Common" ? "#ffffff" : "#00F200")};
-  box-shadow: 0px -3px 43px ${({ classType }) => (classType === "Common" ? "#ffffff" : "#B9FFB9")};
+    ${({ classType }) => (classType === "common" ? "#ffffff" : "#00F200")};
+  box-shadow: 0px -3px 43px ${({ classType }) => (classType === "common" ? "#ffffff" : "#B9FFB9")};
   backdrop-filter: blur(4.5px);
   border-radius: 23px;
   display: flex;
@@ -52,7 +65,7 @@ export const ImageInnerArea = styled.div<{ classType: string }>`
   width: 1119px;
   height: 387px;
   border: 2px solid
-    ${({ classType }) => (classType === "Common" ? "#ffffff" : "#B9FFB9")};
+    ${({ classType }) => (classType === "common" ? "#ffffff" : "#B9FFB9")};
   border-radius: 20px;
 `;
 
@@ -69,7 +82,7 @@ export const ClassText = styled.div<{ classType: string }>`
   font-size: 64.2458px;
   line-height: 158.5%;
   text-align: right;
-  color: ${({ classType }) => (classType === "Common" ? "#CFCFCF" : "#38F238")};
+  color: ${({ classType }) => (classType === "common" ? "#CFCFCF" : "#38F238")};
 `;
 
 export const NameText = styled.div<{ classType: string }>`
@@ -78,10 +91,10 @@ export const NameText = styled.div<{ classType: string }>`
   font-size: 64.2458px;
   line-height: 158.5%;
   text-align: right;
-  color: ${({ classType }) => (classType === "Common" ? "#9B9B9B" : "#41DD41")};
+  color: ${({ classType }) => (classType === "common" ? "#9B9B9B" : "#41DD41")};
 `;
 
-export const EpicOrLegendImage = styled.div<{ imageSrc: string }>`
+export const StyledBigImage = styled.div<{ imageSrc: string }>`
   position: absolute;
   top: var(--header-nav-bar-height);
   width: 100%;
@@ -98,7 +111,11 @@ const DotSlideAnimation = keyframes`
   }
 `;
 
-export const EpicOrLegendDotFigure = styled.div`
+export const StyledDotFigureArea = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
   position: absolute;
   bottom: -22%;
   width: 200vw;
@@ -107,17 +124,76 @@ export const EpicOrLegendDotFigure = styled.div`
 
   background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, transparent 0%),
     radial-gradient(#ffffff 15%, transparent 20%);
-  background-color: rgba(255, 255, 255, 0.48);
   background-position: 0 0, 50px 50px;
   background-size: 18px 18px;
-  border: #ffffff solid 4px;
-
   animation: ${DotSlideAnimation} 10s infinite linear;
+  border: #ffffff solid 4px;
+  z-index: 10;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    ${({ isEpic, isLegend, isHidden }) => {
+      if (isEpic) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(123, 255, 231, 0.48) 61.76%,
+            rgba(78, 170, 255, 0.36) 97.57%
+          );
+        `;
+      }
+      if (isLegend) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(198, 106, 255, 0.48) 61.76%,
+            rgba(219, 0, 255, 0.36) 97.57%
+          );
+        `;
+      }
+      if (isHidden) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(255, 0, 0, 0.48) 61.76%,
+            rgba(255, 250, 124, 0.36) 97.57%
+          );
+        `;
+      }
+    }}
+  }
 `;
 
-export const EpicAndLegendNameText = styled.div<{ isEpic?: boolean }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#05b7b7" : "#5E05B7")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00ffff" : "#CC00FF")};
+export const StyledGradientNameText = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #05b7b7;
+        --second-gradient-color: #00ffff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #cc00ff;
+        --second-gradient-color: #cc00ff;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff0000;
+        --second-gradient-color: #ff4d00;
+      `;
+    }
+  }}
   position: absolute;
   top: -15%;
   right: 27%;
@@ -135,9 +211,31 @@ export const EpicAndLegendNameText = styled.div<{ isEpic?: boolean }>`
   -webkit-text-fill-color: transparent;
 `;
 
-export const EpicAndLegendClassText = styled.div<{ isEpic?: boolean }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#3c67ff" : "#FB3CFF")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00f0ff" : "#FF007A")};
+export const StyledGradientClassText = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #3c67ff;
+        --second-gradient-color: #00f0ff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #fb3cff;
+        --second-gradient-color: #ff007a;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff3c3c;
+        --second-gradient-color: #ff9900;
+      `;
+    }
+  }}
   position: absolute;
   top: 10%;
   right: 27%;
@@ -189,7 +287,7 @@ export const BottomGradient = styled.div<{ delay: number }>`
   align-items: center;
   animation: ${slideUp} 1s ${({ delay }) => delay}s forwards;
   transform: translateY(215px);
-
+  z-index: 20;
   ${SaveButton} {
     animation: ${showButton} 1s ${({ delay }) => delay + 1}s forwards;
   }
@@ -227,16 +325,170 @@ const starAnimation = keyframes`
   };
 `;
 
-export const StyledStar = styled.div<{ index: number }>`
-  &:first-child {
-    width: 100px;
-    height: 100px;
-  }
-  width: 82px;
-  height: 82px;
-  background-image: url(${starImage});
-  background-size: cover;
+export const StyledStar = styled((props) => <Star {...props} />)<{
+  index: number;
+}>`
   transform: scale(0.001);
-
   animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
+`;
+
+const cardAnimation = keyframes`
+	0% {
+		transform: translate(-50%, 50%) scale(0.1) scaleY(0.5);
+	}
+	60%{
+		transform: translate(-50%, -57%) scaleY(1.12);
+	}
+	75%{
+		transform: translate(-50%, -47%);
+	}	
+	100% {
+		transform: translate(-50%, -50%) scale(1) scaleY(1);
+	}	
+`;
+
+export const CardWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ${cardAnimation} 0.8s ease-out;
+`;
+
+export const StyledCard = styled.div<{ isGreen: boolean; isYellow: boolean }>`
+  width: 373px;
+  height: 630px;
+  ${({ isGreen, isYellow }) => {
+    if (isGreen) {
+      return css`
+        background-image: url(${wakCard1});
+      `;
+    } else if (isYellow) {
+      return css`
+        background-image: url(${wakCard2});
+      `;
+    } else {
+      return css`
+        background-image: url(${wakCard3});
+      `;
+    }
+  }}
+
+  background-size: cover;
+  background-position: center;
+  transition: transform ease 1s;
+  cursor: pointer;
+  &:hover {
+    transform: rotate(5deg);
+  }
+`;
+
+const steam = keyframes`
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  
+}`;
+
+export const StyledGlow = styled.div<{ isGreen: boolean; isYellow: boolean }>`
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 373px;
+  height: 630px;
+  z-index: -1;
+  &:after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    left: -2px;
+    top: -2px;
+    ${({ isGreen, isYellow }) => {
+      if (isGreen) {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #70fad5,
+            #00ffd1,
+            #00ffa3,
+            #00fff0,
+            #78e7ff,
+            #2757ff
+          );
+        `;
+      } else if (isYellow) {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #fff500,
+            #fffb9f,
+            #ffb800,
+            #ffffff,
+            #fff500,
+            #ffffff
+          );
+        `;
+      } else {
+        return css`
+          background: linear-gradient(
+            35deg,
+            #ff0000,
+            #9b0000,
+            #ff5c5c,
+            #ff006b,
+            #ff0000,
+            #ffffff
+          );
+        `;
+      }
+    }}
+
+    background-size: 400%;
+    animation: ${steam} 20s linear infinite;
+  }
+  &:after {
+    filter: blur(50px);
+  }
+`;
+
+export const StyledClassCover = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--header-nav-bar-height));
+  top: 32px;
+  left: 0;
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        background-image: url(${epicEffect});
+      `;
+    }
+    if (isLegend) {
+      return css`
+        background-image: url(${legendEffect});
+      `;
+    }
+    if (isHidden) {
+      return css`
+        background-image: url(${hiddenEffect});
+      `;
+    }
+  }}
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
 `;

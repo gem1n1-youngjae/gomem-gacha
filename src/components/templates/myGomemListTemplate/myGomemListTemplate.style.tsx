@@ -9,12 +9,26 @@ export const StyledGachaHomeTemplate = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #a9e9be 0%, #68fdd9 100%);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
 `;
 
 export const TopContent = styled.div`
   display: flex;
   align-items: center;
-  padding: 72px 34px 60px 34px;
+  padding: 72px 40px 60px 40px;
 `;
 
 export const PageTitleText = styled.div`
@@ -27,4 +41,47 @@ export const PageTitleText = styled.div`
 
 export const MainContentWrapper = styled.div`
   width: 100%;
+  display: grid;
+  padding: 0 40px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(4, 290px);
+  column-gap: 61px;
+  row-gap: 50px;
+  padding-bottom: 200px;
+`;
+
+export const SeletButtonsWrapper = styled.div`
+  display: flex;
+  padding: 0 40px;
+  gap: 15px;
+  margin-bottom: 32px;
+`;
+
+export const SelectOptionContainer = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 12;
+  width: 160px;
+  height: 200px;
+  background: rgba(208, 208, 208, 0.8);
+  margin-top: 8px;
+  border-radius: 12px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+`;
+
+export const SeletOption = styled.div`
+  padding: 6px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #ffffff;
+  }
 `;

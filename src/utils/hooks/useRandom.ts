@@ -7,64 +7,65 @@ export type randomCharacterType = {
   class: string;
   src: string;
   starCount: number;
+  realName: string;
 };
 
 export const useRandom = (gomemList) => {
-  const [randomClass, setRandomClass] = useState("");
+  const [randomClass, setRandomClass] = useState("common");
   const [randomCharacter, setRandomCharacter] = useState<randomCharacterType>({
     name: "",
     class: "",
     src: "",
     starCount: 0,
+    realName: ""
   });
-  const ramdom = useMemo(() => Math.random(), []);
 
-  const randomGomemNumber = useMemo(
-    () => Math.floor(ramdom * Object.keys(gomemList).length),
-    [gomemList, ramdom]
-  );
-  const randomGomemName = Object.keys(gomemList)[randomGomemNumber];
-  const randomClassNumber = useMemo(
-    () => Math.floor(ramdom * 100) + 1,
-    [ramdom]
-  );
+  const randomClassNumber = useMemo(() => {
+    return Math.random() * 100 + 1;
+  }, []);
 
   useEffect(() => {
     if (randomClassNumber <= 40) {
-      setRandomClass("Common");
+      setRandomClass("common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {
-      setRandomClass("Rare");
+      setRandomClass("rare");
     } else if (70 < randomClassNumber && randomClassNumber <= 90) {
-      setRandomClass("Epic");
+      setRandomClass("epic");
     } else if (90 < randomClassNumber && randomClassNumber <= 98) {
-      setRandomClass("Legend");
+      setRandomClass("legend");
+    } else if (98 < randomClassNumber && randomClassNumber <= 99) {
+      setRandomClass("legend");
     } else {
-      setRandomClass("Legend");
+      setRandomClass("legend");
     }
   }, [randomClassNumber]);
 
-  useEffect(() => {
-    if (randomGomemName && randomClass) {
-      const randomCharacterNumber = Math.floor(
-        ramdom * Object.keys(gomemList[randomGomemName][randomClass]).length
+  const randomGomemNumber = useMemo(() => {
+    if (gomemList[randomClass]) {
+      return Math.floor(
+        Math.random() * Object.keys(gomemList[randomClass]).length
       );
-      const randomCharacterImageName = Object.keys(
-        gomemList[randomGomemName][randomClass]
-      )[randomCharacterNumber];
-      const randomCharacterImageData =
-        gomemList[randomGomemName][randomClass][
-          Object.keys(gomemList[randomGomemName][randomClass])[
-            randomCharacterNumber
-          ]
-        ];
-      setRandomCharacter({
-        name: randomCharacterImageName,
-        class: randomClass,
-        src: randomCharacterImageData,
-        starCount: star[randomClass],
-      });
     }
-  }, [gomemList, ramdom, randomClass, randomGomemName]);
+  }, [gomemList, randomClass]);
+
+  useEffect(() => {
+    const randomGomemName = Object.keys(gomemList[randomClass])[
+      randomGomemNumber
+    ];
+    const randomGomemImageData = gomemList[randomClass][randomGomemName];
+    const randomCharacterName =
+      Object.keys(randomGomemImageData)[
+        Math.floor(Math.random() * Object.keys(randomGomemImageData).length)
+      ];
+    const randomCharacterImageSrc = randomGomemImageData[randomCharacterName];
+    setRandomCharacter({
+      name: randomCharacterName,
+      class: randomClass,
+      src: randomCharacterImageSrc,
+      starCount: star[randomClass],
+      realName: randomGomemName
+    });
+  }, [gomemList, randomClass, randomGomemNumber]);
 
   return randomCharacter;
 };
