@@ -50,4 +50,4 @@ export enum GomemNames {
   hikiking = "히키킹"
 }
 
-export const gomemClassList = ["common", "rare", "epic", "legend"];
+export const gomemClassList = ["?", "common", "rare", "epic", "legend"];

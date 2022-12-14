@@ -20,6 +20,7 @@ export const StylerCardOuterBox = styled.div<{
   isCommonOrRare: boolean;
   isEpic: boolean;
   isLegend: boolean;
+  isHidden: boolean;
 }>`
   --stroke-color: #ffffff;
   --stroke-width: 5px;
@@ -53,6 +54,15 @@ export const StylerCardOuterBox = styled.div<{
       }
     `}
 
+    ${({ isHidden }) =>
+    isHidden &&
+    css`
+      &::before {
+        ${GradientBorderCss}
+        background: linear-gradient(180deg, #FF0000 0%, #FF4D00 100%);
+      }
+    `}
+
   position: relative;
   border-radius: 24px;
   padding: 10px;
@@ -63,6 +73,7 @@ export const StylerCardInnerBox = styled.div<{
   isCommonOrRare: boolean;
   isEpic: boolean;
   isLegend: boolean;
+  isHidden: boolean;
 }>`
   box-sizing: border-box;
   position: relative;
@@ -96,6 +107,15 @@ export const StylerCardInnerBox = styled.div<{
       }
     `}
 
+    ${({ isHidden }) =>
+    isHidden &&
+    css`
+      &::before {
+        ${GradientBorderCss}
+        background: linear-gradient(180deg, #ff3c3c 0%, #ff9900 100%);
+      }
+    `}
+
   border-radius: 24px;
   overflow: hidden;
   padding: 10px;
@@ -121,9 +141,28 @@ export const StyledCardClass = styled.div<{
   isCommonOrRare: boolean;
   isEpic: boolean;
   isLegend: boolean;
+  isHidden: boolean;
 }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#3c67ff" : "#FB3CFF")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00f0ff" : "#FF007A")};
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #3c67ff;
+        --second-gradient-color: #00f0ff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #fb3cff;
+        --second-gradient-color: #ff007a;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff3c3c;
+        --second-gradient-color: #ff9900;
+      `;
+    }
+  }}
   position: absolute;
   bottom: 48px;
   font-style: normal;
@@ -135,8 +174,8 @@ export const StyledCardClass = styled.div<{
       color: ${classType === "common" ? "#CFCFCF" : "#38F238"};
     `}
 
-  ${({ isEpic, isLegend }) =>
-    (isEpic || isLegend) &&
+  ${({ isEpic, isLegend, isHidden }) =>
+    (isEpic || isLegend || isHidden) &&
     css`
       background: linear-gradient(
         180deg,
@@ -155,9 +194,28 @@ export const StyledCardName = styled.div<{
   isCommonOrRare: boolean;
   isEpic: boolean;
   isLegend: boolean;
+  isHidden: boolean;
 }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#05b7b7" : "#5E05B7")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00ffff" : "#CC00FF")};
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #05b7b7;
+        --second-gradient-color: #00ffff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #cc00ff;
+        --second-gradient-color: #cc00ff;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff0000;
+        --second-gradient-color: #ff4d00;
+      `;
+    }
+  }}
   position: absolute;
   bottom: 10px;
   font-style: normal;
@@ -169,8 +227,8 @@ export const StyledCardName = styled.div<{
       color: ${classType === "common" ? "#9B9B9B" : "#41DD41"};
     `}
 
-  ${({ isEpic, isLegend }) =>
-    (isEpic || isLegend) &&
+  ${({ isEpic, isLegend, isHidden }) =>
+    (isEpic || isLegend || isHidden) &&
     css`
       background: linear-gradient(
         180deg,

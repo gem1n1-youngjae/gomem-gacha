@@ -22,7 +22,8 @@ export const GomemCard = ({
   const isCommonOrRare = gomemClass === "common" || gomemClass === "rare";
   const isEpic = gomemClass === "epic";
   const isLegend = gomemClass === "legend";
-  const isEpicOrLegend = isEpic || isLegend;
+  const isHidden = gomemClass === "hidden";
+  const isGradientText = isEpic || isLegend || isHidden;
 
   return (
     <StylerCardOuterBox
@@ -30,6 +31,7 @@ export const GomemCard = ({
       isCommonOrRare={isCommonOrRare}
       isEpic={isEpic}
       isLegend={isLegend}
+      isHidden={isHidden}
     >
       <CardStarArea>
         {[...Array(starCount)].map((_, idx) => {
@@ -41,46 +43,50 @@ export const GomemCard = ({
         isCommonOrRare={isCommonOrRare}
         isEpic={isEpic}
         isLegend={isLegend}
+        isHidden={isHidden}
       >
         <StyledGomemImage imageSrc={imageSrc} />
-        {isEpicOrLegend && (
+        {isGradientText && (
           <StyledCardClass
             className={"textBorder"}
             classType={gomemClass}
             isCommonOrRare={isCommonOrRare}
             isEpic={isEpic}
             isLegend={isLegend}
+            isHidden={isHidden}
           >
             {gomemClass}
           </StyledCardClass>
         )}
         <StyledCardClass
-          className={!isEpicOrLegend && "textBorder"}
+          className={!isGradientText && "textBorder"}
           classType={gomemClass}
           isCommonOrRare={isCommonOrRare}
           isEpic={isEpic}
           isLegend={isLegend}
+          isHidden={isHidden}
         >
           {gomemClass}
         </StyledCardClass>
-        {isEpicOrLegend && (
+        {isGradientText && (
           <StyledCardName
             className={"textBorder"}
             classType={gomemClass}
             isCommonOrRare={isCommonOrRare}
             isEpic={isEpic}
             isLegend={isLegend}
+            isHidden={isHidden}
           >
             {name}
           </StyledCardName>
         )}
-        <div style={{ height: 10 }} />
         <StyledCardName
-          className={!isEpicOrLegend && "textBorder"}
+          className={!isGradientText && "textBorder"}
           classType={gomemClass}
           isCommonOrRare={isCommonOrRare}
           isEpic={isEpic}
           isLegend={isLegend}
+          isHidden={isHidden}
         >
           {name}
         </StyledCardName>

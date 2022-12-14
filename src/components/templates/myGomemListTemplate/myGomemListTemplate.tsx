@@ -36,7 +36,7 @@ export const MyGomemListTemplate = ({
       setGomemList(
         userHaveGomemList.filter(
           (gomem) =>
-            gomem.realName === selectGomemName &&
+            GomemNames[gomem.realName] === selectGomemName &&
             gomem.class === selectGomemClass
         )
       );
@@ -102,7 +102,12 @@ export const MyGomemListTemplate = ({
               <SeletOption
                 key={idx}
                 onClick={() => {
-                  setSelectGomemClass(className);
+                  if (className === "?") {
+                    setSelectGomemClass("hidden");
+                  } else {
+                    setSelectGomemClass(className);
+                  }
+
                   setShowSelectClassOptions(false);
                 }}
               >
@@ -112,7 +117,7 @@ export const MyGomemListTemplate = ({
           </SelectOptionContainer>
         </SelectButton>
         <SelectButton
-          title={"초기화"}
+          title={"검색 초기화"}
           onClickButton={() => {
             setSelectGomemName("고멤");
             setSelectGomemClass("등급");
