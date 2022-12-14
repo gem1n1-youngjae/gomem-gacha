@@ -28,7 +28,7 @@ export const StyledGachaPageTemplate = styled.div<{ isOpenCard: boolean }>`
   background-color: ${({ isOpenCard }) => (isOpenCard ? "none" : "#000000")};
 `;
 
-export const CommonAndRareImage = styled.div<{
+export const StyledSmallImage = styled.div<{
   imageSrc: string;
 }>`
   position: absolute;
@@ -93,7 +93,7 @@ export const NameText = styled.div<{ classType: string }>`
   color: ${({ classType }) => (classType === "common" ? "#9B9B9B" : "#41DD41")};
 `;
 
-export const EpicOrLegendImage = styled.div<{ imageSrc: string }>`
+export const StyledBigImage = styled.div<{ imageSrc: string }>`
   position: absolute;
   top: var(--header-nav-bar-height);
   width: 100%;
@@ -110,7 +110,7 @@ const DotSlideAnimation = keyframes`
   }
 `;
 
-export const EpicOrLegendDotFigure = styled.div<{
+export const StyledDotFigureArea = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
 }>`
@@ -158,7 +158,7 @@ export const EpicOrLegendDotFigure = styled.div<{
   }
 `;
 
-export const EpicAndLegendNameText = styled.div<{ isEpic?: boolean }>`
+export const StyledGradientNameText = styled.div<{ isEpic?: boolean }>`
   --first-gradient-color: ${({ isEpic }) => (isEpic ? "#05b7b7" : "#5E05B7")};
   --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00ffff" : "#CC00FF")};
   position: absolute;
@@ -178,7 +178,7 @@ export const EpicAndLegendNameText = styled.div<{ isEpic?: boolean }>`
   -webkit-text-fill-color: transparent;
 `;
 
-export const EpicAndLegendClassText = styled.div<{ isEpic?: boolean }>`
+export const StyledGradientClassText = styled.div<{ isEpic?: boolean }>`
   --first-gradient-color: ${({ isEpic }) => (isEpic ? "#3c67ff" : "#FB3CFF")};
   --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00f0ff" : "#FF007A")};
   position: absolute;

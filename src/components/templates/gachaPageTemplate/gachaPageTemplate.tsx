@@ -4,20 +4,20 @@ import {
   BottomGradient,
   CardWrapper,
   ClassText,
-  CommonAndRareImage,
-  EpicAndLegendClassText,
-  EpicAndLegendNameText,
-  EpicOrLegendDotFigure,
-  EpicOrLegendImage,
   ImageInnerArea,
   ImageOuterArea,
   NameText,
   SaveButton,
   StarArea,
+  StyledBigImage,
   StyledCard,
   StyledClassCover,
+  StyledDotFigureArea,
   StyledGachaPageTemplate,
   StyledGlow,
+  StyledGradientClassText,
+  StyledGradientNameText,
+  StyledSmallImage,
   StyledStar,
   TextArea
 } from "./gachaPageTemplate.style";
@@ -77,7 +77,7 @@ export const GachaPageTemplate = ({
                     );
                   })}
                 </StarArea>
-                <CommonAndRareImage imageSrc={randomCharacter.src} />
+                <StyledSmallImage imageSrc={randomCharacter.src} />
                 <TextArea>
                   <ClassText
                     className="textBorder"
@@ -97,8 +97,8 @@ export const GachaPageTemplate = ({
           )}
           {isEpic && (
             <>
-              <EpicOrLegendImage imageSrc={randomCharacter.src} />
-              <EpicOrLegendDotFigure isEpic={isEpic}>
+              <StyledBigImage imageSrc={randomCharacter.src} />
+              <StyledDotFigureArea isEpic={isEpic}>
                 <StarArea isEpicOrLegend={isEpic}>
                   {[...Array(randomCharacter.starCount)].map((_, idx) => {
                     return (
@@ -112,27 +112,27 @@ export const GachaPageTemplate = ({
                     );
                   })}
                 </StarArea>
-                <EpicAndLegendNameText className="textBorder" isEpic={isEpic}>
+                <StyledGradientNameText className="textBorder" isEpic={isEpic}>
                   {characterName}
-                </EpicAndLegendNameText>
-                <EpicAndLegendNameText isEpic={isEpic}>
+                </StyledGradientNameText>
+                <StyledGradientNameText isEpic={isEpic}>
                   {characterName}
-                </EpicAndLegendNameText>
-                <EpicAndLegendClassText className="textBorder" isEpic={isEpic}>
+                </StyledGradientNameText>
+                <StyledGradientClassText className="textBorder" isEpic={isEpic}>
                   {randomCharacter.class}
-                </EpicAndLegendClassText>
-                <EpicAndLegendClassText isEpic={isEpic}>
+                </StyledGradientClassText>
+                <StyledGradientClassText isEpic={isEpic}>
                   {randomCharacter.class}
-                </EpicAndLegendClassText>
-              </EpicOrLegendDotFigure>
+                </StyledGradientClassText>
+              </StyledDotFigureArea>
               <StyledClassCover isEpic={isEpic} />
             </>
           )}
           {isLegend && (
             <>
-              <EpicOrLegendImage imageSrc={randomCharacter.src} />
+              <StyledBigImage imageSrc={randomCharacter.src} />
               <StyledClassCover isLegend={isLegend} />
-              <EpicOrLegendDotFigure isLegend={isLegend}>
+              <StyledDotFigureArea isLegend={isLegend}>
                 <StarArea isEpicOrLegend={isLegend}>
                   {[...Array(randomCharacter.starCount)].map((_, idx) => {
                     return (
@@ -146,17 +146,17 @@ export const GachaPageTemplate = ({
                     );
                   })}
                 </StarArea>
-                <EpicAndLegendNameText className="textBorder">
+                <StyledGradientNameText className="textBorder">
                   {characterName}
-                </EpicAndLegendNameText>
-                <EpicAndLegendNameText>{characterName}</EpicAndLegendNameText>
-                <EpicAndLegendClassText className="textBorder">
+                </StyledGradientNameText>
+                <StyledGradientNameText>{characterName}</StyledGradientNameText>
+                <StyledGradientClassText className="textBorder">
                   {randomCharacter.class}
-                </EpicAndLegendClassText>
-                <EpicAndLegendClassText>
+                </StyledGradientClassText>
+                <StyledGradientClassText>
                   {randomCharacter.class}
-                </EpicAndLegendClassText>
-              </EpicOrLegendDotFigure>
+                </StyledGradientClassText>
+              </StyledDotFigureArea>
             </>
           )}
           <BottomGradient delay={saveButtonMoveUpDelay}>
