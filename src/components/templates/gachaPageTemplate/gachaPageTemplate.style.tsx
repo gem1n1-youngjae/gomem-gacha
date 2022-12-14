@@ -3,6 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import {
   blackGomemBackgroung,
   epicEffect,
+  hiddenEffect,
   legendEffect,
   wakCard1,
   wakCard2,
@@ -113,6 +114,7 @@ const DotSlideAnimation = keyframes`
 export const StyledDotFigureArea = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
+  isHidden?: boolean;
 }>`
   position: absolute;
   bottom: -22%;
@@ -135,7 +137,7 @@ export const StyledDotFigureArea = styled.div<{
     content: "";
     width: 100%;
     height: 100%;
-    ${({ isEpic, isLegend }) => {
+    ${({ isEpic, isLegend, isHidden }) => {
       if (isEpic) {
         return css`
           background: linear-gradient(
@@ -154,13 +156,44 @@ export const StyledDotFigureArea = styled.div<{
           );
         `;
       }
+      if (isHidden) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(255, 0, 0, 0.48) 61.76%,
+            rgba(255, 250, 124, 0.36) 97.57%
+          );
+        `;
+      }
     }}
   }
 `;
 
-export const StyledGradientNameText = styled.div<{ isEpic?: boolean }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#05b7b7" : "#5E05B7")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00ffff" : "#CC00FF")};
+export const StyledGradientNameText = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #05b7b7;
+        --second-gradient-color: #00ffff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #cc00ff;
+        --second-gradient-color: #cc00ff;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff0000;
+        --second-gradient-color: #ff4d00;
+      `;
+    }
+  }}
   position: absolute;
   top: -15%;
   right: 27%;
@@ -178,9 +211,31 @@ export const StyledGradientNameText = styled.div<{ isEpic?: boolean }>`
   -webkit-text-fill-color: transparent;
 `;
 
-export const StyledGradientClassText = styled.div<{ isEpic?: boolean }>`
-  --first-gradient-color: ${({ isEpic }) => (isEpic ? "#3c67ff" : "#FB3CFF")};
-  --second-gradient-color: ${({ isEpic }) => (isEpic ? "#00f0ff" : "#FF007A")};
+export const StyledGradientClassText = styled.div<{
+  isEpic?: boolean;
+  isLegend?: boolean;
+  isHidden?: boolean;
+}>`
+  ${({ isEpic, isLegend, isHidden }) => {
+    if (isEpic) {
+      return css`
+        --first-gradient-color: #3c67ff;
+        --second-gradient-color: #00f0ff;
+      `;
+    }
+    if (isLegend) {
+      return css`
+        --first-gradient-color: #fb3cff;
+        --second-gradient-color: #ff007a;
+      `;
+    }
+    if (isHidden) {
+      return css`
+        --first-gradient-color: #ff3c3c;
+        --second-gradient-color: #ff9900;
+      `;
+    }
+  }}
   position: absolute;
   top: 10%;
   right: 27%;
@@ -407,13 +462,14 @@ export const StyledGlow = styled.div<{ isGreen: boolean; isYellow: boolean }>`
 export const StyledClassCover = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
+  isHidden?: boolean;
 }>`
   position: absolute;
   width: 100%;
   height: calc(100% - var(--header-nav-bar-height));
   top: 32px;
   left: 0;
-  ${({ isEpic, isLegend }) => {
+  ${({ isEpic, isLegend, isHidden }) => {
     if (isEpic) {
       return css`
         background-image: url(${epicEffect});
@@ -422,6 +478,11 @@ export const StyledClassCover = styled.div<{
     if (isLegend) {
       return css`
         background-image: url(${legendEffect});
+      `;
+    }
+    if (isHidden) {
+      return css`
+        background-image: url(${hiddenEffect});
       `;
     }
   }}

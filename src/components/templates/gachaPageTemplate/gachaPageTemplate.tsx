@@ -25,6 +25,8 @@ import {
 import { useStarSoundHook } from "assets/sounds/hooks";
 import { randomCharacterType } from "utils/hooks/useRandom";
 
+const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
+
 export const GachaPageTemplate = ({
   randomCharacter,
   onClickSaveButton
@@ -38,8 +40,11 @@ export const GachaPageTemplate = ({
     randomCharacter.class === "common" || randomCharacter.class === "rare";
   const isEpic = randomCharacter.class === "epic";
   const isLegend = randomCharacter.class === "legend";
+  const isHidden = randomCharacter.class === "hidden";
   const characterName = randomCharacter.name.replaceAll("_", " ");
-  const saveButtonMoveUpDelay = randomCharacter.starCount * 0.5 + 1;
+  const saveButtonMoveUpDelay = isHidden
+    ? HIDDEN_BOTTOM_OVRLAY_UP_COUNT
+    : randomCharacter.starCount * 0.5 + 1;
 
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>
@@ -157,6 +162,39 @@ export const GachaPageTemplate = ({
                   {randomCharacter.class}
                 </StyledGradientClassText>
               </StyledDotFigureArea>
+            </>
+          )}
+          {isHidden && (
+            <>
+              <StyledBigImage imageSrc={randomCharacter.src} />
+              <StyledDotFigureArea isHidden={isHidden}>
+                <StarArea>
+                  {[...Array(randomCharacter.starCount)].map((_, idx) => {
+                    return (
+                      <StyledStar
+                        index={idx}
+                        key={`star-${idx}`}
+                        onAnimationStart={() => {
+                          showStar();
+                        }}
+                      />
+                    );
+                  })}
+                </StarArea>
+                <StyledGradientNameText className="textBorder">
+                  {characterName}
+                </StyledGradientNameText>
+                <StyledGradientNameText isHidden={isHidden}>
+                  {characterName}
+                </StyledGradientNameText>
+                <StyledGradientClassText className="textBorder">
+                  {randomCharacter.class}
+                </StyledGradientClassText>
+                <StyledGradientClassText isHidden={isHidden}>
+                  {randomCharacter.class}
+                </StyledGradientClassText>
+              </StyledDotFigureArea>
+              <StyledClassCover isHidden={isHidden} />
             </>
           )}
           <BottomGradient delay={saveButtonMoveUpDelay}>
