@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
+import { useStarSoundHook } from "assets/sounds/hooks";
 import { NavBar } from "components/organism";
 import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
 
 const App = (): JSX.Element => {
+  const { basicBGM } = useStarSoundHook();
   if (process.env.NODE_ENV !== "development") {
     document.addEventListener("keydown", (event) => {
       if (
@@ -18,6 +21,14 @@ const App = (): JSX.Element => {
       }
     });
   }
+
+  useEffect(() => {
+    basicBGM.play();
+    return () => {
+      basicBGM.stop();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [basicBGM]);
 
   return (
     <>
