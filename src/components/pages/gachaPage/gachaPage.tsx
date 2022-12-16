@@ -13,7 +13,7 @@ export const GachaPage = ({
   playBgm?: () => void;
   stopBgm?: () => void;
 }) => {
-  const { clickButton } = useStarSoundHook();
+  const { clickButton, gachaBGM } = useStarSoundHook();
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
 
@@ -53,15 +53,19 @@ export const GachaPage = ({
     stopBgm();
     // page를 나가면 bgm이 다시 재생 되어야함
     return () => {
+      gachaBGM.stop();
       playBgm();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [gachaBGM]);
 
   return (
     <GachaPageTemplate
       randomCharacter={randomCharacter}
       onClickSaveButton={onClickSaveButton}
+      playGachaBgm={() => {
+        gachaBGM.play();
+      }}
     />
   );
 };

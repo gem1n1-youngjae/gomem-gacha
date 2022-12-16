@@ -30,10 +30,12 @@ const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
 
 export const GachaPageTemplate = ({
   randomCharacter,
-  onClickSaveButton
+  onClickSaveButton,
+  playGachaBgm
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
+  playGachaBgm: () => void;
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [isOpenCard, setIsOpenCard] = useState(false);
@@ -80,6 +82,7 @@ export const GachaPageTemplate = ({
               isYellow={isLegend}
               isClickedCard={isClickedCard}
               onClick={() => {
+                playGachaBgm();
                 setIsClickedCard(true);
               }}
             />
