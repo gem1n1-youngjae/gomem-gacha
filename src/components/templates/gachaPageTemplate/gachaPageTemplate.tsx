@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
   BottomGradient,
@@ -37,7 +37,7 @@ export const GachaPageTemplate = ({
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [isOpenCard, setIsOpenCard] = useState(false);
-  const { showStar } = useStarSoundHook();
+  const { showStar, gacha } = useStarSoundHook();
   const isCommonOrRare =
     randomCharacter.class === "common" || randomCharacter.class === "rare";
   const isEpic = randomCharacter.class === "epic";
@@ -51,6 +51,12 @@ export const GachaPageTemplate = ({
   const starComponetOnAnimationStart = useCallback(() => {
     showStar();
   }, [showStar]);
+
+  useEffect(() => {
+    if (isOpenCard) {
+      gacha();
+    }
+  }, [gacha, isOpenCard]);
 
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>

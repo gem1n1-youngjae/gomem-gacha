@@ -330,7 +330,7 @@ export const StyledStar = styled((props) => <Star {...props} />)<{
   index: number;
 }>`
   transform: scale(0.001);
-  animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
+  animation: ${starAnimation} 1s ${({ index }) => index * 0.5 + 0.5}s forwards;
 `;
 
 const toAppearCardAnimation = keyframes`
