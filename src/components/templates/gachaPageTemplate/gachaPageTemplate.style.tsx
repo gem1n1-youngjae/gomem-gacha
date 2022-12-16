@@ -333,7 +333,7 @@ export const StyledStar = styled((props) => <Star {...props} />)<{
   animation: ${starAnimation} 1s ${({ index }) => index * 0.5}s forwards;
 `;
 
-const cardAnimation = keyframes`
+const toAppearCardAnimation = keyframes`
 	0% {
 		transform: translate(-50%, 50%) scale(0.1) scaleY(0.5);
 	}
@@ -348,15 +348,28 @@ const cardAnimation = keyframes`
 	}	
 `;
 
+const rotateCardAnimaition = keyframes`
+  from{
+    transform: rotateY( 0deg )
+  }
+  to{
+    transform: rotateY( 3600deg )
+  }
+`;
+
 export const CardWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: ${cardAnimation} 0.8s ease-out;
+  animation: ${toAppearCardAnimation} 0.8s ease-out;
 `;
 
-export const StyledCard = styled.div<{ isGreen: boolean; isYellow: boolean }>`
+export const StyledCard = styled.div<{
+  isGreen: boolean;
+  isYellow: boolean;
+  isClickedCard: boolean;
+}>`
   width: 373px;
   height: 630px;
   ${({ isGreen, isYellow }) => {
@@ -382,6 +395,12 @@ export const StyledCard = styled.div<{ isGreen: boolean; isYellow: boolean }>`
   &:hover {
     transform: rotate(5deg);
   }
+
+  ${({ isClickedCard }) =>
+    isClickedCard &&
+    css`
+      animation: ${rotateCardAnimaition} 5s ease-in;
+    `}
 `;
 
 const steam = keyframes`
@@ -492,4 +511,26 @@ export const StyledClassCover = styled.div<{
   background-position: center;
   background-repeat: no-repeat;
   z-index: 10;
+`;
+
+const opacityAnimation = keyframes`
+  0%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
+export const StyledPageCover = styled.div`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--header-nav-bar-height));
+  background-color: #ffffff;
+  z-index: 20;
+  opacity: 0;
+  animation: ${opacityAnimation} 2s 3s cubic-bezier(0.74, 0.3, 0.785, 0.345); ;
 `;

@@ -17,6 +17,7 @@ import {
   StyledGlow,
   StyledGradientClassText,
   StyledGradientNameText,
+  StyledPageCover,
   StyledSmallImage,
   StyledStar,
   TextArea
@@ -34,6 +35,7 @@ export const GachaPageTemplate = ({
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
 }) => {
+  const [isClickedCard, setIsClickedCard] = useState(false);
   const [isOpenCard, setIsOpenCard] = useState(false);
   const { showStar } = useStarSoundHook();
   const isCommonOrRare =
@@ -52,6 +54,14 @@ export const GachaPageTemplate = ({
 
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>
+      {isClickedCard && (
+        <StyledPageCover
+          onAnimationEnd={() => {
+            setIsOpenCard(true);
+            setIsClickedCard(false);
+          }}
+        />
+      )}
       {!isOpenCard ? (
         <>
           <CardWrapper>
@@ -62,8 +72,9 @@ export const GachaPageTemplate = ({
             <StyledCard
               isGreen={isCommonOrRare || isEpic}
               isYellow={isLegend}
+              isClickedCard={isClickedCard}
               onClick={() => {
-                setIsOpenCard(true);
+                setIsClickedCard(true);
               }}
             />
           </CardWrapper>
