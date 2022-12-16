@@ -3,12 +3,13 @@ import React from "react";
 import { NavIconContainer } from "./navIcon.style";
 
 interface NavIconInterface {
+  children: React.ReactNode;
   event: string;
 }
 
 export const NavIcon: React.FC<NavIconInterface> = ({
   children,
-  event,
+  event
 }): JSX.Element => {
   const doEvent = (event: string) => {
     window.electron.ipcRenderer.send(event);
