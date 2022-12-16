@@ -30,7 +30,7 @@ export enum GomemNames {
   jururu = "길햇님송이",
   kimchimandu = "김치만두번영택사스가",
   nosferatuHodd = "노스페라투 호드",
-  dandap_Bug = "단답벌레",
+  dandapBug = "단답벌레",
   dopamine = "도파민박사",
   dokkoHyeji = "독고혜지",
   roentgenium = "뢴트게늄",

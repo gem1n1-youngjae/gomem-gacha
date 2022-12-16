@@ -308,6 +308,7 @@ export const StarArea = styled.div<{ isEpicOrLegend?: boolean }>`
       top: -40%;
       right: 27%;
     `}
+  z-index: 10;
 `;
 
 const starAnimation = keyframes`

@@ -1,3 +1,4 @@
+import { dandapBug } from "./dandapBug";
 import { jururu } from "./jururu";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -11,5 +12,6 @@ export const commonImages = {
   kwakChunSik,
   kwonmin,
   mitsuneHaku,
-  secretGirl
+  secretGirl,
+  dandapBug
 };

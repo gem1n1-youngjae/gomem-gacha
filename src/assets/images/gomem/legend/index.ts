@@ -1,3 +1,4 @@
+import { dandapBug } from "./dandapBug";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
@@ -11,5 +12,6 @@ export const legendImages = {
   kwonmin,
   mitsuneHaku,
   nosferatuHodd,
-  secretGirl
+  secretGirl,
+  dandapBug
 };

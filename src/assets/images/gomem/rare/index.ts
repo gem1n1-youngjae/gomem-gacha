@@ -1,3 +1,4 @@
+import { dandapBug } from "./dandapBug";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
@@ -9,5 +10,6 @@ export const rareImages = {
   kwakChunSik,
   kwonmin,
   mitsuneHaku,
-  secretGirl
+  secretGirl,
+  dandapBug
 };
