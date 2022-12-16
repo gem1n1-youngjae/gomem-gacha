@@ -37,7 +37,19 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gachaHome" element={<GachaHome />} />
-          <Route path="/gachaPage" element={<GachaPage />} />
+          <Route
+            path="/gachaPage"
+            element={
+              <GachaPage
+                playBgm={() => {
+                  basicBGM.play();
+                }}
+                stopBgm={() => {
+                  basicBGM.stop();
+                }}
+              />
+            }
+          />
           <Route path="/myGomem" element={<MyGomemPage />} />
         </Routes>
       </HashRouter>

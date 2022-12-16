@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { gomemList } from "assets/images/gomem";
@@ -6,7 +6,13 @@ import { useStarSoundHook } from "assets/sounds/hooks";
 import { GachaPageTemplate } from "components/templates";
 import { useRandom } from "utils/hooks/useRandom";
 
-export const GachaPage = () => {
+export const GachaPage = ({
+  playBgm = () => {},
+  stopBgm = () => {}
+}: {
+  playBgm?: () => void;
+  stopBgm?: () => void;
+}) => {
   const { clickButton } = useStarSoundHook();
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
@@ -41,6 +47,16 @@ export const GachaPage = () => {
     clickButton();
     navigate(-1);
   }, [randomCharacter, clickButton, navigate, userHaveGomemList]);
+
+  useEffect(() => {
+    // page 진입시 bgm이 stop 되어야함
+    stopBgm();
+    // page를 나가면 bgm이 다시 재생 되어야함
+    return () => {
+      playBgm();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <GachaPageTemplate
