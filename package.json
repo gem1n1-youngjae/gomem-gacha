@@ -1,7 +1,7 @@
 {
   "name": "gomem-gacha",
-  "version": "0.3.1",
-  "author": "Your Name",
+  "version": "0.3.2",
+  "author": "유영재",
   "description": "React-TypeScript-Electron sample with Create React App and Electron Builder",
   "homepage": ".",
   "main": "build/electron/main.js",
