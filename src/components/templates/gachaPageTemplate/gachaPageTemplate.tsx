@@ -151,14 +151,22 @@ export const GachaPageTemplate = ({
                     );
                   })}
                 </StarArea>
-                <StyledGradientNameText className="textBorder">
+                <StyledGradientNameText
+                  className="textBorder"
+                  isLegend={isLegend}
+                >
                   {characterName}
                 </StyledGradientNameText>
-                <StyledGradientNameText>{characterName}</StyledGradientNameText>
-                <StyledGradientClassText className="textBorder">
+                <StyledGradientNameText isLegend={isLegend}>
+                  {characterName}
+                </StyledGradientNameText>
+                <StyledGradientClassText
+                  className="textBorder"
+                  isLegend={isLegend}
+                >
                   {randomCharacter.class}
                 </StyledGradientClassText>
-                <StyledGradientClassText>
+                <StyledGradientClassText isLegend={isLegend}>
                   {randomCharacter.class}
                 </StyledGradientClassText>
               </StyledDotFigureArea>
