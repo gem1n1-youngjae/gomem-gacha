@@ -75,7 +75,7 @@ export const MyGomemListTemplate = ({
             setShowSelectClassOptions(false);
           }}
         >
-          <SelectOptionContainer>
+          <SelectOptionContainer style={{ width: 515, height: 460 }}>
             {gomemNameList.map((name, idx) => (
               <SeletOption
                 key={idx}
@@ -97,7 +97,9 @@ export const MyGomemListTemplate = ({
             setShowSelectNameOptions(false);
           }}
         >
-          <SelectOptionContainer>
+          <SelectOptionContainer
+            style={{ transform: "translateX(-50%)", left: "50%" }}
+          >
             {gomemClassList.map((className, idx) => (
               <SeletOption
                 key={idx}

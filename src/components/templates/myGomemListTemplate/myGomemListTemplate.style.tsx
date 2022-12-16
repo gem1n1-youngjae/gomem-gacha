@@ -59,29 +59,35 @@ export const SeletButtonsWrapper = styled.div`
 
 export const SelectOptionContainer = styled.div`
   position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
+  left: 0;
   z-index: 12;
-  width: 160px;
-  height: 200px;
-  background: rgba(208, 208, 208, 0.8);
-  margin-top: 8px;
-  border-radius: 12px;
-  overflow-y: scroll;
 
-  &::-webkit-scrollbar {
-    width: 0px;
-  }
+  background: rgba(30, 30, 30, 0.9);
+  margin-top: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 16px 24px;
+  box-sizing: border-box;
 `;
 
 export const SeletOption = styled.div`
-  padding: 6px;
+  width: 145px;
+  height: 32px;
   font-family: "SUIT";
   font-style: normal;
-  font-weight: 800;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
-    background-color: #ffffff;
+    background: rgb(20, 20, 20);
   }
 `;
