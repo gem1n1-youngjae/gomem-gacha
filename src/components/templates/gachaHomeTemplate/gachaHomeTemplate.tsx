@@ -2,17 +2,15 @@ import { useNavigate } from "react-router-dom";
 
 import {
   GachaContent,
-  StyledBackButton,
   StyledGachaButton,
   StyledGachaHomeTemplate,
-  StyledGomemButton,
+  StyledGomemButton
 } from "./gachaHomeTemplate.style";
 
 export const GachaHomeTemplate = () => {
   const navigate = useNavigate();
   return (
     <StyledGachaHomeTemplate>
-      <StyledBackButton />
       <GachaContent>
         <StyledGachaButton
           onClick={() => {

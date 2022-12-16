@@ -5,7 +5,7 @@ import {
   defaultGomemWackdo,
   gachaHomeBackground,
   pressGachaWackdo,
-  pressGomemWackdo,
+  pressGomemWackdo
 } from "assets/images";
 import { BackButton } from "components/atoms";
 
@@ -53,10 +53,4 @@ export const StyledGomemButton = styled.div`
   &:active {
     background-image: url(${pressGomemWackdo});
   }
-`;
-
-export const StyledBackButton = styled(BackButton)`
-  position: absolute;
-  top: 72px;
-  left: 40px;
 `;
