@@ -2,10 +2,12 @@ import { useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { gomemList } from "assets/images/gomem";
+import { useStarSoundHook } from "assets/sounds/hooks";
 import { GachaPageTemplate } from "components/templates";
 import { useRandom } from "utils/hooks/useRandom";
 
 export const GachaPage = () => {
+  const { clickButton } = useStarSoundHook();
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
 
@@ -36,8 +38,9 @@ export const GachaPage = () => {
         );
       }
     }
+    clickButton();
     navigate(-1);
-  }, [randomCharacter, userHaveGomemList, navigate]);
+  }, [randomCharacter, clickButton, navigate, userHaveGomemList]);
 
   return (
     <GachaPageTemplate

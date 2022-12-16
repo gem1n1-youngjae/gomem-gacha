@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { downArrow } from "assets/images";
+import { useStarSoundHook } from "assets/sounds/hooks";
 
 const Wapper = styled.div`
   position: relative;
@@ -47,11 +48,13 @@ export const SelectButton = ({
   onClickButton?: () => void;
   showArrowButton?: boolean;
 }) => {
+  const { clickButton } = useStarSoundHook();
   return (
     <Wapper>
       <ButtonContent
         className={className}
         onClick={() => {
+          clickButton();
           onClickButton();
         }}
       >
