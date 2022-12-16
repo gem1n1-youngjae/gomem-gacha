@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+import {
+  epicCardEffect,
+  hiddenCardEffect,
+  legendCardEffect
+} from "assets/images";
 import { Star } from "components/atoms";
 
 const GradientBorderCss = css`
@@ -15,6 +20,19 @@ const GradientBorderCss = css`
   mask-composite: exclude;
 `;
 
+const EffctCoverCss = css`
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  z-index: 9;
+  background-size: cover;
+  background-position: center;
+`;
+
 export const StylerCardOuterBox = styled.div<{
   classType: string;
   isCommonOrRare: boolean;
@@ -22,6 +40,7 @@ export const StylerCardOuterBox = styled.div<{
   isLegend: boolean;
   isHidden: boolean;
 }>`
+  position: relative;
   --stroke-color: #ffffff;
   --stroke-width: 5px;
   box-sizing: border-box;
@@ -32,6 +51,7 @@ export const StylerCardOuterBox = styled.div<{
     rgba(255, 255, 255, 0.48) 0%,
     rgba(255, 255, 255, 0.24) 100%
   );
+
   ${({ isCommonOrRare, classType }) =>
     isCommonOrRare &&
     css`
@@ -52,6 +72,17 @@ export const StylerCardOuterBox = styled.div<{
           background: linear-gradient(180deg, #5e05b7 0%, #cc00ff 100%);
         `}
       }
+      &::after {
+        ${EffctCoverCss}
+        ${isEpic &&
+        css`
+          background-image: url(${epicCardEffect});
+        `}
+        ${isLegend &&
+        css`
+          background-image: url(${legendCardEffect});
+        `}
+      }
     `}
 
     ${({ isHidden }) =>
@@ -60,6 +91,10 @@ export const StylerCardOuterBox = styled.div<{
       &::before {
         ${GradientBorderCss}
         background: linear-gradient(180deg, #FF0000 0%, #FF4D00 100%);
+      }
+      &::after {
+        ${EffctCoverCss}
+        background-image: url(${hiddenCardEffect});
       }
     `}
 
