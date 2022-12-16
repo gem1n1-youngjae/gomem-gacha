@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   BottomGradient,
@@ -46,6 +46,10 @@ export const GachaPageTemplate = ({
     ? HIDDEN_BOTTOM_OVRLAY_UP_COUNT
     : randomCharacter.starCount * 0.5 + 1;
 
+  const starComponetOnAnimationStart = useCallback(() => {
+    showStar();
+  }, [showStar]);
+
   return (
     <StyledGachaPageTemplate isOpenCard={isOpenCard}>
       {!isOpenCard ? (
@@ -75,9 +79,7 @@ export const GachaPageTemplate = ({
                       <StyledStar
                         index={idx}
                         key={`star-${idx}`}
-                        onAnimationStart={() => {
-                          showStar();
-                        }}
+                        onAnimationStart={starComponetOnAnimationStart}
                       />
                     );
                   })}
@@ -110,9 +112,7 @@ export const GachaPageTemplate = ({
                       <StyledStar
                         index={idx}
                         key={`star-${idx}`}
-                        onAnimationStart={() => {
-                          showStar();
-                        }}
+                        onAnimationStart={starComponetOnAnimationStart}
                       />
                     );
                   })}
@@ -144,9 +144,7 @@ export const GachaPageTemplate = ({
                       <StyledStar
                         index={idx}
                         key={`star-${idx}`}
-                        onAnimationStart={() => {
-                          showStar();
-                        }}
+                        onAnimationStart={starComponetOnAnimationStart}
                       />
                     );
                   })}
@@ -182,9 +180,7 @@ export const GachaPageTemplate = ({
                       <StyledStar
                         index={idx}
                         key={`star-${idx}`}
-                        onAnimationStart={() => {
-                          showStar();
-                        }}
+                        onAnimationStart={starComponetOnAnimationStart}
                       />
                     );
                   })}
