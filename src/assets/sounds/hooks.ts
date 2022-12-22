@@ -6,20 +6,22 @@ import gacha_BGM from "./gacha_BGM.mp3";
 import gacha_sound from "./gacha_sound.mp3";
 import show_star_sound from "./show_star_sound.mp3";
 
+const VOLUME = 0.3;
+
 export const useStarSoundHook = () => {
   const [basicBGM, { stop: basicBGMStop }] = useSoundHook(basic_BGM, {
     loop: true,
-    volume: 0.3
+    volume: VOLUME
   });
   const [showStar] = useSoundHook(show_star_sound, {
-    volume: 0.5
+    volume: VOLUME
   });
   const [clickButton] = useSoundHook(button_click_sound);
   const [gacha] = useSoundHook(gacha_sound, {
-    volume: 0.5
+    volume: VOLUME
   });
-  const [gachaBGM, { stop: gachaBGMStop }] = useSoundHook(gacha_BGM, {
-    volume: 0.5
+  const [gachaBGM, { stop: gachaBGMStop, sound }] = useSoundHook(gacha_BGM, {
+    volume: VOLUME
   });
 
   return {
@@ -27,6 +29,6 @@ export const useStarSoundHook = () => {
     showStar,
     clickButton,
     gacha,
-    gachaBGM: { play: gachaBGM, stop: gachaBGMStop }
+    gachaBGM: { play: gachaBGM, stop: gachaBGMStop, sound }
   };
 };

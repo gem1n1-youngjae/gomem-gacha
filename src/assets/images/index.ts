@@ -24,7 +24,9 @@ export { default as wakCard3 } from "./cards/wakCard3.png";
 export { default as epicEffect } from "./effects/epicEffect.png";
 export { default as legendEffect } from "./effects/legendEffect.png";
 export { default as hiddenEffect } from "./effects/hiddenEffect.png";
+export { default as ultraLegenoEffect } from "./effects/ultraLegenoEffect.png";
 
 export { default as epicCardEffect } from "./effects/epicCardEffect.png";
 export { default as legendCardEffect } from "./effects/legendCardEffect.png";
 export { default as hiddenCardEffect } from "./effects/hiddenCardEffect.png";
+export { default as ultraLegenoCardEffect } from "./effects/ultraLegenoCardEffect.png";

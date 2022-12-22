@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
+import { gomemVideo } from "assets/videos/gomem";
 import { star } from "constant/star";
 
 export type randomCharacterType = {
@@ -8,6 +9,7 @@ export type randomCharacterType = {
   src: string;
   starCount: number;
   realName: string;
+  videoSrc: string;
 };
 
 export const useRandom = (gomemList) => {
@@ -17,7 +19,8 @@ export const useRandom = (gomemList) => {
     class: "",
     src: "",
     starCount: 0,
-    realName: ""
+    realName: "",
+    videoSrc: ""
   });
 
   const randomClassNumber = useMemo(() => {
@@ -34,7 +37,7 @@ export const useRandom = (gomemList) => {
     } else if (90 < randomClassNumber && randomClassNumber <= 98) {
       setRandomClass("legend");
     } else if (98 < randomClassNumber && randomClassNumber <= 99) {
-      setRandomClass("legend");
+      setRandomClass("ultraLegeno");
     } else {
       setRandomClass("legend");
     }
@@ -58,12 +61,14 @@ export const useRandom = (gomemList) => {
         Math.floor(Math.random() * Object.keys(randomGomemImageData).length)
       ];
     const randomCharacterImageSrc = randomGomemImageData[randomCharacterName];
+
     setRandomCharacter({
       name: randomCharacterName,
       class: randomClass,
       src: randomCharacterImageSrc,
       starCount: star[randomClass],
-      realName: randomGomemName
+      realName: randomGomemName,
+      videoSrc: gomemVideo[randomCharacterName] ?? ""
     });
   }, [gomemList, randomClass, randomGomemNumber]);
 

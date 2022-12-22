@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { PlayFunction } from "use-sound/dist/types";
 
 import {
   BottomGradient,
@@ -20,7 +21,8 @@ import {
   StyledPageCover,
   StyledSmallImage,
   StyledStar,
-  TextArea
+  TextArea,
+  VideoWrapper
 } from "./gachaPageTemplate.style";
 
 import { useStarSoundHook } from "assets/sounds/hooks";
@@ -31,20 +33,28 @@ const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
 export const GachaPageTemplate = ({
   randomCharacter,
   onClickSaveButton,
-  playGachaBgm
+  gachaBGM
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
-  playGachaBgm: () => void;
+  gachaBGM: {
+    play: PlayFunction;
+    stop: (id?: string) => void;
+    sound: {
+      fade: (from: number, to: number, duration: number) => void;
+    };
+  };
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
-  const [isOpenCard, setIsOpenCard] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const { showStar, gacha } = useStarSoundHook();
   const isCommonOrRare =
     randomCharacter.class === "common" || randomCharacter.class === "rare";
   const isEpic = randomCharacter.class === "epic";
   const isLegend = randomCharacter.class === "legend";
   const isHidden = randomCharacter.class === "hidden";
+  const isUltraLegeno = randomCharacter.class === "ultraLegeno";
   const characterName = randomCharacter.name.replaceAll("_", " ");
   const saveButtonMoveUpDelay = isHidden
     ? HIDDEN_BOTTOM_OVRLAY_UP_COUNT
@@ -55,34 +65,57 @@ export const GachaPageTemplate = ({
   }, [showStar]);
 
   useEffect(() => {
-    if (isOpenCard) {
+    if (showImage) {
       gacha();
     }
-  }, [gacha, isOpenCard]);
+  }, [gacha, showImage]);
 
   return (
-    <StyledGachaPageTemplate isOpenCard={isOpenCard}>
+    <StyledGachaPageTemplate isOpenCard={showImage}>
       {isClickedCard && (
         <StyledPageCover
           onAnimationEnd={() => {
-            setIsOpenCard(true);
             setIsClickedCard(false);
+            if (!isUltraLegeno) {
+              setShowImage(true);
+            } else {
+              setShowVideo(true);
+            }
           }}
         />
       )}
-      {!isOpenCard ? (
+      {showVideo && (
+        <VideoWrapper>
+          <video
+            autoPlay
+            style={{ width: "100%", height: "100%" }}
+            className={"intro_video"}
+            onPlay={() => {
+              gachaBGM.sound.fade(0.3, 0, 3000);
+            }}
+            onEnded={() => {
+              setShowVideo(false);
+              setShowImage(true);
+              gachaBGM.sound.fade(0, 0.3, 3000);
+            }}
+          >
+            <source src={randomCharacter.videoSrc} type="video/mp4" />
+          </video>
+        </VideoWrapper>
+      )}
+      {!showImage ? (
         <>
           <CardWrapper>
             <StyledGlow
               isGreen={isCommonOrRare || isEpic}
-              isYellow={isLegend}
+              isYellow={isLegend || isUltraLegeno}
             />
             <StyledCard
               isGreen={isCommonOrRare || isEpic}
-              isYellow={isLegend}
+              isYellow={isLegend || isUltraLegeno}
               isClickedCard={isClickedCard}
               onClick={() => {
-                playGachaBgm();
+                gachaBGM.play();
                 setIsClickedCard(true);
               }}
             />
@@ -122,43 +155,15 @@ export const GachaPageTemplate = ({
               </ImageInnerArea>
             </ImageOuterArea>
           )}
-          {isEpic && (
+          {(isEpic || isLegend || isUltraLegeno) && (
             <>
               <StyledBigImage imageSrc={randomCharacter.src} />
-              <StyledDotFigureArea isEpic={isEpic}>
-                <StarArea isEpicOrLegend={isEpic}>
-                  {[...Array(randomCharacter.starCount)].map((_, idx) => {
-                    return (
-                      <StyledStar
-                        index={idx}
-                        key={`star-${idx}`}
-                        onAnimationStart={starComponetOnAnimationStart}
-                      />
-                    );
-                  })}
-                </StarArea>
-                <StyledGradientNameText className="textBorder" isEpic={isEpic}>
-                  {characterName}
-                </StyledGradientNameText>
-                <StyledGradientNameText isEpic={isEpic}>
-                  {characterName}
-                </StyledGradientNameText>
-                <StyledGradientClassText className="textBorder" isEpic={isEpic}>
-                  {randomCharacter.class}
-                </StyledGradientClassText>
-                <StyledGradientClassText isEpic={isEpic}>
-                  {randomCharacter.class}
-                </StyledGradientClassText>
-              </StyledDotFigureArea>
-              <StyledClassCover isEpic={isEpic} />
-            </>
-          )}
-          {isLegend && (
-            <>
-              <StyledBigImage imageSrc={randomCharacter.src} />
-              <StyledClassCover isLegend={isLegend} />
-              <StyledDotFigureArea isLegend={isLegend}>
-                <StarArea isEpicOrLegend={isLegend}>
+              <StyledDotFigureArea
+                isEpic={isEpic}
+                isLegend={isLegend}
+                isUltraLegeno={isUltraLegeno}
+              >
+                <StarArea isBigImage={isEpic || isLegend || isUltraLegeno}>
                   {[...Array(randomCharacter.starCount)].map((_, idx) => {
                     return (
                       <StyledStar
@@ -171,23 +176,40 @@ export const GachaPageTemplate = ({
                 </StarArea>
                 <StyledGradientNameText
                   className="textBorder"
+                  isEpic={isEpic}
                   isLegend={isLegend}
+                  isUltraLegeno={isUltraLegeno}
                 >
                   {characterName}
                 </StyledGradientNameText>
-                <StyledGradientNameText isLegend={isLegend}>
+                <StyledGradientNameText
+                  isEpic={isEpic}
+                  isLegend={isLegend}
+                  isUltraLegeno={isUltraLegeno}
+                >
                   {characterName}
                 </StyledGradientNameText>
                 <StyledGradientClassText
                   className="textBorder"
+                  isEpic={isEpic}
                   isLegend={isLegend}
+                  isUltraLegeno={isUltraLegeno}
                 >
                   {randomCharacter.class}
                 </StyledGradientClassText>
-                <StyledGradientClassText isLegend={isLegend}>
+                <StyledGradientClassText
+                  isEpic={isEpic}
+                  isLegend={isLegend}
+                  isUltraLegeno={isUltraLegeno}
+                >
                   {randomCharacter.class}
                 </StyledGradientClassText>
               </StyledDotFigureArea>
+              <StyledClassCover
+                isEpic={isEpic}
+                isLegend={isLegend}
+                isUltraLegeno={isUltraLegeno}
+              />
             </>
           )}
           {isHidden && (

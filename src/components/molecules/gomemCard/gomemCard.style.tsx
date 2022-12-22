@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 import {
   epicCardEffect,
   hiddenCardEffect,
-  legendCardEffect
+  legendCardEffect,
+  ultraLegenoCardEffect
 } from "assets/images";
 import { Star } from "components/atoms";
 
@@ -39,6 +40,7 @@ export const StylerCardOuterBox = styled.div<{
   isEpic: boolean;
   isLegend: boolean;
   isHidden: boolean;
+  isUltraLegeno: boolean;
 }>`
   position: relative;
   --stroke-color: #ffffff;
@@ -98,6 +100,20 @@ export const StylerCardOuterBox = styled.div<{
       }
     `}
 
+    ${({ isUltraLegeno }) =>
+    isUltraLegeno &&
+    css`
+      &::before {
+        ${GradientBorderCss}
+        background: linear-gradient(180deg, #FFE600 0%, #FF6B00 100%);
+      }
+      &::after {
+        ${EffctCoverCss}
+        background-image: url(${ultraLegenoCardEffect});
+      }
+    `}
+
+
   position: relative;
   border-radius: 24px;
   padding: 10px;
@@ -109,6 +125,7 @@ export const StylerCardInnerBox = styled.div<{
   isEpic: boolean;
   isLegend: boolean;
   isHidden: boolean;
+  isUltraLegeno: boolean;
 }>`
   box-sizing: border-box;
   position: relative;
@@ -147,7 +164,18 @@ export const StylerCardInnerBox = styled.div<{
     css`
       &::before {
         ${GradientBorderCss}
+        padding: 3px;
         background: linear-gradient(180deg, #ff3c3c 0%, #ff9900 100%);
+      }
+    `}
+
+    ${({ isUltraLegeno }) =>
+    isUltraLegeno &&
+    css`
+      &::before {
+        ${GradientBorderCss}
+        padding: 3px;
+        background: linear-gradient(180deg, #ffbd3c 0%, #ffe600 100%);
       }
     `}
 
@@ -177,8 +205,9 @@ export const StyledCardClass = styled.div<{
   isEpic: boolean;
   isLegend: boolean;
   isHidden: boolean;
+  isUltraLegeno: boolean;
 }>`
-  ${({ isEpic, isLegend, isHidden }) => {
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
     if (isEpic) {
       return css`
         --first-gradient-color: #3c67ff;
@@ -197,6 +226,12 @@ export const StyledCardClass = styled.div<{
         --second-gradient-color: #ff9900;
       `;
     }
+    if (isUltraLegeno) {
+      return css`
+        --first-gradient-color: #ffbd3c;
+        --second-gradient-color: #ffe600;
+      `;
+    }
   }}
   position: absolute;
   bottom: 48px;
@@ -209,8 +244,8 @@ export const StyledCardClass = styled.div<{
       color: ${classType === "common" ? "#CFCFCF" : "#38F238"};
     `}
 
-  ${({ isEpic, isLegend, isHidden }) =>
-    (isEpic || isLegend || isHidden) &&
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) =>
+    (isEpic || isLegend || isHidden || isUltraLegeno) &&
     css`
       background: linear-gradient(
         180deg,
@@ -230,8 +265,9 @@ export const StyledCardName = styled.div<{
   isEpic: boolean;
   isLegend: boolean;
   isHidden: boolean;
+  isUltraLegeno: boolean;
 }>`
-  ${({ isEpic, isLegend, isHidden }) => {
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
     if (isEpic) {
       return css`
         --first-gradient-color: #05b7b7;
@@ -250,6 +286,12 @@ export const StyledCardName = styled.div<{
         --second-gradient-color: #ff4d00;
       `;
     }
+    if (isUltraLegeno) {
+      return css`
+        --first-gradient-color: #ffe600;
+        --second-gradient-color: #ff6b00;
+      `;
+    }
   }}
   position: absolute;
   bottom: 10px;
@@ -262,8 +304,8 @@ export const StyledCardName = styled.div<{
       color: ${classType === "common" ? "#9B9B9B" : "#41DD41"};
     `}
 
-  ${({ isEpic, isLegend, isHidden }) =>
-    (isEpic || isLegend || isHidden) &&
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) =>
+    (isEpic || isLegend || isHidden || isUltraLegeno) &&
     css`
       background: linear-gradient(
         180deg,

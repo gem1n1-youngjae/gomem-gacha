@@ -5,6 +5,7 @@ import {
   epicEffect,
   hiddenEffect,
   legendEffect,
+  ultraLegenoCardEffect,
   wakCard1,
   wakCard2,
   wakCard3
@@ -100,6 +101,8 @@ export const StyledBigImage = styled.div<{ imageSrc: string }>`
   width: 100%;
   height: 100%;
   background-image: url(${({ imageSrc }) => imageSrc});
+  background-size: cover;
+  background-position: center;
 `;
 
 const DotSlideAnimation = keyframes`
@@ -115,6 +118,7 @@ export const StyledDotFigureArea = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
   isHidden?: boolean;
+  isUltraLegeno?: boolean;
 }>`
   position: absolute;
   bottom: -22%;
@@ -137,7 +141,7 @@ export const StyledDotFigureArea = styled.div<{
     content: "";
     width: 100%;
     height: 100%;
-    ${({ isEpic, isLegend, isHidden }) => {
+    ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
       if (isEpic) {
         return css`
           background: linear-gradient(
@@ -165,6 +169,15 @@ export const StyledDotFigureArea = styled.div<{
           );
         `;
       }
+      if (isUltraLegeno) {
+        return css`
+          background: linear-gradient(
+            130.96deg,
+            rgba(255, 240, 185, 0.48) 61.76%,
+            rgba(255, 200, 6, 0.36) 97.57%
+          );
+        `;
+      }
     }}
   }
 `;
@@ -173,8 +186,9 @@ export const StyledGradientNameText = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
   isHidden?: boolean;
+  isUltraLegeno?: boolean;
 }>`
-  ${({ isEpic, isLegend, isHidden }) => {
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
     if (isEpic) {
       return css`
         --first-gradient-color: #05b7b7;
@@ -191,6 +205,12 @@ export const StyledGradientNameText = styled.div<{
       return css`
         --first-gradient-color: #ff0000;
         --second-gradient-color: #ff4d00;
+      `;
+    }
+    if (isUltraLegeno) {
+      return css`
+        --first-gradient-color: #ffe600;
+        --second-gradient-color: #ff6b00;
       `;
     }
   }}
@@ -215,8 +235,9 @@ export const StyledGradientClassText = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
   isHidden?: boolean;
+  isUltraLegeno?: boolean;
 }>`
-  ${({ isEpic, isLegend, isHidden }) => {
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
     if (isEpic) {
       return css`
         --first-gradient-color: #3c67ff;
@@ -233,6 +254,12 @@ export const StyledGradientClassText = styled.div<{
       return css`
         --first-gradient-color: #ff3c3c;
         --second-gradient-color: #ff9900;
+      `;
+    }
+    if (isUltraLegeno) {
+      return css`
+        --first-gradient-color: #ffbd3c;
+        --second-gradient-color: #ffe600;
       `;
     }
   }}
@@ -293,15 +320,15 @@ export const BottomGradient = styled.div<{ delay: number }>`
   }
 `;
 
-export const StarArea = styled.div<{ isEpicOrLegend?: boolean }>`
+export const StarArea = styled.div<{ isBigImage?: boolean }>`
   position: absolute;
   left: 8px;
   bottom: 8px;
   display: flex;
   align-items: flex-end;
 
-  ${({ isEpicOrLegend }) =>
-    isEpicOrLegend &&
+  ${({ isBigImage }) =>
+    isBigImage &&
     css`
       left: auto;
       bottom: auto;
@@ -483,13 +510,14 @@ export const StyledClassCover = styled.div<{
   isEpic?: boolean;
   isLegend?: boolean;
   isHidden?: boolean;
+  isUltraLegeno?: boolean;
 }>`
   position: absolute;
   width: 100%;
   height: calc(100% - var(--header-nav-bar-height));
   top: 32px;
   left: 0;
-  ${({ isEpic, isLegend, isHidden }) => {
+  ${({ isEpic, isLegend, isHidden, isUltraLegeno }) => {
     if (isEpic) {
       return css`
         background-image: url(${epicEffect});
@@ -503,6 +531,11 @@ export const StyledClassCover = styled.div<{
     if (isHidden) {
       return css`
         background-image: url(${hiddenEffect});
+      `;
+    }
+    if (isUltraLegeno) {
+      return css`
+        background-image: url(${ultraLegenoCardEffect});
       `;
     }
   }}
@@ -533,4 +566,12 @@ export const StyledPageCover = styled.div`
   z-index: 20;
   opacity: 0;
   animation: ${opacityAnimation} 2s 3s cubic-bezier(0.74, 0.3, 0.785, 0.345); ;
+`;
+
+export const VideoWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #161616;
+  z-index: 9;
 `;

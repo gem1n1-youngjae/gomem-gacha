@@ -63,9 +63,7 @@ export const GachaPage = ({
     <GachaPageTemplate
       randomCharacter={randomCharacter}
       onClickSaveButton={onClickSaveButton}
-      playGachaBgm={() => {
-        gachaBGM.play();
-      }}
+      gachaBGM={gachaBGM}
     />
   );
 };

@@ -23,7 +23,8 @@ export const GomemCard = ({
   const isEpic = gomemClass === "epic";
   const isLegend = gomemClass === "legend";
   const isHidden = gomemClass === "hidden";
-  const isGradientText = isEpic || isLegend || isHidden;
+  const isUltraLegeno = gomemClass === "ultraLegeno";
+  const isGradientText = isEpic || isLegend || isHidden || isUltraLegeno;
 
   return (
     <StylerCardOuterBox
@@ -32,6 +33,7 @@ export const GomemCard = ({
       isEpic={isEpic}
       isLegend={isLegend}
       isHidden={isHidden}
+      isUltraLegeno={isUltraLegeno}
     >
       <CardStarArea>
         {[...Array(starCount)].map((_, idx) => {
@@ -44,6 +46,7 @@ export const GomemCard = ({
         isEpic={isEpic}
         isLegend={isLegend}
         isHidden={isHidden}
+        isUltraLegeno={isUltraLegeno}
       >
         <StyledGomemImage imageSrc={imageSrc} />
         {isGradientText && (
@@ -54,6 +57,7 @@ export const GomemCard = ({
             isEpic={isEpic}
             isLegend={isLegend}
             isHidden={isHidden}
+            isUltraLegeno={isUltraLegeno}
           >
             {gomemClass}
           </StyledCardClass>
@@ -65,6 +69,7 @@ export const GomemCard = ({
           isEpic={isEpic}
           isLegend={isLegend}
           isHidden={isHidden}
+          isUltraLegeno={isUltraLegeno}
         >
           {gomemClass}
         </StyledCardClass>
@@ -76,6 +81,7 @@ export const GomemCard = ({
             isEpic={isEpic}
             isLegend={isLegend}
             isHidden={isHidden}
+            isUltraLegeno={isUltraLegeno}
           >
             {name}
           </StyledCardName>
@@ -87,6 +93,7 @@ export const GomemCard = ({
           isEpic={isEpic}
           isLegend={isLegend}
           isHidden={isHidden}
+          isUltraLegeno={isUltraLegeno}
         >
           {name}
         </StyledCardName>
