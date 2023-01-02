@@ -3,6 +3,7 @@ import { businesskim } from "./businesskim";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
+import { friedshrimp } from "./friedshrimp";
 import { jururu } from "./jururu";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -23,5 +24,6 @@ export const commonImages = {
   dokkoHyeji,
   roentgenium,
   bujungingan,
-  businesskim
+  businesskim,
+  friedshrimp
 };

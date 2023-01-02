@@ -2,6 +2,7 @@ import { bujungingan } from "./bujungingan";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
+import { friedshrimp } from "./friedshrimp";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
@@ -21,5 +22,6 @@ export const legendImages = {
   dopamine,
   dokkoHyeji,
   roentgenium,
-  bujungingan
+  bujungingan,
+  friedshrimp
 };
