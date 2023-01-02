@@ -1,4 +1,5 @@
 import { dandapBug } from "./dandapBug";
+import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
 import { jururu } from "./jururu";
 import { kimchimandu } from "./kimchimandu";
@@ -15,5 +16,6 @@ export const commonImages = {
   mitsuneHaku,
   secretGirl,
   dandapBug,
-  dopamine
+  dopamine,
+  dokkoHyeji
 };

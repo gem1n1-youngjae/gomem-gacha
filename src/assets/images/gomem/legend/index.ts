@@ -1,4 +1,5 @@
 import { dandapBug } from "./dandapBug";
+import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -15,5 +16,6 @@ export const legendImages = {
   nosferatuHodd,
   secretGirl,
   dandapBug,
-  dopamine
+  dopamine,
+  dokkoHyeji
 };
