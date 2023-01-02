@@ -1,3 +1,4 @@
+import { bujungingan } from "./bujungingan";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -15,5 +16,6 @@ export const epicImages = {
   secretGirl,
   dandapBug,
   dopamine,
-  dokkoHyeji
+  dokkoHyeji,
+  bujungingan
 };

@@ -1,3 +1,4 @@
+import { bujungingan } from "./bujungingan";
 import { dopamine } from "./dopamine";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -7,5 +8,6 @@ export const hiddenImages = {
   kimchimandu,
   kwakChunSik,
   dopamine,
-  roentgenium
+  roentgenium,
+  bujungingan
 };

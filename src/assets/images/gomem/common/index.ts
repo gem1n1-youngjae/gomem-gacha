@@ -1,3 +1,4 @@
+import { bujungingan } from "./bujungingan";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -19,5 +20,6 @@ export const commonImages = {
   dandapBug,
   dopamine,
   dokkoHyeji,
-  roentgenium
+  roentgenium,
+  bujungingan
 };
