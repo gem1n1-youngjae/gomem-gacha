@@ -1,4 +1,5 @@
 import { bujungingan } from "./bujungingan";
+import { businesskim } from "./businesskim";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -17,5 +18,6 @@ export const epicImages = {
   dandapBug,
   dopamine,
   dokkoHyeji,
-  bujungingan
+  bujungingan,
+  businesskim
 };

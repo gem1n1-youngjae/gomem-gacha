@@ -1,4 +1,5 @@
 import { bujungingan } from "./bujungingan";
+import { businesskim } from "./businesskim";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -21,5 +22,6 @@ export const commonImages = {
   dopamine,
   dokkoHyeji,
   roentgenium,
-  bujungingan
+  bujungingan,
+  businesskim
 };

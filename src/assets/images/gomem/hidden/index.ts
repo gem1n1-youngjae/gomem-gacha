@@ -1,4 +1,5 @@
 import { bujungingan } from "./bujungingan";
+import { businesskim } from "./businesskim";
 import { dopamine } from "./dopamine";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -9,5 +10,6 @@ export const hiddenImages = {
   kwakChunSik,
   dopamine,
   roentgenium,
-  bujungingan
+  bujungingan,
+  businesskim
 };
