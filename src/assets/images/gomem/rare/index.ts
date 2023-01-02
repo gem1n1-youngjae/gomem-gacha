@@ -10,6 +10,7 @@ import { kwonmin } from "./kwonmin";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
+import { sophia } from "./sophia";
 
 export const rareImages = {
   kimchimandu,
@@ -23,5 +24,6 @@ export const rareImages = {
   roentgenium,
   bujungingan,
   businesskim,
-  friedshrimp
+  friedshrimp,
+  sophia
 };
