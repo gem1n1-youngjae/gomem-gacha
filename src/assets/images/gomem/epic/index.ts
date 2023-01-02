@@ -10,6 +10,7 @@ import { kwonmin } from "./kwonmin";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
+import { wakphago } from "./wakphago";
 
 export const epicImages = {
   kimchimandu,
@@ -23,5 +24,6 @@ export const epicImages = {
   bujungingan,
   businesskim,
   friedshrimp,
-  sophia
+  sophia,
+  wakphago
 };

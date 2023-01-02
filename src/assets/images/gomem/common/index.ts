@@ -12,6 +12,7 @@ import { mitsuneHaku } from "./mitsuneHaku";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
+import { wakphago } from "./wakphago";
 
 export const commonImages = {
   jururu,
@@ -27,5 +28,6 @@ export const commonImages = {
   bujungingan,
   businesskim,
   friedshrimp,
-  sophia
+  sophia,
+  wakphago
 };

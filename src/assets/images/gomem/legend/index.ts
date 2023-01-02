@@ -10,6 +10,7 @@ import { mitsuneHaku } from "./mitsuneHaku";
 import { nosferatuHodd } from "./nosferatuHodd";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
+import { wakphago } from "./wakphago";
 
 export const legendImages = {
   kimchimandu,
@@ -23,5 +24,6 @@ export const legendImages = {
   dokkoHyeji,
   roentgenium,
   bujungingan,
-  friedshrimp
+  friedshrimp,
+  wakphago
 };
