@@ -8,6 +8,7 @@ import { jururu } from "./jururu";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
+import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
@@ -29,5 +30,6 @@ export const commonImages = {
   businesskim,
   friedshrimp,
   sophia,
-  wakphago
+  wakphago,
+  leeDeokSu
 };

@@ -6,6 +6,7 @@ import { friedshrimp } from "./friedshrimp";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
+import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { nosferatuHodd } from "./nosferatuHodd";
 import { roentgenium } from "./roentgenium";
@@ -25,5 +26,6 @@ export const legendImages = {
   roentgenium,
   bujungingan,
   friedshrimp,
-  wakphago
+  wakphago,
+  leeDeokSu
 };

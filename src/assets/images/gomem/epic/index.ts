@@ -7,6 +7,7 @@ import { friedshrimp } from "./friedshrimp";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
+import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
@@ -25,5 +26,6 @@ export const epicImages = {
   businesskim,
   friedshrimp,
   sophia,
-  wakphago
+  wakphago,
+  leeDeokSu
 };
