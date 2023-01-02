@@ -5,6 +5,7 @@ import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
 import { mitsuneHaku } from "./mitsuneHaku";
+import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 
 export const rareImages = {
@@ -15,5 +16,6 @@ export const rareImages = {
   secretGirl,
   dandapBug,
   dopamine,
-  dokkoHyeji
+  dokkoHyeji,
+  roentgenium
 };

@@ -6,6 +6,7 @@ import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { nosferatuHodd } from "./nosferatuHodd";
+import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 
 export const legendImages = {
@@ -17,5 +18,6 @@ export const legendImages = {
   secretGirl,
   dandapBug,
   dopamine,
-  dokkoHyeji
+  dokkoHyeji,
+  roentgenium
 };

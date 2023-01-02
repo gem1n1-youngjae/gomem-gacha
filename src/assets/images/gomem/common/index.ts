@@ -6,6 +6,7 @@ import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
 import { mitsuneHaku } from "./mitsuneHaku";
+import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 
 export const commonImages = {
@@ -17,5 +18,6 @@ export const commonImages = {
   secretGirl,
   dandapBug,
   dopamine,
-  dokkoHyeji
+  dokkoHyeji,
+  roentgenium
 };
