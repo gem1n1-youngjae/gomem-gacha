@@ -10,6 +10,7 @@ import { kwonmin } from "./kwonmin";
 import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { nosferatuHodd } from "./nosferatuHodd";
+import { pungsin } from "./pungsin";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 import { wakphago } from "./wakphago";
@@ -29,5 +30,6 @@ export const legendImages = {
   friedshrimp,
   wakphago,
   leeDeokSu,
-  carnarJungtur
+  carnarJungtur,
+  pungsin
 };

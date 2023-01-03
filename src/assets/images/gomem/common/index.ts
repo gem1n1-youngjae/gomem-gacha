@@ -12,6 +12,7 @@ import { kwakChunSik } from "./kwakChunSik";
 import { kwonmin } from "./kwonmin";
 import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
+import { pungsin } from "./pungsin";
 import { roentgenium } from "./roentgenium";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
@@ -35,5 +36,6 @@ export const commonImages = {
   wakphago,
   leeDeokSu,
   carnarJungtur,
-  callyCarly
+  callyCarly,
+  pungsin
 };
