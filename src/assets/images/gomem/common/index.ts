@@ -7,6 +7,7 @@ import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
 import { freeter } from "./freeter";
 import { friedshrimp } from "./friedshrimp";
+import { hikiking } from "./hikiking";
 import { jururu } from "./jururu";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -39,5 +40,6 @@ export const commonImages = {
   carnarJungtur,
   callyCarly,
   pungsin,
-  freeter
+  freeter,
+  hikiking
 };
