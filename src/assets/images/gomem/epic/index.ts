@@ -5,6 +5,7 @@ import { carnarJungtur } from "./carnarJungtur";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
+import { freeter } from "./freeter";
 import { friedshrimp } from "./friedshrimp";
 import { kimchimandu } from "./kimchimandu";
 import { kwakChunSik } from "./kwakChunSik";
@@ -33,5 +34,6 @@ export const epicImages = {
   leeDeokSu,
   carnarJungtur,
   callyCarly,
-  pungsin
+  pungsin,
+  freeter
 };
