@@ -74,6 +74,7 @@ export const GachaPageTemplate = ({
     <StyledGachaPageTemplate isOpenCard={showImage}>
       {isClickedCard && (
         <StyledPageCover
+          gomemClass={randomCharacter.class}
           onAnimationEnd={() => {
             setIsClickedCard(false);
             if (!isUltraLegeno) {

@@ -558,11 +558,28 @@ const opacityAnimation = keyframes`
   }
 `;
 
-export const StyledPageCover = styled.div`
+export const StyledPageCover = styled.div<{ gomemClass: string }>`
   position: absolute;
   width: 100%;
   height: calc(100% - var(--header-nav-bar-height));
-  background-color: #ffffff;
+  background: ${({ gomemClass }) => {
+    switch (gomemClass) {
+      case "common":
+        return "#ffffff";
+      case "rare":
+        return "#38F238";
+      case "epic":
+        return "linear-gradient(45deg, #00f0ff 0%, #3c67ff 100%)";
+      case "legend":
+        return "linear-gradient(45deg, #fb3cff 0%, #ff007a 100%)";
+      case "hidden":
+        return "linear-gradient(45deg, #ff3c3c 0%, #ff9900 100%)";
+      case "ultraLegeno":
+        return "linear-gradient(45deg, #ffbd3c 0%, #ffe600 100%)";
+      default:
+        return "#ffffff";
+    }
+  }};
   z-index: 20;
   opacity: 0;
   animation: ${opacityAnimation} 2s 3s cubic-bezier(0.74, 0.3, 0.785, 0.345); ;
