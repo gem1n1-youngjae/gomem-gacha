@@ -13,6 +13,7 @@ import { mitsuneHaku } from "./mitsuneHaku";
 import { nosferatuHodd } from "./nosferatuHodd";
 import { pungsin } from "./pungsin";
 import { roentgenium } from "./roentgenium";
+import { rusuk } from "./rusuk";
 import { secretGirl } from "./secretGirl";
 import { wakphago } from "./wakphago";
 
@@ -33,5 +34,6 @@ export const legendImages = {
   leeDeokSu,
   carnarJungtur,
   pungsin,
-  freeter
+  freeter,
+  rusuk
 };

@@ -13,6 +13,7 @@ import { kwonmin } from "./kwonmin";
 import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { pungsin } from "./pungsin";
+import { rusuk } from "./rusuk";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
 import { wakphago } from "./wakphago";
@@ -35,5 +36,6 @@ export const epicImages = {
   carnarJungtur,
   callyCarly,
   pungsin,
-  freeter
+  freeter,
+  rusuk
 };

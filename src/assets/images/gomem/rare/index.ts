@@ -14,6 +14,7 @@ import { leeDeokSu } from "./leeDeokSu";
 import { mitsuneHaku } from "./mitsuneHaku";
 import { pungsin } from "./pungsin";
 import { roentgenium } from "./roentgenium";
+import { rusuk } from "./rusuk";
 import { secretGirl } from "./secretGirl";
 import { sophia } from "./sophia";
 import { wakphago } from "./wakphago";
@@ -37,5 +38,6 @@ export const rareImages = {
   carnarJungtur,
   callyCarly,
   pungsin,
-  freeter
+  freeter,
+  rusuk
 };
