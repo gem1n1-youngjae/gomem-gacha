@@ -1,5 +1,6 @@
 import { bujungingan } from "./bujungingan";
 import { businesskim } from "./businesskim";
+import { callyCarly } from "./callyCarly";
 import { carnarJungtur } from "./carnarJungtur";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
@@ -29,5 +30,6 @@ export const epicImages = {
   sophia,
   wakphago,
   leeDeokSu,
-  carnarJungtur
+  carnarJungtur,
+  callyCarly
 };
