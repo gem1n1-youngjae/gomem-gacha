@@ -1,4 +1,5 @@
 import { bujungingan } from "./bujungingan";
+import { carnarJungtur } from "./carnarJungtur";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -27,5 +28,6 @@ export const legendImages = {
   bujungingan,
   friedshrimp,
   wakphago,
-  leeDeokSu
+  leeDeokSu,
+  carnarJungtur
 };

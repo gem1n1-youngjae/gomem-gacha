@@ -1,5 +1,6 @@
 import { bujungingan } from "./bujungingan";
 import { businesskim } from "./businesskim";
+import { carnarJungtur } from "./carnarJungtur";
 import { dandapBug } from "./dandapBug";
 import { dokkoHyeji } from "./dokkoHyeji";
 import { dopamine } from "./dopamine";
@@ -31,5 +32,6 @@ export const commonImages = {
   friedshrimp,
   sophia,
   wakphago,
-  leeDeokSu
+  leeDeokSu,
+  carnarJungtur
 };
