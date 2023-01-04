@@ -1,10 +1,21 @@
+import { PlayFunction } from "use-sound/dist/types";
+
 import { MyGomemListTemplate } from "components/templates";
 
-export const MyGomemPage = () => {
+export const MyGomemPage = ({
+  clickButton
+}: {
+  clickButton?: PlayFunction;
+}) => {
   // 객체 배열이므로 두번 parse 해 주어야 배열안에 객체들이 string 에서 객체로 잘 변환되어 나옴
   const userHaveGomemList = JSON.parse(
     `[${JSON.parse(window.localStorage.getItem("userHaveGomemList")) || ``}]`
   );
 
-  return <MyGomemListTemplate userHaveGomemList={userHaveGomemList} />;
+  return (
+    <MyGomemListTemplate
+      userHaveGomemList={userHaveGomemList}
+      clickButton={clickButton}
+    />
+  );
 };

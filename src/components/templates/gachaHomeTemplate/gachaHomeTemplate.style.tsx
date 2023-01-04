@@ -7,7 +7,7 @@ import {
   pressGachaWackdo,
   pressGomemWackdo
 } from "assets/images";
-import { BackButton } from "components/atoms";
+import { PopoutButton } from "components/atoms";
 
 export const StyledGachaHomeTemplate = styled.div`
   width: 100%;
@@ -52,5 +52,19 @@ export const StyledGomemButton = styled.div`
   background-image: url(${defaultGomemWackdo});
   &:active {
     background-image: url(${pressGomemWackdo});
+  }
+`;
+
+export const StyledSettingButton = styled(PopoutButton)`
+  position: absolute;
+  top: 100px;
+  right: 60px;
+  width: 80px;
+  height: 70px;
+  & > div {
+    background-size: cover;
+    & > span {
+      font-size: 48px;
+    }
   }
 `;

@@ -25,7 +25,6 @@ import {
   VideoWrapper
 } from "./gachaPageTemplate.style";
 
-import { useStarSoundHook } from "assets/sounds/hooks";
 import { randomCharacterType } from "utils/hooks/useRandom";
 
 const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
@@ -33,7 +32,9 @@ const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
 export const GachaPageTemplate = ({
   randomCharacter,
   onClickSaveButton,
-  gachaBGM
+  gachaBGM,
+  showStar,
+  gacha
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
@@ -44,11 +45,12 @@ export const GachaPageTemplate = ({
       fade: (from: number, to: number, duration: number) => void;
     };
   };
+  showStar?: PlayFunction;
+  gacha?: PlayFunction;
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const { showStar, gacha } = useStarSoundHook();
   const isCommonOrRare =
     randomCharacter.class === "common" || randomCharacter.class === "rare";
   const isEpic = randomCharacter.class === "epic";
