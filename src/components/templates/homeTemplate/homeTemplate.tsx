@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PlayFunction } from "use-sound/dist/types";
 
 import {
   GachaCover,
@@ -11,7 +12,11 @@ import {
 
 import { INTRO_HD } from "assets/videos";
 
-export const HomeTemplate = (): JSX.Element => {
+export const HomeTemplate = ({
+  clickButton
+}: {
+  clickButton?: PlayFunction;
+}): JSX.Element => {
   const navigate = useNavigate();
   const [showCover, setShowCover] = useState(false);
   const [isShowIntroVideo, setIsShowIntroVideo] = useState(false);
@@ -39,6 +44,7 @@ export const HomeTemplate = (): JSX.Element => {
       <StartButton
         onClick={() => {
           navigate("/gachaHome");
+          clickButton();
         }}
       >
         시작하기

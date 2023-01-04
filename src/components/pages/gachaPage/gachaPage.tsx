@@ -1,19 +1,32 @@
 import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { PlayFunction } from "use-sound/dist/types";
 
 import { gomemList } from "assets/images/gomem";
-import { useStarSoundHook } from "assets/sounds/hooks";
 import { GachaPageTemplate } from "components/templates";
 import { useRandom } from "utils/hooks/useRandom";
 
 export const GachaPage = ({
   playBgm = () => {},
-  stopBgm = () => {}
+  stopBgm = () => {},
+  clickButton,
+  gachaBGM,
+  showStar,
+  gacha
 }: {
   playBgm?: () => void;
   stopBgm?: () => void;
+  clickButton?: PlayFunction;
+  gachaBGM?: {
+    play: PlayFunction;
+    stop: (id?: string) => void;
+    sound: {
+      fade: (from: number, to: number, duration: number) => void;
+    };
+  };
+  showStar?: PlayFunction;
+  gacha?: PlayFunction;
 }) => {
-  const { clickButton, gachaBGM } = useStarSoundHook();
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
 
@@ -64,6 +77,8 @@ export const GachaPage = ({
       randomCharacter={randomCharacter}
       onClickSaveButton={onClickSaveButton}
       gachaBGM={gachaBGM}
+      showStar={showStar}
+      gacha={gacha}
     />
   );
 };

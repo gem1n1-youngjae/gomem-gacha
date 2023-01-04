@@ -1,8 +1,8 @@
 {
   "name": "gomem-gacha",
-  "version": "0.3.2",
+  "version": "1.0.1",
   "author": "유영재",
-  "description": "React-TypeScript-Electron sample with Create React App and Electron Builder",
+  "description": "우왁굳을 위한 고정맴버 뽑기",
   "homepage": ".",
   "main": "build/electron/main.js",
   "private": true,

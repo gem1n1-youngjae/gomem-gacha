@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PlayFunction } from "use-sound/dist/types";
 
 import {
   MainContentWrapper,
@@ -15,7 +16,8 @@ import { GomemCard } from "components/molecules";
 import { gomemClassList, gomemNameList, GomemNames } from "constant/gomem";
 
 export const MyGomemListTemplate = ({
-  userHaveGomemList
+  userHaveGomemList,
+  clickButton
 }: {
   userHaveGomemList: {
     name: string;
@@ -24,6 +26,8 @@ export const MyGomemListTemplate = ({
     starCount: number;
     realName: string;
   }[];
+
+  clickButton?: PlayFunction;
 }) => {
   const [gomemList, setGomemList] = useState(userHaveGomemList);
   const [selectGomemName, setSelectGomemName] = useState("고멤");
@@ -73,6 +77,7 @@ export const MyGomemListTemplate = ({
           onClickButton={() => {
             setShowSelectNameOptions((show) => !show);
             setShowSelectClassOptions(false);
+            clickButton();
           }}
         >
           <SelectOptionContainer style={{ width: 515, height: 460 }}>
@@ -82,6 +87,7 @@ export const MyGomemListTemplate = ({
                 onClick={() => {
                   setSelectGomemName(name);
                   setShowSelectNameOptions(false);
+                  clickButton();
                 }}
               >
                 {name}

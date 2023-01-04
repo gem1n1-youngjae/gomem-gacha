@@ -6,7 +6,15 @@ import { NavBar } from "components/organism";
 import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
 
 const App = (): JSX.Element => {
-  const { basicBGM } = useStarSoundHook();
+  const {
+    basicBGM,
+    showStar,
+    clickButton,
+    gacha,
+    gachaBGM,
+    volume,
+    setVolume
+  } = useStarSoundHook();
   if (process.env.NODE_ENV !== "development") {
     document.addEventListener("keydown", (event) => {
       if (
@@ -34,8 +42,17 @@ const App = (): JSX.Element => {
       <NavBar />
       <HashRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/gachaHome" element={<GachaHome />} />
+          <Route path="/" element={<HomePage clickButton={clickButton} />} />
+          <Route
+            path="/gachaHome"
+            element={
+              <GachaHome
+                clickButton={clickButton}
+                volume={volume}
+                setVolume={setVolume}
+              />
+            }
+          />
           <Route
             path="/gachaPage"
             element={
@@ -46,10 +63,17 @@ const App = (): JSX.Element => {
                 stopBgm={() => {
                   basicBGM.stop();
                 }}
+                clickButton={clickButton}
+                gachaBGM={gachaBGM}
+                showStar={showStar}
+                gacha={gacha}
               />
             }
           />
-          <Route path="/myGomem" element={<MyGomemPage />} />
+          <Route
+            path="/myGomem"
+            element={<MyGomemPage clickButton={clickButton} />}
+          />
         </Routes>
       </HashRouter>
     </>
