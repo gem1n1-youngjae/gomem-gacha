@@ -36,12 +36,15 @@ export const MyGomemListTemplate = ({
   const [showSelectClassOptions, setShowSelectClassOptions] = useState(false);
 
   useEffect(() => {
-    if (selectGomemName !== "고멤" && selectGomemClass !== "등급") {
+    const gomemClass = selectGomemClass === "?" ? "hidden" : selectGomemClass;
+    console.log(gomemClass);
+
+    if (selectGomemName !== "고멤" && gomemClass !== "등급") {
       setGomemList(
         userHaveGomemList.filter(
           (gomem) =>
             GomemNames[gomem.realName] === selectGomemName &&
-            gomem.class === selectGomemClass
+            gomem.class === gomemClass
         )
       );
     } else {
@@ -53,9 +56,9 @@ export const MyGomemListTemplate = ({
         );
         return;
       }
-      if (selectGomemClass !== "등급") {
+      if (gomemClass !== "등급") {
         setGomemList(
-          userHaveGomemList.filter((gomem) => gomem.class === selectGomemClass)
+          userHaveGomemList.filter((gomem) => gomem.class === gomemClass)
         );
         return;
       }
@@ -111,7 +114,7 @@ export const MyGomemListTemplate = ({
                 key={idx}
                 onClick={() => {
                   if (className === "?") {
-                    setSelectGomemClass("hidden");
+                    setSelectGomemClass("?");
                   } else {
                     setSelectGomemClass(className);
                   }
