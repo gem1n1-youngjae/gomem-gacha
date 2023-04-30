@@ -565,9 +565,9 @@ export const StyledPageCover = styled.div<{ gomemClass: string }>`
   background: ${({ gomemClass }) => {
     switch (gomemClass) {
       case "common":
-        return "#ffffff";
+        return "linear-gradient(35deg,#ffffff,#d9d9d9,#ababab,#808080,#666666,#363636)";
       case "rare":
-        return "#38F238";
+        return "linear-gradient(35deg,#70fad5,#00ffd1,#00ffa3,#00fff0,#78e7ff,#2757ff)";
       case "epic":
         return "linear-gradient(45deg, #00f0ff 0%, #3c67ff 100%)";
       case "legend":
