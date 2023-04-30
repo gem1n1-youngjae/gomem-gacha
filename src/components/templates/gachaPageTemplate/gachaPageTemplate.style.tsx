@@ -550,7 +550,7 @@ const opacityAnimation = keyframes`
   0%{
     opacity: 0;
   }
-  75%{
+  85%{
     opacity: 1;
   }
   100%{
