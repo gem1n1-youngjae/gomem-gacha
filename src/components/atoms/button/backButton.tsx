@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { PlayFunction } from "use-sound/dist/types";
 
 import { StyledBackButton } from "./backbutton.style";
 
-import { useStarSoundHook } from "assets/sounds/hooks";
-
-export const BackButton = ({ className }: { className?: string }) => {
+export const BackButton = ({
+  className,
+  clickButton
+}: {
+  className?: string;
+  clickButton?: PlayFunction;
+}) => {
   const navigate = useNavigate();
-  const { clickButton } = useStarSoundHook();
   return (
     <StyledBackButton
       className={className}
