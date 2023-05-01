@@ -25,6 +25,7 @@ import {
   VideoWrapper
 } from "./gachaPageTemplate.style";
 
+import { CountButton } from "components/molecules/button/countButton";
 import { randomCharacterType } from "utils/hooks/useRandom";
 
 const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
@@ -34,7 +35,8 @@ export const GachaPageTemplate = ({
   onClickSaveButton,
   gachaBGM,
   showStar,
-  gacha
+  gacha,
+  clickButton
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
@@ -47,6 +49,7 @@ export const GachaPageTemplate = ({
   };
   showStar?: PlayFunction;
   gacha?: PlayFunction;
+  clickButton?: PlayFunction;
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -251,6 +254,7 @@ export const GachaPageTemplate = ({
           </BottomGradient>
         </>
       )}
+      <CountButton clickButton={clickButton} />
     </StyledGachaPageTemplate>
   );
 };

@@ -79,6 +79,7 @@ export const GachaPage = ({
       gachaBGM={gachaBGM}
       showStar={showStar}
       gacha={gacha}
+      clickButton={clickButton}
     />
   );
 };
