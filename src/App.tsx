@@ -6,15 +6,42 @@ import { NavBar } from "components/organism";
 import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
 
 const App = (): JSX.Element => {
+  const defaultAllVoulume =
+    Number(JSON.parse(window.localStorage.getItem("allVolume"))) ?? 0.5;
+  const defaultBgmVolume =
+    Number(JSON.parse(window.localStorage.getItem("bgmVolume"))) ?? 0.5;
+  const defaultEffectVoulme =
+    Number(JSON.parse(window.localStorage.getItem("effectVoulme"))) ?? 0.5;
+  const defaultGachaVolume =
+    Number(JSON.parse(window.localStorage.getItem("gachaVolume"))) ?? 0.5;
+
+  console.log({
+    defaultAllVoulume,
+    defaultBgmVolume,
+    defaultEffectVoulme,
+    defaultGachaVolume
+  });
+
   const {
     basicBGM,
     showStar,
     clickButton,
     gacha,
     gachaBGM,
-    volume,
-    setVolume
-  } = useStarSoundHook();
+    allVolume,
+    controlAllVolume,
+    bgmVolume,
+    controlBgmVolume,
+    effectVoulme,
+    controleffectVolume,
+    gachaVolume,
+    controlGachaVolume
+  } = useStarSoundHook({
+    defaultAllVoulume,
+    defaultBgmVolume,
+    defaultEffectVoulme,
+    defaultGachaVolume
+  });
   if (process.env.NODE_ENV !== "development") {
     document.addEventListener("keydown", (event) => {
       if (
@@ -48,8 +75,14 @@ const App = (): JSX.Element => {
             element={
               <GachaHome
                 clickButton={clickButton}
-                volume={volume}
-                setVolume={setVolume}
+                allVolume={allVolume}
+                controlAllVolume={controlAllVolume}
+                bgmVolume={bgmVolume}
+                controlBgmVolume={controlBgmVolume}
+                effectVoulme={effectVoulme}
+                controleffectVolume={controleffectVolume}
+                gachaVolume={gachaVolume}
+                controlGachaVolume={controlGachaVolume}
               />
             }
           />
@@ -67,6 +100,7 @@ const App = (): JSX.Element => {
                 gachaBGM={gachaBGM}
                 showStar={showStar}
                 gacha={gacha}
+                defaultGachaVolume={defaultGachaVolume * defaultAllVoulume}
               />
             }
           />

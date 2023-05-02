@@ -14,12 +14,24 @@ import { SettingOverlay } from "components/molecules/overlay/settingOverlay";
 
 export const GachaHomeTemplate = ({
   clickButton,
-  volume,
-  setVolume
+  allVolume,
+  controlAllVolume,
+  bgmVolume,
+  controlBgmVolume,
+  effectVoulme,
+  controleffectVolume,
+  gachaVolume,
+  controlGachaVolume
 }: {
   clickButton?: PlayFunction;
-  volume: number;
-  setVolume: (value: number) => void;
+  allVolume: number;
+  controlAllVolume: (value: number) => void;
+  bgmVolume: number;
+  controlBgmVolume: (value: number) => void;
+  effectVoulme: number;
+  controleffectVolume: (value: number) => void;
+  gachaVolume: number;
+  controlGachaVolume: (value: number) => void;
 }) => {
   const [showSettingOverlay, setShowSettingOverlay] = useState(false);
   const navigate = useNavigate();
@@ -47,8 +59,14 @@ export const GachaHomeTemplate = ({
           onClose={() => {
             setShowSettingOverlay(false);
           }}
-          volume={volume}
-          setVolume={setVolume}
+          allVolume={allVolume}
+          controlAllVolume={controlAllVolume}
+          bgmVolume={bgmVolume}
+          controlBgmVolume={controlBgmVolume}
+          effectVoulme={effectVoulme}
+          controleffectVolume={controleffectVolume}
+          gachaVolume={gachaVolume}
+          controlGachaVolume={controlGachaVolume}
         />
       )}
     </StyledGachaHomeTemplate>

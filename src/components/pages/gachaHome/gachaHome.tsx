@@ -4,18 +4,36 @@ import { GachaHomeTemplate } from "components/templates";
 
 export const GachaHome = ({
   clickButton,
-  volume,
-  setVolume
+  allVolume,
+  controlAllVolume,
+  bgmVolume,
+  controlBgmVolume,
+  effectVoulme,
+  controleffectVolume,
+  gachaVolume,
+  controlGachaVolume
 }: {
   clickButton?: PlayFunction;
-  volume: number;
-  setVolume: (value: number) => void;
+  allVolume: number;
+  controlAllVolume: (value: number) => void;
+  bgmVolume: number;
+  controlBgmVolume: (value: number) => void;
+  effectVoulme: number;
+  controleffectVolume: (value: number) => void;
+  gachaVolume: number;
+  controlGachaVolume: (value: number) => void;
 }) => {
   return (
     <GachaHomeTemplate
       clickButton={clickButton}
-      volume={volume}
-      setVolume={setVolume}
+      allVolume={allVolume}
+      controlAllVolume={controlAllVolume}
+      bgmVolume={bgmVolume}
+      controlBgmVolume={controlBgmVolume}
+      effectVoulme={effectVoulme}
+      controleffectVolume={controleffectVolume}
+      gachaVolume={gachaVolume}
+      controlGachaVolume={controlGachaVolume}
     />
   );
 };

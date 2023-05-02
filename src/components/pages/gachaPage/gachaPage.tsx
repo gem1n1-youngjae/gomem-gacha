@@ -12,7 +12,8 @@ export const GachaPage = ({
   clickButton,
   gachaBGM,
   showStar,
-  gacha
+  gacha,
+  defaultGachaVolume
 }: {
   playBgm?: () => void;
   stopBgm?: () => void;
@@ -26,6 +27,7 @@ export const GachaPage = ({
   };
   showStar?: PlayFunction;
   gacha?: PlayFunction;
+  defaultGachaVolume: number;
 }) => {
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
@@ -80,6 +82,7 @@ export const GachaPage = ({
       showStar={showStar}
       gacha={gacha}
       clickButton={clickButton}
+      defaultGachaVolume={defaultGachaVolume}
     />
   );
 };

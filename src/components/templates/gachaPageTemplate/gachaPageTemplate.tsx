@@ -36,7 +36,8 @@ export const GachaPageTemplate = ({
   gachaBGM,
   showStar,
   gacha,
-  clickButton
+  clickButton,
+  defaultGachaVolume
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
@@ -50,6 +51,7 @@ export const GachaPageTemplate = ({
   showStar?: PlayFunction;
   gacha?: PlayFunction;
   clickButton?: PlayFunction;
+  defaultGachaVolume: number;
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -75,6 +77,16 @@ export const GachaPageTemplate = ({
     }
   }, [gacha, showImage]);
 
+  const ref = useCallback(
+    (node) => {
+      if (node !== null) {
+        node.volume = defaultGachaVolume;
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [showVideo]
+  );
+
   return (
     <StyledGachaPageTemplate isOpenCard={showImage}>
       {isClickedCard && (
@@ -95,14 +107,15 @@ export const GachaPageTemplate = ({
           <video
             autoPlay
             style={{ width: "100%", height: "100%" }}
+            ref={ref}
             className={"intro_video"}
             onPlay={() => {
-              gachaBGM.sound.fade(0.3, 0, 3000);
+              gachaBGM.sound.fade(0, 0, 3000);
             }}
             onEnded={() => {
               setShowVideo(false);
               setShowImage(true);
-              gachaBGM.sound.fade(0, 0.3, 3000);
+              gachaBGM.sound.fade(0, defaultGachaVolume, 3000);
             }}
           >
             <source src={randomCharacter.videoSrc} type="video/mp4" />
