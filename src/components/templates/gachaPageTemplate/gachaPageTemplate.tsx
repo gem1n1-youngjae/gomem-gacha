@@ -25,7 +25,7 @@ import {
   VideoWrapper
 } from "./gachaPageTemplate.style";
 
-import { CountButton } from "components/molecules/button/countButton";
+import { CountButtons } from "components/molecules/button/countButtons";
 import { randomCharacterType } from "utils/hooks/useRandom";
 
 const HIDDEN_BOTTOM_OVRLAY_UP_COUNT = 3;
@@ -267,7 +267,7 @@ export const GachaPageTemplate = ({
           </BottomGradient>
         </>
       )}
-      <CountButton clickButton={clickButton} />
+      <CountButtons clickButton={clickButton} />
     </StyledGachaPageTemplate>
   );
 };
