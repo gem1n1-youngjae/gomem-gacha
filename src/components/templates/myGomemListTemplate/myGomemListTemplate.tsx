@@ -37,8 +37,6 @@ export const MyGomemListTemplate = ({
 
   useEffect(() => {
     const gomemClass = selectGomemClass === "?" ? "hidden" : selectGomemClass;
-    console.log(gomemClass);
-
     if (selectGomemName !== "고멤" && gomemClass !== "등급") {
       setGomemList(
         userHaveGomemList.filter(
