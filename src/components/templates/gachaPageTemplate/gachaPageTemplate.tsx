@@ -108,7 +108,7 @@ export const GachaPageTemplate = ({
             autoPlay
             style={{ width: "100%", height: "100%" }}
             ref={ref}
-            className={"intro_video"}
+            className={"ultraLegeno_video"}
             onPlay={() => {
               gachaBGM.sound.fade(0, 0, 3000);
             }}

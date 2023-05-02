@@ -69,7 +69,15 @@ const App = (): JSX.Element => {
       <NavBar />
       <HashRouter>
         <Routes>
-          <Route path="/" element={<HomePage clickButton={clickButton} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                clickButton={clickButton}
+                defaultBgmVolume={defaultBgmVolume * defaultAllVoulume}
+              />
+            }
+          />
           <Route
             path="/gachaHome"
             element={
