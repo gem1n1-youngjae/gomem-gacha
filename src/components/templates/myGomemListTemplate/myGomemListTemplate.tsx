@@ -8,7 +8,8 @@ import {
   SeletButtonsWrapper,
   SeletOption,
   StyledGachaHomeTemplate,
-  TopContent
+  TopContent,
+  UserHaveGomemListCount
 } from "./myGomemListTemplate.style";
 
 import { BackButton, SelectButton } from "components/atoms";
@@ -133,6 +134,9 @@ export const MyGomemListTemplate = ({
           }}
           showArrowButton={false}
         />
+        <UserHaveGomemListCount>
+          {gomemList.length} / 483
+        </UserHaveGomemListCount>
       </SeletButtonsWrapper>
       <MainContentWrapper>
         {userHaveGomemList &&

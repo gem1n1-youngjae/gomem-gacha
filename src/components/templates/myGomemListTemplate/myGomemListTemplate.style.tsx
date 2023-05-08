@@ -91,3 +91,15 @@ export const SeletOption = styled.div`
     background: rgb(20, 20, 20);
   }
 `;
+
+export const UserHaveGomemListCount = styled.div`
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
