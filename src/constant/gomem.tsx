@@ -51,7 +51,6 @@ export enum GomemNames {
 }
 
 export const gomemClassList = [
-  "?",
   "common",
   "rare",
   "epic",

@@ -38,14 +38,16 @@ export const MyGomemListTemplate = ({
   const [showSelectNameOptions, setShowSelectNameOptions] = useState(false);
   const [showSelectClassOptions, setShowSelectClassOptions] = useState(false);
 
+  const hasUserHidden =
+    userHaveGomemList.filter((gomem) => gomem.class === "hidden").length !== 0;
+
   useEffect(() => {
-    const gomemClass = selectGomemClass === "?" ? "hidden" : selectGomemClass;
-    if (selectGomemName !== "고멤" && gomemClass !== "등급") {
+    if (selectGomemName !== "고멤" && selectGomemClass !== "등급") {
       setGomemList(
         userHaveGomemList.filter(
           (gomem) =>
             GomemNames[gomem.realName] === selectGomemName &&
-            gomem.class === gomemClass
+            gomem.class === selectGomemClass
         )
       );
     } else {
@@ -57,9 +59,9 @@ export const MyGomemListTemplate = ({
         );
         return;
       }
-      if (gomemClass !== "등급") {
+      if (selectGomemClass !== "등급") {
         setGomemList(
-          userHaveGomemList.filter((gomem) => gomem.class === gomemClass)
+          userHaveGomemList.filter((gomem) => gomem.class === selectGomemClass)
         );
         return;
       }
@@ -133,6 +135,17 @@ export const MyGomemListTemplate = ({
                 {className}
               </SeletOption>
             ))}
+            {hasUserHidden && (
+              <SeletOption
+                onClick={() => {
+                  setSelectGomemClass("hidden");
+
+                  setShowSelectClassOptions(false);
+                }}
+              >
+                hidden
+              </SeletOption>
+            )}
           </SelectOptionContainer>
         </SelectButton>
         <SelectButton
