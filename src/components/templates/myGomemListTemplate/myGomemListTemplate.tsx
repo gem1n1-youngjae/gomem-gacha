@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PlayFunction } from "use-sound/dist/types";
 
 import {
@@ -7,7 +8,7 @@ import {
   SelectOptionContainer,
   SeletButtonsWrapper,
   SeletOption,
-  StyledGachaHomeTemplate,
+  StyledMyGomemTemplate,
   TopContent,
   UserHaveGomemListCount
 } from "./myGomemListTemplate.style";
@@ -30,6 +31,7 @@ export const MyGomemListTemplate = ({
 
   clickButton?: PlayFunction;
 }) => {
+  const navigate = useNavigate();
   const [gomemList, setGomemList] = useState(userHaveGomemList);
   const [selectGomemName, setSelectGomemName] = useState("고멤");
   const [selectGomemClass, setSelectGomemClass] = useState("등급");
@@ -65,8 +67,15 @@ export const MyGomemListTemplate = ({
     }
   }, [selectGomemName, selectGomemClass, userHaveGomemList]);
 
+  const onClickGomemCard = useCallback(
+    ({ name }) => {
+      navigate(`/replay?randomCharacterName=${name}`);
+    },
+    [navigate]
+  );
+
   return (
-    <StyledGachaHomeTemplate>
+    <StyledMyGomemTemplate>
       <TopContent>
         <BackButton clickButton={clickButton} />
         <div style={{ width: 32 }} />
@@ -149,9 +158,10 @@ export const MyGomemListTemplate = ({
                 gomemClass={gomem.class}
                 imageSrc={gomem.src}
                 starCount={gomem.starCount}
+                onClickGomemCard={onClickGomemCard}
               />
             ))}
       </MainContentWrapper>
-    </StyledGachaHomeTemplate>
+    </StyledMyGomemTemplate>
   );
 };

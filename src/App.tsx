@@ -4,6 +4,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { useStarSoundHook } from "assets/sounds/hooks";
 import { NavBar } from "components/organism";
 import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
+import { ReplayPage } from "components/pages/replayPage/replayPage";
 
 const App = (): JSX.Element => {
   const defaultAllVoulume =
@@ -14,13 +15,6 @@ const App = (): JSX.Element => {
     Number(JSON.parse(window.localStorage.getItem("effectVoulme"))) ?? 0.5;
   const defaultGachaVolume =
     Number(JSON.parse(window.localStorage.getItem("gachaVolume"))) ?? 0.5;
-
-  console.log({
-    defaultAllVoulume,
-    defaultBgmVolume,
-    defaultEffectVoulme,
-    defaultGachaVolume
-  });
 
   const {
     basicBGM,
@@ -115,6 +109,16 @@ const App = (): JSX.Element => {
           <Route
             path="/myGomem"
             element={<MyGomemPage clickButton={clickButton} />}
+          />
+          <Route
+            path="/replay"
+            element={
+              <ReplayPage
+                basicBGM={basicBGM}
+                clickButton={clickButton}
+                defaultGachaVolume={defaultGachaVolume * defaultAllVoulume}
+              />
+            }
           />
         </Routes>
       </HashRouter>

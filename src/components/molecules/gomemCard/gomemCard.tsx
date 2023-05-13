@@ -12,12 +12,14 @@ export const GomemCard = ({
   name,
   gomemClass,
   imageSrc,
-  starCount
+  starCount,
+  onClickGomemCard
 }: {
   name: string;
   gomemClass: string;
   imageSrc: string;
   starCount: number;
+  onClickGomemCard?: ({ name }) => void;
 }) => {
   const isCommonOrRare = gomemClass === "common" || gomemClass === "rare";
   const isEpic = gomemClass === "epic";
@@ -34,6 +36,9 @@ export const GomemCard = ({
       isLegend={isLegend}
       isHidden={isHidden}
       isUltraLegeno={isUltraLegeno}
+      onClick={() => {
+        onClickGomemCard({ name });
+      }}
     >
       <CardStarArea>
         {[...Array(starCount)].map((_, idx) => {

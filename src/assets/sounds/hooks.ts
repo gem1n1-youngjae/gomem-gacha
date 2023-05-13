@@ -22,10 +22,13 @@ export const useStarSoundHook = ({
   const [bgmVolume, setBgmVolume] = useState(defaultBgmVolume);
   const [effectVoulme, setEffectVoulme] = useState(defaultEffectVoulme);
   const [gachaVolume, setGachaVolume] = useState(defaultGachaVolume);
-  const [basicBGM, { stop: basicBGMStop }] = useSoundHook(basic_BGM, {
-    loop: true,
-    volume: bgmVolume * allVolume
-  });
+  const [basicBGM, { stop: basicBGMStop, sound: basicBGMsound }] = useSoundHook(
+    basic_BGM,
+    {
+      loop: true,
+      volume: bgmVolume * allVolume
+    }
+  );
   const [showStar] = useSoundHook(show_star_sound, {
     volume: effectVoulme * allVolume
   });
@@ -35,9 +38,12 @@ export const useStarSoundHook = ({
   const [gacha] = useSoundHook(gacha_sound, {
     volume: effectVoulme * allVolume
   });
-  const [gachaBGM, { stop: gachaBGMStop, sound }] = useSoundHook(gacha_BGM, {
-    volume: gachaVolume * allVolume
-  });
+  const [gachaBGM, { stop: gachaBGMStop, sound: gachaBGMsound }] = useSoundHook(
+    gacha_BGM,
+    {
+      volume: gachaVolume * allVolume
+    }
+  );
 
   const controlAllVolume = useCallback((value: number) => {
     setAllVolume(value);
@@ -61,11 +67,11 @@ export const useStarSoundHook = ({
   }, []);
 
   return {
-    basicBGM: { play: basicBGM, stop: basicBGMStop },
+    basicBGM: { play: basicBGM, stop: basicBGMStop, sound: basicBGMsound },
     showStar,
     clickButton,
     gacha,
-    gachaBGM: { play: gachaBGM, stop: gachaBGMStop, sound },
+    gachaBGM: { play: gachaBGM, stop: gachaBGMStop, sound: gachaBGMsound },
     allVolume,
     controlAllVolume,
     bgmVolume,

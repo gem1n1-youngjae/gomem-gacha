@@ -117,6 +117,7 @@ export const StylerCardOuterBox = styled.div<{
   position: relative;
   border-radius: 24px;
   padding: 10px;
+  cursor: pointer;
 `;
 
 export const StylerCardInnerBox = styled.div<{
