@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
+import { useRandomGomemSound } from "assets/sounds/gomem/hook";
 import { useStarSoundHook } from "assets/sounds/hooks";
 import { NavBar } from "components/organism";
 import { GachaHome, GachaPage, HomePage, MyGomemPage } from "components/pages";
@@ -36,6 +37,12 @@ const App = (): JSX.Element => {
     defaultEffectVoulme,
     defaultGachaVolume
   });
+
+  const { getRandomGomemSound } = useRandomGomemSound({
+    defaultAllVoulume,
+    defaultEffectVoulme
+  });
+
   if (process.env.NODE_ENV !== "development") {
     document.addEventListener("keydown", (event) => {
       if (
@@ -103,6 +110,7 @@ const App = (): JSX.Element => {
                 showStar={showStar}
                 gacha={gacha}
                 defaultGachaVolume={defaultGachaVolume * defaultAllVoulume}
+                getRandomGomemSound={getRandomGomemSound}
               />
             }
           />

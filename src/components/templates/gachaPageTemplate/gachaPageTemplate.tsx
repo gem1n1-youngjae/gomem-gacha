@@ -36,8 +36,8 @@ export const GachaPageTemplate = ({
   gachaBGM,
   showStar,
   gacha,
-  clickButton,
-  defaultGachaVolume
+  defaultGachaVolume,
+  getRandomGomemSound = () => {}
 }: {
   randomCharacter: randomCharacterType;
   onClickSaveButton: () => void;
@@ -50,8 +50,8 @@ export const GachaPageTemplate = ({
   };
   showStar?: PlayFunction;
   gacha?: PlayFunction;
-  clickButton?: PlayFunction;
   defaultGachaVolume: number;
+  getRandomGomemSound?: () => void;
 }) => {
   const [isClickedCard, setIsClickedCard] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -267,7 +267,11 @@ export const GachaPageTemplate = ({
           </BottomGradient>
         </>
       )}
-      <CountButtons clickButton={clickButton} />
+      <CountButtons
+        clickButton={() => {
+          getRandomGomemSound();
+        }}
+      />
     </StyledGachaPageTemplate>
   );
 };

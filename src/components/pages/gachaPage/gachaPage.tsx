@@ -13,7 +13,8 @@ export const GachaPage = ({
   gachaBGM,
   showStar,
   gacha,
-  defaultGachaVolume
+  defaultGachaVolume,
+  getRandomGomemSound = () => {}
 }: {
   playBgm?: () => void;
   stopBgm?: () => void;
@@ -28,6 +29,7 @@ export const GachaPage = ({
   showStar?: PlayFunction;
   gacha?: PlayFunction;
   defaultGachaVolume: number;
+  getRandomGomemSound?: () => void;
 }) => {
   const randomCharacter = useRandom(gomemList);
   const navigate = useNavigate();
@@ -81,8 +83,8 @@ export const GachaPage = ({
       gachaBGM={gachaBGM}
       showStar={showStar}
       gacha={gacha}
-      clickButton={clickButton}
       defaultGachaVolume={defaultGachaVolume}
+      getRandomGomemSound={getRandomGomemSound}
     />
   );
 };
