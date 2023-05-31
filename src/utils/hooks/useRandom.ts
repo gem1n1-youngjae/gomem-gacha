@@ -28,8 +28,8 @@ export const useRandom = (gomemList) => {
   }, []);
 
   useEffect(() => {
-    if (randomClassNumber <= 40) {
-      setRandomClass("hidden");
+    if (randomClassNumber <= 100) {
+      setRandomClass("common");
     } else if (40 < randomClassNumber && randomClassNumber <= 70) {
       setRandomClass("rare");
     } else if (70 < randomClassNumber && randomClassNumber <= 90) {

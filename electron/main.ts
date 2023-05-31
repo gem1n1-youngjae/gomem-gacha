@@ -4,7 +4,7 @@ import path from "path";
 
 import { app, BrowserWindow, ipcMain } from "electron";
 import installExtension, {
-  REACT_DEVELOPER_TOOLS,
+  REACT_DEVELOPER_TOOLS
 } from "electron-devtools-installer";
 
 let mainWindow: BrowserWindow;
@@ -24,8 +24,8 @@ const parseRoute = (route?: string): string => {
       ? `http://localhost:3000/${route}`
       : `http://localhost:3000/`
     : route
-      ? `file://${__dirname}/../index.html#/${route}`
-      : `file://${__dirname}/../index.html`;
+    ? `file://${__dirname}/../index.html#/${route}`
+    : `file://${__dirname}/../index.html`;
 };
 
 const mainEvents: MainEventsInterface = {
@@ -49,7 +49,7 @@ const mainEvents: MainEventsInterface = {
   },
   closeMainWindow: () => {
     mainWindow.close();
-  },
+  }
 };
 
 // eslint-disable-next-line array-callback-return
@@ -65,10 +65,10 @@ const createWindow = (
   const browserOptions = {
     webPreferences: {
       // contextIsolation: false,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.js")
     },
     show: false,
-    ...options,
+    ...options
   };
   const window = new BrowserWindow(browserOptions);
   window
@@ -91,6 +91,7 @@ function createMainWindow() {
     frame: false,
     resizable: false,
     fullscreen: false,
+    fullscreenable: false
   };
 
   mainWindow = createWindow(options, mainURL);
@@ -109,7 +110,7 @@ function createMainWindow() {
         "electron" + (process.platform === "win32" ? ".cmd" : "")
       ),
       forceHardReset: true,
-      hardResetMethod: "exit",
+      hardResetMethod: "exit"
     });
   }
 }
