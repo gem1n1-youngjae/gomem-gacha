@@ -22,3 +22,14 @@ yarn electron:build
 배포된 일렉트론 프로그램이 생성된 위치는 `C:\Users\{사용자}\AppData\Local\Programs`입니다.
 
 ps. 이 프로젝트는 윈도우 기반입니다.
+
+### ETC
+이 프로젝트는 더 이상 업데이트가 없습니다.
+
+[유튜브 링크](https://www.youtube.com/watch?v=hb1LWAJnEgI&t=27s)로접속하시면 시연 영상을 볼 수 있습니다.
+
+또한 초반 오류로 인해 대차게 망했습니다.
+
+안에 코드들도 완전 대충 짯고요.
+
+고멤 가차 프로젝트를 재밌게 봐주셔서 감사합니다.
